@@ -19,6 +19,9 @@ class Modelos extends CI_Controller {
     
     public function listar() {
         $data['session'] = $this->session->all_userdata();
+        $data['javascript'] = array(
+            '/assets/modulos/modelos/js/listar.js'
+        );
         
         $data['modelos'] = $this->modelos_model->gets();
         

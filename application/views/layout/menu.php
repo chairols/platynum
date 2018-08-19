@@ -260,7 +260,7 @@
           </a>
           <ul class="treeview-menu">
            <li><a href="/modelos/listar/"><i class="fa fa-list-ul"></i> Ver modelos</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-user-plus"></i> Agregar Modelo</a></li>
+            <li><a href="/modelos/agregar/"><i class="fa fa-user-plus"></i> Agregar Modelo</a></li>
           </ul>
         </li>
         <li class="treeview">
