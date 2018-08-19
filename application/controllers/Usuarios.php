@@ -9,6 +9,9 @@ class Usuarios extends CI_Controller {
             'form_validation',
             'session'
         ));
+        $this->load->model(array(
+            'usuarios_model'
+        ));
     }
     
     public function login() {
@@ -20,24 +23,14 @@ class Usuarios extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             
         } else {
-            $usuario = $this->usuarios_model->get_usuario($this->input->post('usuario'), sha1($this->input->post('password')));
+            $usuario = $this->usuarios_model->get_usuario($this->input->post('usuario'), md5($this->input->post('password')));
             if (!empty($usuario)) {
-                $perfil = $this->usuarios_model->get_perfil($usuario['idusuario']);
-
                 $datos = array(
-                    'SID' => $usuario['idusuario'],
+                    'SID' => $usuario['id'],
                     'usuario' => $usuario['usuario'],
-                    'nombre' => $usuario['nombre'],
-                    'apellido' => $usuario['apellido'],
-                    'correo' => $usuario['email'],
-                    'perfil' => $perfil['idperfil']
+                    'tipo' => $usuario['tipo']
                 );
                 $this->session->set_userdata($datos);
-
-                $datos = array(
-                    'ultimo_acceso' => date("Y-m-d H:i:s")
-                );
-                $this->usuarios_model->update($datos, $usuario['idusuario']);
 
                 redirect('/dashboard/', 'refresh');
             }
@@ -50,6 +43,11 @@ class Usuarios extends CI_Controller {
         } else {
             $this->load->view('usuarios/login', $data);
         }
+    }
+    
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('/usuarios/login/', 'refresh');
     }
 }
 ?>
