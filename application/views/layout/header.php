@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="/assets/template/bower_components/Ionicons/css/ionicons.min.css">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="/assets/template/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="/assets/template/plugins/iCheck/all.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="/assets/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Select2 -->

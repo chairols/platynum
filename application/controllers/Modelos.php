@@ -14,7 +14,11 @@ class Modelos extends CI_Controller {
             'pelos_model',
             'ojos_model',
             'pieles_model',
-            'idiomas_model'
+            'idiomas_model',
+            'paises_model',
+            'provincias_model',
+            'ciudades_model',
+            'barrios_model'
         ));
         
         $session = $this->session->all_userdata();
@@ -47,6 +51,10 @@ class Modelos extends CI_Controller {
         $data['ojos'] = $this->ojos_model->gets();
         $data['pieles'] = $this->pieles_model->gets();
         $data['idiomas'] = $this->idiomas_model->gets();
+        $data['paises'] = $this->paises_model->gets();
+        $data['provincias'] = $this->provincias_model->gets();
+        $data['ciudades'] = $this->ciudades_model->gets();
+        $data['barrios'] = $this->barrios_model->gets();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
