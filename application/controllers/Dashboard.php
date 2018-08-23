@@ -19,6 +19,7 @@ class Dashboard extends CI_Controller {
     
     public function index() {
         $data['session'] = $this->session->all_userdata();
+        $data['menu'] = 1;
         
         $where = array(
             'estado' => 'habilitado'

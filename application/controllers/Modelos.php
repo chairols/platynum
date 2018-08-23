@@ -10,7 +10,11 @@ class Modelos extends CI_Controller {
             'r_session'
         ));
         $this->load->model(array(
-            'modelos_model'
+            'modelos_model',
+            'pelos_model',
+            'ojos_model',
+            'pieles_model',
+            'idiomas_model'
         ));
         
         $session = $this->session->all_userdata();
@@ -24,10 +28,29 @@ class Modelos extends CI_Controller {
         );
         
         $data['modelos'] = $this->modelos_model->gets();
+        $data['menu'] = 2;
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('modelos/listar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function agregar() {
+        $data['session'] = $this->session->all_userdata();
+        $data['javascript'] = array(
+            '/assets/modulos/modelos/js/agregar.js'
+        );
+        $data['menu'] = 3;
+        
+        $data['pelos'] = $this->pelos_model->gets();
+        $data['ojos'] = $this->ojos_model->gets();
+        $data['pieles'] = $this->pieles_model->gets();
+        $data['idiomas'] = $this->idiomas_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('modelos/agregar');
         $this->load->view('layout/footer');
     }
 }
