@@ -455,7 +455,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Proximidad</label>
-                            <input type="text" class="form-control" maxlength="100" id="proximidad">
+                            <input type="text" class="form-control" maxlength="100" placeholder="Especificar zona / barrio" id="proximidad">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Full Time</label>
