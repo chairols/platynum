@@ -11,9 +11,10 @@ class Modelos_model extends CI_Model {
     /*
      *  Modelos/listar
      */
-    public function gets() {
+    public function gets_where($where) {
         $this->db->select('*');
         $this->db->from('modelos');
+        $this->db->where($where);
 
         $query = $this->db->get();
         return $query->result_array();

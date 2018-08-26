@@ -16,6 +16,13 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body" style="display: none;">
+                        <select id="select" class="form-control select2">
+                            <option value="habilitado"<?=($estado=='habilitado')?" selected":""?>>Habilitados</option>
+                            <option value="deshabilitado"<?=($estado=='deshabilitado')?" selected":""?>>Deshabilitados</option>
+                            <option value="redireccionado"<?=($estado=='redireccionado')?" selected":""?>>Redireccionados</option>
+                            <option value="borrado"<?=($estado=='borrado')?" selected":""?>>Borrados</option>
+                        </select>
+                        <br><br>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -24,9 +31,7 @@
                                     <th>Sección</th>
                                     <th>Teléfono</th>
                                     <th>Estado</th>
-                                    <th>Editar</th>
-                                    <th>Deshabilitar</th>
-                                    <th>Borrar</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,9 +59,23 @@
                                             }
                                             ?>
                                         </td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
+                                        <td>
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar" href="#">
+                                                <button class="btn btn-sm bg-yellow btn-flat">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Deshabilitar" href="#">
+                                                <button class="btn btn-sm btn-info btn-flat">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </a>
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" href="#">
+                                                <button class="btn btn-sm btn-danger btn-flat">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
 <?php } ?>
                             </tbody>

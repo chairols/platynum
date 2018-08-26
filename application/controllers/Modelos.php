@@ -25,14 +25,21 @@ class Modelos extends CI_Controller {
         $this->r_session->check($session);
     }
     
-    public function listar() {
+    public function listar($estado = 'habilitado') {
         $data['session'] = $this->session->all_userdata();
         $data['javascript'] = array(
             '/assets/modulos/modelos/js/listar.js'
         );
-        
-        $data['modelos'] = $this->modelos_model->gets();
         $data['menu'] = 2;
+        
+        
+        $where = $this->input->get();
+        if(!isset($where['estado'])){
+            $where['estado'] = $estado;
+        }
+        $data['estado'] = $where['estado'];
+        $data['modelos'] = $this->modelos_model->gets_where($where);
+        
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
