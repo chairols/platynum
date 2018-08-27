@@ -403,7 +403,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
@@ -420,16 +420,16 @@
                         <div class="form-group">
                             <label class="control-label">Pais</label>
                             <select class="form-control select2" id="pais">
-                                <?php foreach($paises as $pais) { ?>
-                                <option value="<?=$pais['id']?>"><?=$pais['value']?></option>
+                                <?php foreach ($paises as $pais) { ?>
+                                    <option value="<?= $pais['id'] ?>"><?= $pais['value'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Provincia</label>
                             <select class="form-control select2" id="provincia">
-                                <?php foreach($provincias as $provincia) { ?>
-                                <option value="<?=$provincia['id']?>"><?=$provincia['value']?></option>
+                                <?php foreach ($provincias as $provincia) { ?>
+                                    <option value="<?= $provincia['id'] ?>"><?= $provincia['value'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -438,16 +438,16 @@
                         <div class="form-group">
                             <label class="control-label">Ciudad</label>
                             <select class="form-control select2" id="ciudad">
-                                <?php foreach($ciudades as $ciudad) { ?>
-                                <option value="<?=$ciudad['id']?>"><?=$ciudad['value']?></option>
+                                <?php foreach ($ciudades as $ciudad) { ?>
+                                    <option value="<?= $ciudad['id'] ?>"><?= $ciudad['value'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Barrio</label>
                             <select class="form-control select2" id="barrio">
-                                <?php foreach($barrios as $barrio) { ?>
-                                <option value="<?=$barrio['id']?>"><?=$barrio['value']?></option>
+                                <?php foreach ($barrios as $barrio) { ?>
+                                    <option value="<?= $barrio['id'] ?>"><?= $barrio['value'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -479,4 +479,281 @@
             </div>
         </div>
     </section>
+
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Secciones</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h4>Publica en:</h4>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group"></div>
+
+                        <div class="form-group"></div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Masajes</label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Fantasias</label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Maduras</label></div>
+                        <div class="form-group"></div>
+                        <form>
+                            <label>
+                                Observaciones - Uso interno</label>
+                            <textarea id="editor1" name="editor1" rows="10" cols="80">
+                     Agregar descripción                      
+                            </textarea>
+                        </form>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h4>Opciones varias</h4>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group"></div>
+
+                        <div class="form-group"></div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Tiene lugar
+                            </label>
+                        </div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Va a domicilio</label>
+                            ?</div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Va a hoteles
+                            </label>
+                            ?</div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Fuma ?</label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Molesta que fumen ?</label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Baila ?</label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Escort + Hombre</label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Escort + Mujer </label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Escort + Hombre + Mujer </label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Viaja ? </label></div>
+                        <div class="form-group">
+
+                            <label>
+                                <input type="checkbox" class="minimal-red">
+                            </label>
+                            <label>
+                                Tiene visa USA ? </label></div>
+
+
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+
+            <!-- /.box-body -->
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">EscortsBaires</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="box-body pad">
+                                <form>
+                                    <textarea name="editor2" cols="80" rows="10" id="editor2" placeholder="Descripcion"></textarea>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>Comidas</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Hobbies</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Musica Preferida</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Deportes Preferidos</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Aversiones</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Personalidad</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Duermo (horas por dia)</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Lugares preferidos</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="box-body pad">
+                                <form>
+                                    <textarea name="editor3" cols="80" rows="10" id="editor3" placeholder="Description"></textarea>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>Food</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Hobbies</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Music</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Sports</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Dislikes</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Personality</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>I Sleep</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label>Place</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+        <!-- /.box -->
+    </section>
+    
+    <div class="text-center">
+        <button id="agregar" class="btn btn-primary">Agregar</button>
+    </div>
+    <br>
 </div>
