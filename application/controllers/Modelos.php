@@ -68,5 +68,9 @@ class Modelos extends CI_Controller {
         $this->load->view('modelos/agregar');
         $this->load->view('layout/footer');
     }
+    
+    public function agregar_ajax() {
+        var_dump($this->input->post());
+    }
 }
 ?>

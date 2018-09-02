@@ -45,7 +45,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Nombre Sitio Web</label>
-                            <input class="form-control" maxlength="60" type="text" id="sitioweb">
+                            <input class="form-control" maxlength="60" type="text" id="nombresitioweb">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Membresia</label>
@@ -497,29 +497,22 @@
                             <h4>Publica en:</h4>
                         </div>
                         <!-- /.form-group -->
-                        <div class="form-group"></div>
-
-                        <div class="form-group"></div>
-
-
                         <div class="form-group">
-
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="publica_masajes">
                             </label>
                             <label>
                                 Masajes</label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="publica_fantasias">
                             </label>
                             <label>
                                 Fantasias</label></div>
                         <div class="form-group">
-
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="publica_maduras">
                             </label>
                             <label>
                                 Maduras</label></div>
@@ -527,7 +520,7 @@
                         <form>
                             <label>
                                 Observaciones - Uso interno</label>
-                            <textarea id="editor1" name="editor1" rows="10" cols="80">
+                            <textarea id="editor1" name="editor1" rows="10" cols="80" id="observaciones">
                      Agregar descripción                      
                             </textarea>
                         </form>
@@ -539,15 +532,10 @@
                             <h4>Opciones varias</h4>
                         </div>
                         <!-- /.form-group -->
-                        <div class="form-group"></div>
-
-                        <div class="form-group"></div>
-
-
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="con_lugar">
                             </label>
                             <label>
                                 Tiene lugar
@@ -556,7 +544,7 @@
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="a_domicilio">
                             </label>
                             <label>
                                 Va a domicilio</label>
@@ -564,7 +552,7 @@
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="a_hotel">
                             </label>
                             <label>
                                 Va a hoteles
@@ -573,56 +561,56 @@
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="fuma">
                             </label>
                             <label>
                                 Fuma ?</label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="molesta">
                             </label>
                             <label>
                                 Molesta que fumen ?</label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="baila">
                             </label>
                             <label>
                                 Baila ?</label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="ho">
                             </label>
                             <label>
                                 Escort + Hombre</label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="mu">
                             </label>
                             <label>
                                 Escort + Mujer </label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="ho_mu">
                             </label>
                             <label>
                                 Escort + Hombre + Mujer </label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="viaja">
                             </label>
                             <label>
                                 Viaja ? </label></div>
                         <div class="form-group">
 
                             <label>
-                                <input type="checkbox" class="minimal-red">
+                                <input type="checkbox" class="minimal-red" id="visa_usa">
                             </label>
                             <label>
                                 Tiene visa USA ? </label></div>
@@ -662,35 +650,35 @@
                         <!-- /.form-group -->
                         <div class="form-group">
                             <label>Comidas</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="comidas">
                         </div>
                         <div class="form-group">
                             <label>Hobbies</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="hobbies">
                         </div>
                         <div class="form-group">
                             <label>Musica Preferida</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="musica">
                         </div>
                         <div class="form-group">
                             <label>Deportes Preferidos</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="deportes">
                         </div>
                         <div class="form-group">
                             <label>Aversiones</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="nogusta">
                         </div>
                         <div class="form-group">
                             <label>Personalidad</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="personalidad">
                         </div>
                         <div class="form-group">
                             <label>Duermo (horas por dia)</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="duermo">
                         </div>
                         <div class="form-group">
                             <label>Lugares preferidos</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="lugares">
                         </div>
                         <!-- /.form-group -->
                     </div>
@@ -706,27 +694,27 @@
                         <!-- /.form-group -->
                         <div class="form-group">
                             <label>Food</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="comidas2">
                         </div>
                         <div class="form-group">
                             <label>Hobbies</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="hobbies2">
                         </div>
                         <div class="form-group">
                             <label>Music</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="musica2">
                         </div>
                         <div class="form-group">
                             <label>Sports</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="deportes2">
                         </div>
                         <div class="form-group">
                             <label>Dislikes</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="nogusta2">
                         </div>
                         <div class="form-group">
                             <label>Personality</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="personalidad2">
                         </div>
                         <div class="form-group">
                             <label>I Sleep</label>
@@ -734,7 +722,7 @@
                         </div>
                         <div class="form-group">
                             <label>Place</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" id="lugares2">
                         </div>
                         <!-- /.form-group -->
                     </div>
