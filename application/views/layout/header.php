@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="/assets/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="/assets/template/bower_components/select2/dist/css/select2.min.css">
+  <!-- Alertify -->
+  <link rel="stylesheet" href="/assets/vendors/alertifyjs/css/alertify.min.css">
+  <link rel="stylesheet" href="/assets/vendors/alertifyjs/css/themes/bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/assets/template/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins

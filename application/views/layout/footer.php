@@ -215,6 +215,8 @@
 <script src="/assets/template/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- CK Editor -->
 <script src="/assets/template/bower_components/ckeditor/ckeditor.js"></script>
+<!-- Alertify -->
+<script src="/assets/vendors/alertifyjs/alertify.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/template/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
