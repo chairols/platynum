@@ -9,16 +9,11 @@ $(document).ready(function () {
     CKEDITOR.replace('editor1');
     CKEDITOR.replace('editor2');
     CKEDITOR.replace('editor3');
-    
-    alertify.notify(
-        'sample', 
-        'success', 
-        5, 
-        function(){  
-            console.log('dismissed'); 
-        }
-    );
-    
+
+
+    alertify.set('notifier', 'position', 'top-center');
+    alertify.error('Texto error');
+    alertify.success('Texto success');
 });
 
 $("#agregar").click(function () {
@@ -35,7 +30,7 @@ $("#agregar").click(function () {
         // 'nombresitioweb': $("#nombresitioweb").val(),
         'membresia': $("#membresia").val(),
         'ranking': $("#ranking").val(),
-        
+
         // Datos de publicación
         'altura': $("#altura").val(),
         'alturapareja': $("#alturapareja").val(),
@@ -49,7 +44,7 @@ $("#agregar").click(function () {
         'idioma3': $("#idioma3").val(),
         'idioma4': $("#idioma4").val(),
         'descripcion': $("#descripcion").val(),
-        
+
         // Datos de contacto
         'prefijo1': $("#prefijo1").val(),
         // 'codigoarea1': $("#codigoarea1").val(),  -  No lo tengo en base de datos
@@ -76,7 +71,7 @@ $("#agregar").click(function () {
         'sitioweb': $("#sitioweb").val(),
         'email_privado': $("#email_privado").val(),
         // 'tuya_tv': $("#tuya_tv").val(),
-        
+
         // Datos de ubicación y disponibilidad
         'pais': $("#pais").val(),
         'provincia': $("#provincia").val(),
@@ -86,7 +81,7 @@ $("#agregar").click(function () {
         'fulltime': $("#fulltime").val(),
         'ciudad_exterior': $("#ciudad_exterior").val(),
         'disponible': $("#disponible").val(),
-        
+
         // Secciones
         'publica_masajes': $("#publica_masajes").val(),
         'publica_fantasias': $("#publica_fantasias").val(),
@@ -103,7 +98,7 @@ $("#agregar").click(function () {
         'ho_mu': $("#ho_mu").val(),
         'viaja': $("#viaja").val(),
         'visa_usa': $("#visa_usa").val(),
-        
+
         // EscortsBaires
         'comidas': $("#comidas").val(),
         'hobbies': $("#hobbies").val(),
@@ -121,7 +116,7 @@ $("#agregar").click(function () {
         'personalidad2': $("#personalidad2").val(),
         //'duermo2': $("#duermo2").val(),   No está en base de datos
         'lugares2': $("#lugares2").val()
-        
+
     };
     $.ajax({
         type: 'POST',
@@ -135,12 +130,8 @@ $("#agregar").click(function () {
             if (resultado['status'] == 'error') {
                 notifyError(resultado['data']);
             } else if (resultado['status'] == 'ok') {
-                notifySuccess("Se agregó correctamente");
-                document.getElementById("icono").value = "";
-                document.getElementById("titulo").value = "";
-                document.getElementById("menu").value = "";
-                document.getElementById("href").value = "";
-                document.getElementById("orden").value = "";
+                alertify.set('notifier', 'position', 'top-center');
+                alertify.success(data);
             }
         }
     });

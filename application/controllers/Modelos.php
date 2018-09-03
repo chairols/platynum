@@ -70,7 +70,11 @@ class Modelos extends CI_Controller {
     }
     
     public function agregar_ajax() {
-        var_dump($this->input->post());
+        $datos = array(
+            'status' => 'ok',
+            'data' => $this->input->post()
+        );
+        echo json_encode($datos);
     }
 }
 ?>
