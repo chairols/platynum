@@ -27,6 +27,8 @@ $("#agregar").click(function () {
         'documento': $("#documento").val(),
         'apellido': $("#apellido").val(),
         'fecha_nacimiento': $("#fecha_nacimiento").val(),
+        
+        // Nombre de publicación
         // 'nombresitioweb': $("#nombresitioweb").val(),
         'membresia': $("#membresia").val(),
         'ranking': $("#ranking").val(),
@@ -52,25 +54,21 @@ $("#agregar").click(function () {
         // 'mensaje1': $("#mensaje1").val(),
         // 'whatsapp1': $("#whatsapp1").val(),
         // 'llamadaprivada1': $("#llamadaprivada1").val(),
-        // 'otro1': $("#otro1").val(),
         'prefijo2': $("#prefijo2").val(),
         // 'codigoarea2': $("#codigoarea2").val(),  -  No lo tengo en base de datos
         'telefono2': $("#telefono2").val(),
         // 'mensaje2': $("#mensaje2").val(),
         // 'whatsapp2': $("#whatsapp2").val(),
         // 'llamadaprivada2': $("#llamadaprivada2").val(),
-        // 'otro2': $("#otro2").val(),
         'prefijo3': $("#prefijo3").val(),
         // 'codigoarea3': $("#codigoarea3").val(),  -  No lo tengo en base de datos
         'telefono3': $("#telefono3").val(),
         // 'mensaje3': $("#mensaje3").val(),
         // 'whatsapp3': $("#whatsapp3").val(),
         // 'llamadaprivada3': $("#llamadaprivada3").val(),
-        // 'otro3': $("#otro3").val(),
         'email': $("#email").val(),
         'sitioweb': $("#sitioweb").val(),
         'email_privado': $("#email_privado").val(),
-        // 'tuya_tv': $("#tuya_tv").val(),
 
         // Datos de ubicación y disponibilidad
         'pais': $("#pais").val(),

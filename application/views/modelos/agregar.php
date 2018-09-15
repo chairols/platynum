@@ -42,6 +42,25 @@
                             </div>
                         </div>
                     </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Nombre de Publicación</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" type="button" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="box-body">
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Nombre Sitio Web</label>
@@ -74,7 +93,7 @@
             </div>
         </div>
     </section>
-
+    
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
@@ -261,15 +280,7 @@
                             <label class="control-label">
                                 Llamada privada
                             </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">
-                                <input type="checkbox" class="minimal-red" id="otro1">
-                            </label>
-                            <label class="control-label">
-                                Otro
-                            </label>
-                        </div>
+                        </div>                        
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
@@ -311,14 +322,6 @@
                             </label>
                             <label class="control-label">
                                 Llamada privada
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">
-                                <input type="checkbox" class="minimal-red" id="otro2">
-                            </label>
-                            <label class="control-label">
-                                Otro
                             </label>
                         </div>
                     </div>
@@ -364,14 +367,6 @@
                                 Llamada privada
                             </label>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label">
-                                <input type="checkbox" class="minimal-red" id="otro3">
-                            </label>
-                            <label class="control-label">
-                                Otro
-                            </label>
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -391,12 +386,6 @@
                         <div class="form-group">
                             <label class="control-label">Email privado</label>
                             <input class="form-control" type="text" maxlength="50" placeholder="Este no se publica" id="email_privado">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Dominio TUYA.TV</label>
-                            <input class="form-control" type="text" placeholder="Escribir la URL" id="tuya_tv">
                         </div>
                     </div>
                 </div>
