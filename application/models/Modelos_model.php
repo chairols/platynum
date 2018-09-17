@@ -20,6 +20,15 @@ class Modelos_model extends CI_Model {
         return $query->result_array();
     }
     
+    public function gets_where_limit($where) {
+        $this->db->select("*");
+        $this->db->from('modelos');
+        $this->db->where($where);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
     public function get_count_where($where) {
         $this->db->select('count(*) as cantidad');
         $this->db->from('modelos');
