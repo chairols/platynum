@@ -13,11 +13,12 @@ class Web extends CI_Controller {
         ));
     }
     
-    public function index() {
+    public function pagina($pagina = 0) {
         
         $where = array(
             'estado' => 'habilitado'
         );
+        $per_page = 12;
         
         
         /*
@@ -25,9 +26,9 @@ class Web extends CI_Controller {
          */
         $total_rows = $this->modelos_model->get_count_where($where);
         $config['reuse_query_string'] = TRUE;
-        $config['base_url'] = '/web/index/';
+        $config['base_url'] = '/web/pagina/';
         $config['total_rows'] = $total_rows['cantidad'];
-        $config['per_page'] = 12;
+        $config['per_page'] = $per_page;
         $config['first_link'] = '<i class="fa fa-angle-double-left"></i>';
         $config['first_tag_open'] = '<li>';
         $config['first_tag_close'] = '</li>';
@@ -50,9 +51,9 @@ class Web extends CI_Controller {
          */
         
         
-        $data['modelos'] = $this->modelos_model->gets_where($where);
+        $data['modelos'] = $this->modelos_model->gets_where_limit($where, $per_page, $pagina);
         
-        $this->load->view('web/index', $data);
+        $this->load->view('web/pagina', $data);
     }
 }
 ?>

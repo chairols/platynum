@@ -491,308 +491,72 @@
 
                 <section class="ds ms page_models models_portrait gorizontal_padding section_padding_70">
                     <div class="container-fluid">
-                        
+
                         <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
+
+                            <?php foreach ($modelos as $modelo) { ?>
+                                <div class="isotope-item col-lg-3 col-md-4 col-sm-6 fashion">
+                                    <div class="vertical-item content-absolute">
+                                        <div class="item-media">
+                                            <a href="/modelos/ver/<?=$modelo['ID']?>/">
+                                                <img src="/assets/web/images/models_portrait/01.jpg">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="item-title text-center">
+                                        <h4>
+                                            <a href="/modelos/ver/<?=$modelo['ID']?>/"><?=$modelo['nombre']?></a><br>
+                                            <?=$modelo['telefono1']?><br>
+                                            <?=$modelo['value']?>
+                                        </h4>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             
                             
-                            
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 fashion">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/13.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/13.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Samantha Hawk</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 studio">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/14.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/14.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Lana Anderson</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 session">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/15.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/15.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Pamela Stonem</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 fashion">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/16.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/16.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Naomy Olsen</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 studio">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/17.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/17.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Gillian Rowe</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 session">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/18.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/18.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Sonya Smith</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 fashion">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/19.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/19.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Rachel Smalders</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 studio">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/20.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/20.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Joanne Irwin</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 session">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/21.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/21.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Sarah Quinn</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 fashion">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/22.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/22.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Barbara Serney</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 studio">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/23.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/23.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Pamela Torney</a>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="isotope-item col-lg-3 col-md-4 col-sm-6 session">
-                                <div class="vertical-item content-absolute">
-                                    <div class="item-media">
-                                        <img src="images/models_portrait/24.jpg" alt="">
-                                        <div class="media-links">
-                                            <div class="links-wrap">
-                                                <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="images/models_portrait/24.jpg"></a>
-                                                <a class="p-link" title="" href="model.html"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-title text-center">
-                                    <h4>
-                                        <a href="model.html">Jessica Lee</a>
-                                    </h4>
-                                </div>
-                            </div>
-
                         </div>
-
+                        
                         <div class="row">
                             <div class="col-sm-12 text-center margin_0">
-                                <ul class="pagination ">
-                                    <li>
-                                        <a href="#">
-                                            <span class="sr-only">Prev</span>
-                                            <i class="rt-icon2-chevron-thin-left"></i>
-                                        </a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="sr-only">Next</span>
-                                            <i class="rt-icon2-chevron-thin-right"></i>
-                                        </a>
-                                    </li>
+                                <ul class="pagination">
+                                    <?=$links?>
                                 </ul>
                             </div>
                         </div>
-
+                        
                     </div>
-                </section>
+            </section>
 
 
 
 
 
 
-                <footer class="ds page_footer section_padding_70">
-                    <div class="container">
-                        <div class="row"></div>
-                    </div>
-                </footer>
+            <footer class="ds page_footer section_padding_70">
+                <div class="container">
+                    <div class="row"></div>
+                </div>
+            </footer>
 
-                <section class="ls page_copyright section_padding_20">
-                    <div class="container">
-                        <div class="row topmargin_5 bottommargin_5">
-                            <div class="col-sm-12 text-center">
-                                <p class="darklinks">&copy; Platynum | </p>
-                            </div>
+            <section class="ls page_copyright section_padding_20">
+                <div class="container">
+                    <div class="row topmargin_5 bottommargin_5">
+                        <div class="col-sm-12 text-center">
+                            <p class="darklinks">&copy; Platynum | </p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-            </div>
-            <!-- eof #box_wrapper -->
         </div>
-        <!-- eof #canvas -->
+        <!-- eof #box_wrapper -->
+    </div>
+    <!-- eof #canvas -->
 
-        <script src="/assets/web/js/compressed.js"></script>
-        <script src="/assets/web/js/main.js"></script>
+    <script src="/assets/web/js/compressed.js"></script>
+    <script src="/assets/web/js/main.js"></script>
 
 
-    </body>
+</body>
 
 </html>
