@@ -518,12 +518,47 @@
                         
                         <div class="row">
                             <div class="col-sm-12 text-center margin_0">
-                                <ul class="pagination">
+                                <ul class="pagination ">
                                     <?=$links?>
                                 </ul>
                             </div>
                         </div>
                         
+                        <div class="row">
+                            <div class="col-sm-12 text-center margin_0">
+                                
+                                <ul class="pagination ">
+                                    <li>
+                                        <a href="#">
+                                            <span class="sr-only">Prev</span>
+                                            <i class="rt-icon2-chevron-thin-left"></i>
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">5</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="sr-only">Next</span>
+                                            <i class="rt-icon2-chevron-thin-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
             </section>
 

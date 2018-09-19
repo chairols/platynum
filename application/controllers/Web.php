@@ -39,8 +39,8 @@ class Web extends CI_Controller {
         $config['next_tag_close'] = '</li>';
         $config['prev_tag_open'] = '<li>';
         $config['prev_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#"><b>';
-        $config['cur_tag_close'] = '</b></a></li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
         $this->pagination->initialize($config);
