@@ -21,11 +21,13 @@ class Modelos extends CI_Controller {
             'barrios_model'
         ));
         
-        $session = $this->session->all_userdata();
-        $this->r_session->check($session);
+        
     }
     
     public function listar($estado = 'habilitado') {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
         $data['session'] = $this->session->all_userdata();
         $data['javascript'] = array(
             '/assets/modulos/modelos/js/listar.js'
@@ -48,6 +50,9 @@ class Modelos extends CI_Controller {
     }
     
     public function agregar() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
         $data['session'] = $this->session->all_userdata();
         $data['javascript'] = array(
             '/assets/modulos/modelos/js/agregar.js'
@@ -70,11 +75,29 @@ class Modelos extends CI_Controller {
     }
     
     public function agregar_ajax() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
         $datos = array(
             'status' => 'ok',
             'data' => $this->input->post()
         );
         echo json_encode($datos);
+    }
+    
+    public function ver($idmodelo = null) {
+        if($idmodelo == null) {
+            redirect('/web/pagina/', 'refresh');
+        }
+        
+        $where = array(
+            'modelos.ID' => $idmodelo
+        );
+        $data['modelo'] = $this->modelos_model->get_where($where);
+        
+        $this->load->view('layout_web/header', $data);
+        $this->load->view('modelos/ver');
+        $this->load->view('layout_web/footer');
     }
 }
 ?>

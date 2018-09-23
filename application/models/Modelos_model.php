@@ -40,6 +40,16 @@ class Modelos_model extends CI_Model {
         $query = $this->db->get();
         return $query->row_array();
     }
+    
+    public function get_where($where) {
+        $this->db->select("*");
+        $this->db->from('modelos');
+        $this->db->join('barrios', 'modelos.barrio = barrios.id');
+        $this->db->where($where);
+        
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }
 
 ?>

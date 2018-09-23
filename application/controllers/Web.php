@@ -50,10 +50,11 @@ class Web extends CI_Controller {
          * fin paginador
          */
         
-        
         $data['modelos'] = $this->modelos_model->gets_where_limit($where, $per_page, $pagina);
         
-        $this->load->view('web/pagina', $data);
+        $this->load->view('layout_web/header', $data);
+        $this->load->view('web/pagina');
+        $this->load->view('layout_web/footer');
     }
 }
 ?>
