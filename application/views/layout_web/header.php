@@ -8,7 +8,8 @@
 
     <head>
         <title>Platynum</title>
-        <meta charset="utf-8">
+        <!--<meta charset="utf-8">-->
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->

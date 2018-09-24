@@ -12,7 +12,7 @@ class Modelos_model extends CI_Model {
      *  Modelos/listar
      */
     public function gets_where($where) {
-        $this->db->select('*');
+        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado');
         $this->db->from('modelos');
         $this->db->where($where);
 
@@ -21,7 +21,7 @@ class Modelos_model extends CI_Model {
     }
     
     public function gets_where_limit($where, $per_page, $pagina) {
-        $this->db->select("*");
+        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado');
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
         $this->db->where($where);
@@ -42,7 +42,7 @@ class Modelos_model extends CI_Model {
     }
     
     public function get_where($where) {
-        $this->db->select("*");
+        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado');
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
         $this->db->where($where);

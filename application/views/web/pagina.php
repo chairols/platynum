@@ -7,14 +7,14 @@
                                 <div class="isotope-item col-lg-3 col-md-4 col-sm-6 fashion">
                                     <div class="vertical-item content-absolute">
                                         <div class="item-media">
-                                            <a href="/modelos/ver/<?=$modelo['ID']?>/<?=$modelo['nombre']?>-<?=$modelo['telefono1']?>/">
+                                            <a href="/modelos/ver/<?=$modelo['ID']?>/<?=$modelo['nombre_formateado']?>-<?=$modelo['telefono1']?>/">
                                                 <img src="/assets/web/images/models_portrait/01.jpg">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="item-title text-center">
                                         <h4>
-                                            <a href="/modelos/ver/<?=$modelo['ID']?>/<?=$modelo['nombre']?>-<?=$modelo['telefono1']?>/"><?=$modelo['nombre']?></a><br>
+                                            <a href="/modelos/ver/<?=$modelo['ID']?>/<?=$modelo['nombre_formateado']?>-<?=$modelo['telefono1']?>/"><?=$modelo['nombre_formateado']?></a><br>
                                             <?=$modelo['telefono1']?><br>
                                             <?=$modelo['value']?>
                                         </h4>
