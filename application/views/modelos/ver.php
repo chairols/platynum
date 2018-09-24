@@ -19,15 +19,53 @@
             <div class="col-md-7 col-md-pull-5">
                 <h2 class="topmargin_0 bottommargin_30">About Model</h2>
                 <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod ipsum dolor sit amet. Lorem ipsum
-                    dolor sit amet, consetetur sadipscing elitr, sed diam nonumy tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum dolor sit amet.
+                    <strong>Altura: </strong><?=$modelo['altura']?>
                 </p>
                 <p>
-                    At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum
-                    dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+                    <strong>Medidas: </strong><?=$modelo['medidas1']?>-<?=$modelo['medidas2']?>-<?=$modelo['medidas3']?> cm
                 </p>
-
+                <?php
+                $i = explode(",", $modelo['idiomas']);
+                $idiomas = '';
+                foreach($i as $idioma) { 
+                    if(strlen($idioma)) {
+                        $idiomas .= $idioma.' - ';
+                    }
+                } ?>
+                <p>
+                    <strong>Idiomas: </strong><?php echo $idiomas ?>
+                </p>
+                <p>
+                    <strong>Viajes: </strong>
+                </p>
+                <p>
+                    <strong>Horario: </strong>
+                </p>
+                <p>
+                    <strong>Barrio y Ciudad: </strong><?=$modelo['value']?>
+                </p>
+                <p>
+                    <strong>Provincia y Pais: </strong>
+                </p>
+                <?php
+                $telefono = '';
+                if($modelo['prefijo1'] == 'mov' && strlen($modelo['telefono1'])) {
+                    $telefono .= '15-'.$modelo['telefono1'];
+                } 
+                if($modelo['prefijo2'] == 'mov' && strlen($modelo['telefono2'])) {
+                    $telefono .= ' / 15-'.$modelo['telefono2'];
+                }
+                ?>
+                <p>
+                    <strong>Teléfono Local: </strong><?=$telefono?>
+                </p>
+                <p>
+                    <strong>Teléfono Internacional:</strong>
+                </p>
+                <p>
+                    <strong>E-mail: </strong><?=(strlen($modelo['email']))?$modelo['email']:"No posee"?>
+                </p>
+                
                 <p>
                 <pre>
                     <?php print_r($modelo); ?>
