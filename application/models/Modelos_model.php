@@ -42,7 +42,7 @@ class Modelos_model extends CI_Model {
     }
     
     public function get_where($where) {
-        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado');
+        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado, CONVERT(CAST(CONVERT(idiomas using latin1) as BINARY) USING utf8) as idiomas_formateado');
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
         $this->db->where($where);

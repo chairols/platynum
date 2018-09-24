@@ -17,15 +17,16 @@
             </div>
 
             <div class="col-md-7 col-md-pull-5">
-                <h2 class="topmargin_0 bottommargin_30">About Model</h2>
+                <h2 class="topmargin_0 bottommargin_30"><?=$modelo['nombre_formateado']?></h2>
+                    
                 <p>
-                    <strong>Altura: </strong><?=$modelo['altura']?>
+                    <strong>Altura: </strong><?=$modelo['altura']?> cm
                 </p>
                 <p>
                     <strong>Medidas: </strong><?=$modelo['medidas1']?>-<?=$modelo['medidas2']?>-<?=$modelo['medidas3']?> cm
                 </p>
                 <?php
-                $i = explode(",", $modelo['idiomas']);
+                $i = explode(",", $modelo['idiomas_formateado']);
                 $idiomas = '';
                 foreach($i as $idioma) { 
                     if(strlen($idioma)) {
@@ -33,7 +34,7 @@
                     }
                 } ?>
                 <p>
-                    <strong>Idiomas: </strong><?php echo $idiomas ?>
+                    <strong>Idiomas: </strong><?php echo substr($idiomas, 0, strlen($idiomas)-2); ?>
                 </p>
                 <p>
                     <strong>Viajes: </strong>
@@ -66,11 +67,7 @@
                     <strong>E-mail: </strong><?=(strlen($modelo['email']))?$modelo['email']:"No posee"?>
                 </p>
                 
-                <p>
-                <pre>
-                    <?php print_r($modelo); ?>
-                </pre>
-                </p>
+                
 
                 <div class="columns_padding_5">
                     <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
