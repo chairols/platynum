@@ -25,6 +25,9 @@
                             
                         </div>
                         
+                        <div class="row text-center">
+                            <?=$banner['contenido']?>
+                        </div>
                         <div class="row">
                             <div class="col-sm-12 text-center margin_0">
                                 <ul class="pagination ">
