@@ -13,11 +13,39 @@ class Web extends CI_Controller {
         ));
     }
     
-    public function pagina($pagina = 0) {
+    public function pagina($perfil = null, $pagina = 0) {
+        $data = array();
         
+        if($perfil == null) {
+            $perfil = 'Modelos';
+        }
         $where = array(
             'estado' => 'habilitado'
         );
+        switch ($perfil) {
+            case 'Modelos':
+                $where['perfil'] = 'A-MujeresModelos';
+                $data['perfil'] = 'Modelos';
+                break;
+            case 'Masajistas':
+                $where['perfil'] = 'B-Mujeres-Masajistas';
+                $data['perfil'] = 'Masajistas';
+                break;
+            case 'AlgoDistinto':
+                $where['perfil'] = 'C-Mujeres-AlgoDistinto';
+                $data['perfil'] = 'AlgoDistinto';
+                break;
+            case 'Fantasias':
+                $where['perfil'] = 'D-Mujeres-Fantasias';
+                $data['perfil'] = 'Fantasias';
+                break;
+            default:
+                $where['perfil'] = 'A-MujeresModelos';
+                $data['perfil'] = 'Modelos';
+                break;
+        }
+        
+        
         $per_page = 12;
         
         
@@ -26,7 +54,7 @@ class Web extends CI_Controller {
          */
         $total_rows = $this->modelos_model->get_count_where($where);
         $config['reuse_query_string'] = TRUE;
-        $config['base_url'] = '/web/pagina/';
+        $config['base_url'] = '/web/pagina/'.$perfil.'/';
         $config['total_rows'] = $total_rows['cantidad'];
         $config['per_page'] = $per_page;
         $config['first_link'] = '<i class="fa fa-angle-double-left"></i>';

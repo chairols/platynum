@@ -3131,8 +3131,8 @@ a.topline-button:hover {
 }
 
 .header_darkgrey {
-		background: image(FrontFrame_r1_c43.jpg);
-	background-image: url(../images/FrontFrame_r1_c43.jpg);
+		background: image(background-header.jpg);
+	background-image: url(../images/background-header.jpg);
 	background-repeat: repeat-x;
 }
 
@@ -3227,8 +3227,8 @@ a.logo.vertical_logo img {
 }
 
 .page_toplogo .logo.logo_image {
-	width: 150px;
-	height: 61px;
+	width: 250px;
+	height: 80px;
 	margin: 14px 0 5px;
 }
 

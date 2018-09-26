@@ -13,7 +13,7 @@
                 <div class="container">
                     <div class="row topmargin_5 bottommargin_5">
                         <div class="col-sm-12 text-center">
-                            <p class="darklinks">&copy; Platynum | </p>
+                            <p class="darklinks">&copy; Copyright © 2000 - 2020 Platynum & EscortsBaires Group. Todos los derechos reservados. </p>
                         </div>
                     </div>
                 </div>
