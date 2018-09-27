@@ -263,7 +263,7 @@
                             <li<?= ($menu == 3) ? " class='active'" : "" ?>><a href="/modelos/agregar/"><i class="fa fa-user-plus"></i> Agregar Modelo</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview<?= ($menu == 4 || $menu == 5 || $menu == 6 || $menu == 7) ? " active menu-open" : "" ?>">
                         <a href="#">
                             <i class="fa fa-newspaper-o"></i> <span>Banners</span>
                             <span class="pull-right-container">
@@ -271,8 +271,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Banners Modelos</a></li>
-                            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Banners Masajes</a></li>
+                            <li<?= ($menu == 4) ? " class='active'" : "" ?>><a href="/banners/modelos/"><i class="fa fa-circle-o"></i> Banners Modelos</a></li>
                             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Banners Masajes</a></li>
                             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Banners Fanstasias</a></li>
                             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Banners Algo distinto</a></li>

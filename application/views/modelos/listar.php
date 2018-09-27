@@ -38,7 +38,7 @@
                                 <?php foreach ($modelos as $modelo) { ?>
                                     <tr>
                                         <td>x</td>
-                                        <td><?= $modelo['nombre'] ?></td>
+                                        <td><?= $modelo['nombre_formateado'] ?></td>
                                         <td>x</td>
                                         <td><?= $modelo['telefono1'] ?></td>
                                         <td>
