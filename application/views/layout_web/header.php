@@ -61,13 +61,13 @@
                 <header class="page_header header_darkgrey columns_padding_0 table_section">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-3 col-sm-6 text-center">
-                                <a href="./" class="logo logo_image">
+                            <div class="col-sm-4 text-center">
+                                <a href="/" class="logo logo_image">
 
                                     <img src="/assets/web/images/logo.png" alt="">
                                 </a>
                             </div>
-                            <div class="col-md-6 text-center">
+                            <div class="col-sm-8 text-center">
                                 <!-- main nav start -->
                                 <nav class="mainmenu_wrapper">
                                     <ul class="mainmenu nav sf-menu">
