@@ -36,5 +36,10 @@ class Banners_model extends CI_Model {
         
         return $this->db->affected_rows();
     }
+    
+    public function update($tabla, $datos, $where) {
+        $this->db->update($tabla, $datos, $where);
+        return $this->db->affected_rows();
+    }
 }
 ?>

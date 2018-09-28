@@ -12,6 +12,11 @@
                 <td><?= $banner['posicion'] ?></td>
                 <td><?= $banner['contenido'] ?></td>
                 <td>
+                    <a href="/banners/editar/<?= $tabla ?>/<?= $banner['posicion'] ?>/">
+                        <button class="btn btn-warning">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </a>
                     <button class="btn btn-danger borrar" posicion="<?= $banner['posicion'] ?>">
                         <i class="fa fa-trash-o"></i>
                     </button>

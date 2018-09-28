@@ -124,6 +124,75 @@ class Banners extends CI_Controller {
         }
     }
 
+    public function editar($tabla, $posicion) {
+        $data['session'] = $this->session->all_userdata();
+        $data['menu'] = 4;
+        $data['javascript'] = array(
+            '/assets/modulos/banners/js/editar.js'
+        );
+        $data['tabla'] = $tabla;
+
+        $where = array(
+            'posicion' => $posicion
+        );
+        $data['banner'] = $this->banners_model->get_where($tabla, $where);
+
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('banners/editar');
+        $this->load->view('layout/footer');
+    }
+
+    public function editar_ajax() {
+        $this->form_validation->set_rules('posicion', 'Posicion', 'required|integer');
+        $this->form_validation->set_rules('tabla', 'Tabla', 'required');
+        $this->form_validation->set_rules('contenido', 'Contenido', 'required');
+        $this->form_validation->set_rules('posicion_actual', 'Posicion Actual', 'required|integer');
+
+        if ($this->form_validation->run() == FALSE) {
+            $json = array(
+                'status' => 'error',
+                'data' => validation_errors()
+            );
+            echo json_encode($json);
+        } else {
+            $where = array(
+                'posicion' => $this->input->post('posicion')
+            );
+            $resultado = $this->banners_model->get_where($this->input->post('tabla'), $where);
+
+            if ($resultado) {
+                $json = array(
+                    'status' => 'error',
+                    'data' => 'Ya existe otro banner en la posicion ' . $this->input->post('posicion')
+                );
+                echo json_encode($json);
+            } else {
+                $datos = array(
+                    'posicion' => $this->input->post('posicion'),
+                    'contenido' => $this->input->post('contenido')
+                );
+                $where = array(
+                    'posicion' => $this->input->post('posicion_actual')
+                );
+                $resultado = $this->banners_model->update($this->input->post('tabla'), $datos, $where);
+                if ($resultado) {
+                    $json = array(
+                        'status' => 'ok',
+                        'data' => 'El banner se actualizó correctamente'
+                    );
+                    echo json_encode($json);
+                } else {
+                    $json = array(
+                        'status' => 'error',
+                        'data' => 'Ocurrió un error inesperado'
+                    );
+                    echo json_encode($json);
+                }
+            }
+        }
+    }
+
 }
 
 ?>
