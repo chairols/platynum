@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>Banners Modelos Masajes</h1>
+        <h1>Banners Modelos Algo Distinto</h1>
     </section>
 
     <section class="content">

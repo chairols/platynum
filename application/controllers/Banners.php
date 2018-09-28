@@ -220,6 +220,20 @@ class Banners extends CI_Controller {
         $this->load->view('banners/fantasias');
         $this->load->view('layout/footer');
     }
+    
+    public function algodistinto() {
+        $data['session'] = $this->session->all_userdata();
+        $data['menu'] = 7;
+        $data['javascript'] = array(
+            '/assets/modulos/banners/js/algodistinto.js'
+        );
+
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('banners/algodistinto');
+        $this->load->view('layout/footer');
+    }
 
 }
 

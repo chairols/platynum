@@ -274,7 +274,7 @@
                             <li<?= ($menu == 4) ? " class='active'" : "" ?>><a href="/banners/modelos/"><i class="fa fa-circle-o"></i> Banners Modelos</a></li>
                             <li<?= ($menu == 5) ? " class='active'" : "" ?>><a href="/banners/masajes/"><i class="fa fa-circle-o"></i> Banners Masajes</a></li>
                             <li<?= ($menu == 6) ? " class='active'" : "" ?>><a href="/banners/fantasias/"><i class="fa fa-circle-o"></i> Banners Fanstasias</a></li>
-                            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Banners Algo distinto</a></li>
+                            <li<?= ($menu == 7) ? " class='active'" : "" ?>><a href="/banners/algodistinto/"><i class="fa fa-circle-o"></i> Banners Algo distinto</a></li>
 
                         </ul>
                     </li>

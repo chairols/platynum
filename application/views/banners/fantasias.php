@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>Banners Modelos</h1>
+        <h1>Banners Modelos Fantasías</h1>
     </section>
 
     <section class="content">
