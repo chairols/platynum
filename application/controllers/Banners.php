@@ -157,7 +157,8 @@ class Banners extends CI_Controller {
             echo json_encode($json);
         } else {
             $where = array(
-                'posicion' => $this->input->post('posicion')
+                'posicion' => $this->input->post('posicion'),
+                'contenido' => $this->input->post('contenido')
             );
             $resultado = $this->banners_model->get_where($this->input->post('tabla'), $where);
 
