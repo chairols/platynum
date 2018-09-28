@@ -26,8 +26,7 @@ class Banners extends CI_Controller {
             '/assets/modulos/banners/js/modelos.js'
         );
 
-        $data['banners'] = $this->banners_model->gets('banners_platynum');
-
+        
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('banners/modelos');
@@ -192,6 +191,20 @@ class Banners extends CI_Controller {
                 }
             }
         }
+    }
+    
+    public function masajes() {
+        $data['session'] = $this->session->all_userdata();
+        $data['menu'] = 5;
+        $data['javascript'] = array(
+            '/assets/modulos/banners/js/masajes.js'
+        );
+
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('banners/masajes');
+        $this->load->view('layout/footer');
     }
 
 }
