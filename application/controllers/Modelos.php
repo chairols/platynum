@@ -95,6 +95,8 @@ class Modelos extends CI_Controller {
         );
         $data['modelo'] = $this->modelos_model->get_where($where);
         
+        $data['perfil'] = '';
+        
         $this->load->view('layout_web/header', $data);
         $this->load->view('modelos/ver');
         $this->load->view('layout_web/footer');
