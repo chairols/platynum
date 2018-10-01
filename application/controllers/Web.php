@@ -15,7 +15,9 @@ class Web extends CI_Controller {
     }
     
     public function pagina($perfil = null, $pagina = 0) {
-        $data = array();
+        $data['javascript'] = array(
+            '/assets/modulos/web/js/pagina.js'
+        );
         
         if($perfil == null) {
             $perfil = 'Modelos';
@@ -96,6 +98,19 @@ class Web extends CI_Controller {
          */
         
         $data['modelos'] = $this->modelos_model->gets_where_limit($where, $per_page, $pagina);
+        
+        $where = array(
+            'perfil' => 'A-MujeresModelos',
+            'estado' => 'habilitado'
+        );
+        $data['modelos_todas'] = $this->modelos_model->gets_where($where);
+        
+        $where = array(
+            'perfil' => 'B-Mujeres-Masajistas',
+            'estado' => 'habilitado'
+        );
+        $data['masajistas_todas'] = $this->modelos_model->gets_where($where);
+        
         
         $this->load->view('layout_web/header', $data);
         $this->load->view('web/pagina');

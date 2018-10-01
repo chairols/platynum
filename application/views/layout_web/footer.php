@@ -26,7 +26,14 @@
 
     <script src="/assets/web/js/compressed.js"></script>
     <script src="/assets/web/js/main.js"></script>
-
+<?php if (isset($javascript) && count($javascript) > 0) { ?>
+    <!-- Carga de Scripts de la vista -->
+    <?php foreach ($javascript as $j) { ?>
+        <script type="text/javascript" src="<?= $j ?>"></script>
+        <?php
+    }
+}
+?>
 
 </body>
 
