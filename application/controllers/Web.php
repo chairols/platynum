@@ -23,32 +23,38 @@ class Web extends CI_Controller {
         $where = array(
             'estado' => 'habilitado'
         );
-        $per_page = 12;
+        $per_page = 30;
         
         $idbanner = ($pagina / $per_page) + 1;
         $w = array(
             'posicion' => $idbanner
         );
+        
+        
         switch ($perfil) {
             case 'Modelos':
                 $where['perfil'] = 'A-MujeresModelos';
                 $data['perfil'] = 'Modelos';
                 $data['banner'] = $this->banners_model->get_where('banners_platynum', $w);
+                $data['banners'] = $this->banners_model->gets('banners_platynum');
                 break;
             case 'Masajistas':
                 $where['perfil'] = 'B-Mujeres-Masajistas';
                 $data['perfil'] = 'Masajistas';
                 $data['banner'] = $this->banners_model->get_where('banners_platynum_masajes', $w);
+                $data['banners'] = $this->banners_model->gets('banners_platynum_masajes');
                 break;
             case 'AlgoDistinto':
                 $where['perfil'] = 'C-Mujeres-AlgoDistinto';
                 $data['perfil'] = 'AlgoDistinto';
                 $data['banner'] = $this->banners_model->get_where('banners_platynum_algodistinto', $w);
+                $data['banners'] = $this->banners_model->gets('banners_platynum_algodistinto');
                 break;
             case 'Fantasias':
                 $where['perfil'] = 'D-Mujeres-Fantasias';
                 $data['perfil'] = 'Fantasias';
                 $data['banner'] = $this->banners_model->get_where('banners_platynum_fantasias', $w);
+                $data['banners'] = $this->banners_model->gets('banners_platynum_fantasias');
                 break;
             default:
                 $where['perfil'] = 'A-MujeresModelos';
