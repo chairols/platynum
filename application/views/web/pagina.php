@@ -1,6 +1,9 @@
 <section class="ds ms page_models models_portrait gorizontal_padding section_padding_70">
     <div class="container-fluid">
         <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
+            <div class="isotope-item col-lg-4 col-md-4 col-sm-4 fashion">
+
+            </div>
             <div class="isotope-item col-lg-4 col-md-4 col-sm-4 fashion form-group select-group">
                 <select id="modelo" class="seleccionar form-control orderby">
                     <option value="0">-- Modelos --</option> 
@@ -8,9 +11,6 @@
                     <option value="<?=$modelo['ID']?>"><?=$modelo['nombre_formateado']?></option>
                     <?php } ?>
                 </select>
-            </div>
-            <div class="isotope-item col-lg-4 col-md-4 col-sm-4 fashion">
-
             </div>
             <div class="isotope-item col-lg-4 col-md-4 col-sm-4 fashion form-group select-group">
                 <select id="masajista" class="seleccionar form-control orderby">

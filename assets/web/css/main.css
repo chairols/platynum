@@ -2261,7 +2261,7 @@ body.boxed {
 
 .ds.ms .select-group,
 .ds.ms option {
-	background-color: #0d0d0d;
+	background-color: #fff;
 }
 
 .ds.ms .with_background {
@@ -3333,8 +3333,8 @@ a.logo.vertical_logo img {
 	}
 
 	.page_header a.logo.logo_image {
-		width: 250px;
-		height: 80px;
+		width: 150px;
+		height: 61px;
 		margin: 14px 0 5px;
 	}
 
