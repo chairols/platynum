@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-md-6 col-md-push-7">
-                <h2 class="topmargin_0 bottommargin_30"><?=$modelo['nombre_formateado']?> / <?=($modelo['prefijo1']=='mov')?"15-":""?><?=$modelo['telefono1']?> </h2>
+                <h2 class="topmargin_0 bottommargin_30"><?= $modelo['nombre_formateado'] ?> / <?= ($modelo['prefijo1'] == 'mov') ? "15-" : "" ?><?= $modelo['telefono1'] ?> </h2>
                 <p>
                     At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod ipsum dolor sit amet. Lorem ipsum
                     dolor sit amet, consetetur sadipscing elitr, sed diam nonumy tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus
@@ -31,115 +31,27 @@
 
                 <div class="columns_padding_5">
                     <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
+                        <?php
+                        $fotos = explode(",", $modelo['fotos_platy']);
+                        foreach ($fotos as $foto) { ?>
                         <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 tests">
                             <div class="vertical-item gallery-item content-absolute text-center cs">
                                 <div class="item-media">
-                                    <img src="/assets/web/images/models_square/01.jpg" alt="">
+                                    <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$foto?>Thumb.jpg">
                                     <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/01.jpg"></a>
+                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$foto?>.jpg"></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 editorials">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/02.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/02.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 snaps">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/03.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/03.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 tests">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/04.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/04.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 editorials">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/05.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/05.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 snaps">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/06.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/06.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 tests">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/07.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/07.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 editorials">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/08.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/08.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 snaps">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/09.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/09.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 tests">
-                            <div class="vertical-item gallery-item content-absolute text-center cs">
-                                <div class="item-media">
-                                    <img src="/assets/web/images/models_square/10.jpg" alt="">
-                                    <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="images/models_square/10.jpg"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        
-
+                        <?php } ?>
                     </div>
                     <!-- eof .isotope_container.row -->
                 </div>
 
-
+                <pre>
+                    <?php print_r($modelo); ?>
+                </pre>
 
             </div>
 

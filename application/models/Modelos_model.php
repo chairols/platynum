@@ -50,6 +50,11 @@ class Modelos_model extends CI_Model {
         $query = $this->db->get();
         return $query->row_array();
     }
+    
+    public function set($datos) {
+        $this->db->insert('modelos', $datos);
+        return $this->db->insert_id();
+    }
 }
 
 ?>

@@ -64,7 +64,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Nombre Sitio Web</label>
-                            <input class="form-control" maxlength="60" type="text" id="nombresitioweb">
+                            <input class="form-control" maxlength="60" type="text" id="nombre">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Membresia</label>
@@ -77,8 +77,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label"><i class="fa fa-warning fa-spin"></i> Sección !! VER CAMPO !! <i class="fa fa-warning fa-spin"></i></label>
-                            <input class="form-control" type="text" value="VER ESTE CAMPO !!">
+                            <label class="control-label">Sección</label>
+                            <select id="perfil" class="form-control select2">
+                                <option value="A-MujeresModelos">Modelos</option>
+                                <option value="B-Mujeres-Masajistas">Masajistas</option>
+                                <option value="C-Mujeres-AlgoDistinto">Algo Distinto</option>
+                                <option value="D-Mujeres-Fantasias">Fantasías</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Ranking</label>
@@ -114,8 +119,18 @@
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group">
-                            <label class="control-label"><i class="fa fa-warning fa-spin"></i> Medidas (revisar) <i class="fa fa-warning fa-spin"></i></label>
-                            <input class="form-control" placeholder="" type="text">
+                            <label class="control-label">Medidas</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input id="medidas1" class="form-control" placeholder="" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <input id="medidas2" class="form-control" placeholder="" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <input id="medidas3" class="form-control" placeholder="" type="text">
+                                </div>
+                            </div>
                         </div>
                         <!-- /.form-group -->
                     </div>
@@ -172,8 +187,9 @@
                         <div class="form-group">
                             <label class="control-label">Idioma 1</label>
                             <select class="form-control select2" id="idioma1">
+                                <option value="">-- Seleccionar --</option>
                                 <?php foreach ($idiomas as $idioma) { ?>
-                                    <option value="<?= $idioma['id'] ?>"><?= $idioma['value_es'] ?></option>
+                                    <option value="<?= $idioma['value_es'] ?>"><?= $idioma['value_es'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -181,8 +197,9 @@
                         <div class="form-group">
                             <label class="control-label">Idioma 2</label>
                             <select class="form-control select2" id="idioma2">
+                                <option value="">-- Seleccionar --</option>
                                 <?php foreach ($idiomas as $idioma) { ?>
-                                    <option value="<?= $idioma['id'] ?>"><?= $idioma['value_es'] ?></option>
+                                    <option value="<?= $idioma['value_es'] ?>"><?= $idioma['value_es'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -191,8 +208,9 @@
                         <div class="form-group">
                             <label class="control-label">Idioma 3</label>
                             <select class="form-control select2" id="idioma3">
+                                <option value="">-- Seleccionar --</option>
                                 <?php foreach ($idiomas as $idioma) { ?>
-                                    <option value="<?= $idioma['id'] ?>"><?= $idioma['value_es'] ?></option>
+                                    <option value="<?= $idioma['value_es'] ?>"><?= $idioma['value_es'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -200,8 +218,9 @@
                         <div class="form-group">
                             <label class="control-label">Idioma 4</label>
                             <select class="form-control select2" id="idioma4">
+                                <option value="">-- Seleccionar --</option>
                                 <?php foreach ($idiomas as $idioma) { ?>
-                                    <option value="<?= $idioma['id'] ?>"><?= $idioma['value_es'] ?></option>
+                                    <option value="<?= $idioma['value_es'] ?>"><?= $idioma['value_es'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -210,7 +229,7 @@
                     <div class="col-md-12">
                         <div class="box box-info">
                             <div class="box-header">
-                                <h3 class="box-title"><i class="fa fa-warning fa-spin"></i> Descripción <i class="fa fa-warning fa-spin"></i></h3>
+                                <h3 class="box-title">Descripción</h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body pad">
@@ -248,10 +267,6 @@
                                 <option value="lin">Línea</option>
                                 <option value="mov">Móvil</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Código de área</label>
-                            <input class="form-control" type="text" id="codigoarea1">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Número</label>
@@ -293,10 +308,6 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Código de área</label>
-                            <input class="form-control" type="text" id="codigoarea2">
-                        </div>
-                        <div class="form-group">
                             <label class="control-label">Número</label>
                             <input class="form-control" type="text" id="telefono2">
                         </div>
@@ -334,10 +345,6 @@
                                 <option value="lin">Línea</option>
                                 <option value="mov">Móvil</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Código de área</label>
-                            <input class="form-control" type="text" id="codigoarea3">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Número</label>
@@ -509,7 +516,7 @@
                         <form>
                             <label>
                                 Observaciones - Uso interno</label>
-                            <textarea id="editor1" name="editor1" rows="10" cols="80" id="observaciones">
+                            <textarea id="editor1" name="editor1" rows="10" cols="80">
                      Agregar descripción                      
                             </textarea>
                         </form>
@@ -731,6 +738,9 @@
     
     <div class="text-center">
         <button id="agregar" class="btn btn-primary">Agregar</button>
+        <button id="agregar_loading" class="btn btn-primary" style="display: none;">
+            <i class="fa fa-refresh fa-spin"></i>
+        </button>
     </div>
     <br>
 </div>

@@ -32,7 +32,9 @@
                     <div class="vertical-item content-absolute">
                         <div class="item-media">
                             <a href="/modelos/ver/<?= $modelo['ID'] ?>/<?= $modelo['nombre_formateado'] ?>-<?= $modelo['telefono1'] ?>/">
-                                <img src="/assets/web/images/models_portrait/01.jpg">
+                                <?php $fotos = explode(",", $modelo['fotos_platy']); ?>
+                                <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[0]?>.jpg">
+                                <!--<img src="/assets/web/images/models_portrait/01.jpg">-->
                             </a>
                         </div>
                     </div>
@@ -46,10 +48,14 @@
                 </div>
                 <?php $i++; ?>
                 <?php if(($i % 6) == 0) { ?>
-                <div class="isotope-item col-lg-12 col-md-12 col-sm-12 fashion text-center">
+        </div>
+        <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
+            <div class="isotope-item col-lg-12 col-md-12 col-sm-12 fashion text-center" style="position: absolute">
                     <?=$banners[$j]['contenido'];?>
                 </div>
-            <br>
+        </div>
+        
+        <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
                 <?php $j++ ?>
                 <?php } ?>
             <?php } ?>
