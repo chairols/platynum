@@ -23,6 +23,8 @@
   <!-- Alertify -->
   <link rel="stylesheet" href="/assets/vendors/alertifyjs/css/alertify.min.css">
   <link rel="stylesheet" href="/assets/vendors/alertifyjs/css/themes/bootstrap.min.css">
+  <!-- Dropzone -->
+  <link rel="stylesheet" href="/assets/vendors/dropzone/dropzone.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/assets/template/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins

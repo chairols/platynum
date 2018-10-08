@@ -167,7 +167,6 @@ class Modelos extends CI_Controller {
                 'nogusta2' => $this->input->post('nogusta2'),
                 'personalidad2' => $this->input->post('personalidad2'),
                 'lugares2' => $this->input->post('lugares2'),
-                
                 'fecha_ingreso' => date("Y-m-d H:i:s"),
                 'fecha_actualizacion' => date("Y-m-d H:i:s"),
                 'estado' => 'habilitado'
@@ -220,14 +219,14 @@ class Modelos extends CI_Controller {
             } else {
                 $datos['llamadaprivada3'] = 'N';
             }
-            
+
             $flag = true;
-            while($flag) {
+            while ($flag) {
                 $where = array(
-                    'carpeta' => $this->generateRandomString(50)
+                    'carpeta' => $this->generateRandomString(20)
                 );
                 $resultado = $this->modelos_model->get_where($where);
-                if(!$resultado) {
+                if (!$resultado) {
                     $datos['carpeta'] = $where['carpeta'];
                     $flag = false;
                 }
@@ -278,7 +277,9 @@ class Modelos extends CI_Controller {
         }
 
         $data['session'] = $this->session->all_userdata();
-        $data['javascript'] = array();
+        $data['javascript'] = array(
+            '/assets/modulos/modelos/js/agregar_fotos.js'
+        );
         $data['menu'] = 3;
 
         $where = array(
@@ -290,6 +291,69 @@ class Modelos extends CI_Controller {
         $this->load->view('layout/menu');
         $this->load->view('modelos/agregar_fotos');
         $this->load->view('layout/footer');
+    }
+
+    public function agregar_fotos_ajax() {
+        $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
+
+        echo "<pre>";
+        if ($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $where = array(
+                'modelos.ID' => $this->input->post('idmodelo')
+            );
+            $modelo = $this->modelos_model->get_where($where);
+
+
+            $filesCount = count($_FILES['files']['name']);
+            for ($i = 0; $i < $filesCount; $i++) {
+                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+
+                $config['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
+                $config['allowed_types'] = '*';
+
+                if(!is_dir('Fotodisk')) {
+                    mkdir('./Fotodisk', 0777, TRUE);
+                }
+                if(!is_dir('Fotodisk/'.$modelo['perfil'])) {
+                    mkdir('./Fotodisk/'.$modelo['perfil'], 0777, TRUE);
+                }
+                if(!is_dir('Fotodisk/'.$modelo['perfil'].'/'.$modelo['carpeta'])) {
+                    mkdir('./Fotodisk/'.$modelo['perfil'].'/'.$modelo['carpeta'], 0777, TRUE);
+                }
+                
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('file')) {
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+                    print_r($data);
+                }
+            }
+
+
+
+
+
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload()) {
+                $error = array('error' => $this->upload->display_errors());
+                print_r($error);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                print_r($data);
+            }
+        }
+        print_r($this->input->post());
+        print_r($_FILES);
+
+        echo "</pre>";
     }
 
     private function formatear_fecha($fecha) {
