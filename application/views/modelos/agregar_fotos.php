@@ -8,7 +8,7 @@
             <div class="box-body">
                 <input type="hidden" id="idmodelo" value="<?=$modelo['ID']?>">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-6">
+                    <div class="col-12 col-sm-12 col-md-6" id="archivos">
                         
                     </div>
 

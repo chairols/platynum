@@ -169,7 +169,8 @@ class Modelos extends CI_Controller {
                 'lugares2' => $this->input->post('lugares2'),
                 'fecha_ingreso' => date("Y-m-d H:i:s"),
                 'fecha_actualizacion' => date("Y-m-d H:i:s"),
-                'estado' => 'habilitado'
+                'estado' => 'habilitado',
+                'fotos_platy' => ''
             );
 
             if ($this->input->post('mensaje1') == 'on') {
@@ -294,6 +295,9 @@ class Modelos extends CI_Controller {
     }
 
     public function agregar_fotos_ajax() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
         $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
 
         echo "<pre>";
@@ -304,8 +308,19 @@ class Modelos extends CI_Controller {
                 'modelos.ID' => $this->input->post('idmodelo')
             );
             $modelo = $this->modelos_model->get_where($where);
-
-
+            
+            $archivos = explode(',', $modelo['fotos_platy']);
+            $nombre_archivo = null;
+            $numero_foto = null;
+            $flag = true;
+            for($i = 1; $flag; $i++) {
+                if(array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
+                    $flag = false;
+                    $numero_foto = str_pad($i, 2, '0', STR_PAD_LEFT);
+                    $nombre_archivo = $modelo['nombre'].$numero_foto;
+                }
+            }
+            
             $filesCount = count($_FILES['files']['name']);
             for ($i = 0; $i < $filesCount; $i++) {
                 $_FILES['file']['name'] = $_FILES['files']['name'][$i];
@@ -313,10 +328,13 @@ class Modelos extends CI_Controller {
                 $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
                 $_FILES['file']['error'] = $_FILES['files']['error'][$i];
                 $_FILES['file']['size'] = $_FILES['files']['size'][$i];
-
+                
+                $f = explode('.', $_FILES['file']['name']);
+                
                 $config['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
                 $config['allowed_types'] = '*';
-
+                $config['file_name'] = $nombre_archivo.'.'.$f[1];
+                
                 if(!is_dir('Fotodisk')) {
                     mkdir('./Fotodisk', 0777, TRUE);
                 }
@@ -333,6 +351,16 @@ class Modelos extends CI_Controller {
                     print_r($error);
                 } else {
                     $data = array('upload_data' => $this->upload->data());
+                    $archivos = explode(',', $modelo['fotos_platy']);
+                    $archivos[] = $numero_foto;
+                    $datos = array(
+                        'fotos_platy' => implode(',', $archivos)
+                    );
+                    $where = array(
+                        'ID' => $this->input->post('idmodelo')
+                    );
+                    $this->modelos_model->update($datos, $where);
+                    
                     print_r($data);
                 }
             }
@@ -354,6 +382,18 @@ class Modelos extends CI_Controller {
         print_r($_FILES);
 
         echo "</pre>";
+    }
+    
+    public function gets_archivos() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $where = array(
+            'modelos.ID' => $this->input->post('idmodelo')
+        );
+        $data['modelo'] = $this->modelos_model->get_where($where);
+
+        $this->load->view('modelos/gets_archivos', $data);
     }
 
     private function formatear_fecha($fecha) {

@@ -55,6 +55,10 @@ class Modelos_model extends CI_Model {
         $this->db->insert('modelos', $datos);
         return $this->db->insert_id();
     }
+    
+    public function update($datos, $where) {
+        $this->db->update('modelos', $datos, $where);
+    }
 }
 
 ?>
