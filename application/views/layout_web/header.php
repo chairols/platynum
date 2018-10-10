@@ -81,7 +81,7 @@
                                             <a href="/web/pagina/Fantasias/">Fantasias</a>
                                         </li>
                                         <li<?=($perfil=='AlgoDistinto')?" class='active'":""?>>
-                                            <a href="/web/pagina/AlgoDistinto/">Algo Distinto</a>
+                                            <a href="/web/pagina/AlgoDistinto/">Videos</a>
                                         </li>
                                        
                                         <!-- eof pages -->

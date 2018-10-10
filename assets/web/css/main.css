@@ -710,6 +710,12 @@ p + .progress {
 .vertical-tabs .nav > li > a:hover {
 	background-color: #e0006c;
 }
+.banner-aling {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: auto;
+	padding-right: auto;
+}
 
 @media (min-width: 768px) {
 	.vertical-tabs .nav > li.active {
@@ -2740,8 +2746,8 @@ body.boxed {
 }
 
 .ds .pagination > li > a, .ds .pagination > li > span {
-	border-color: #ffffff;
-	color: #ffffff;
+	border-color: #E0006C;
+	color: #E0006C;
 }
 
 .ds .pagination > li:first-child > a,
@@ -2899,7 +2905,7 @@ body.boxed {
 }
 
 .cs {
-	background-color: #e0006c;
+
 	color: #ffffff;
 }
 
@@ -10871,3 +10877,4 @@ isotope portfolio and gallery pos
 .checkbox-slider--b-flat input + span:before {
 	box-shadow: none;
 }
+

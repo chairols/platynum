@@ -42,9 +42,11 @@ class Modelos_model extends CI_Model {
     }
     
     public function get_where($where) {
-        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado, CONVERT(CAST(CONVERT(idiomas using latin1) as BINARY) USING utf8) as idiomas_formateado');
+        $this->db->select('modelos.*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado, CONVERT(CAST(CONVERT(idiomas using latin1) as BINARY) USING utf8) as idiomas_formateado, CONVERT(CAST(CONVERT(viaja_donde using latin1) as BINARY) USING utf8) as viaja_donde_formateado, barrios.value as barrio_nombre, ciudades.value as ciudad_nombre, paises.value as pais_nombre');
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
+        $this->db->join('ciudades', 'modelos.ciudad = ciudades.id');
+        $this->db->join('paises', 'modelos.pais = paises.id');
         $this->db->where($where);
         
         $query = $this->db->get();

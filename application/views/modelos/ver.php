@@ -5,25 +5,48 @@
 <section class="ds model-page section_padding_70 section_padding_bottom_60 columns_padding_25">
     <div class="container">
         <div class="row">
-
+            <?php
+            $idiomas = explode(",", $modelo['idiomas']);
+            
+            ?>
             <div class="col-md-6 col-md-push-7">
                 <h2 class="topmargin_0 bottommargin_30"><?= $modelo['nombre_formateado'] ?> / <?= ($modelo['prefijo1'] == 'mov') ? "15-" : "" ?><?= $modelo['telefono1'] ?> </h2>
                 <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod ipsum dolor sit amet. Lorem ipsum
-                    dolor sit amet, consetetur sadipscing elitr, sed diam nonumy tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum dolor sit amet.
+                    <strong>Altura: </strong><?=$modelo['altura']?> cm
                 </p>
                 <p>
-                    At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum
-                    dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+                    <strong>Medidas: </strong><?=$modelo['medidas1']?>-<?=$modelo['medidas2']?>-<?=$modelo['medidas3']?> cm
                 </p>
-
+                <p>
+                    <strong>Idiomas: </strong>
+                    <?php foreach($idiomas = explode(",", $modelo['idiomas_formateado']) as $idioma) { 
+                        echo $idioma." ";
+                    } ?>                 
+                </p>
+                <p>
+                    <strong>Viajes: </strong><?=$modelo['viaja_donde_formateado']?>
+                </p>
+                <p>
+                    <strong>Horario: </strong><?=$modelo['disponible']?>
+                </p>
+                <p>
+                    <strong>Lugar: </strong><?=$modelo['barrio_nombre']?>, <?=$modelo['ciudad_nombre']?>
+                </p>
+                <p>
+                    <strong>Pais: </strong><?=$modelo['pais_nombre']?>
+                </p>
+                <p>
+                    <strong>Teléfono: </strong><?=($modelo['prefijo1']=="mov")?"15-":""?><?=$modelo['telefono1']?> <?=($modelo['prefijo2']=="mov")?"15-":""?><?=$modelo['telefono2']?> <?=($modelo['prefijo3']=="mov")?"15-":""?><?=$modelo['telefono3']?>
+                </p>
+                <p>
+                    <strong>Email: </strong><?=$modelo['email']?>
+                </p>
             </div>
-
+            <?php $fotos = explode(",", $modelo['fotos_platy']); ?>
             <div class="col-md-6 col-md-pull-6">
                 <div class="vertical-item with_background models_square">
                     <div class="item-media">
-                        <img src="/assets/web/images/models_square/17.jpg" alt="">
+                        <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[0]?>.jpg" alt="">
                     </div>
 
                 </div><br>
@@ -32,14 +55,14 @@
                 <div class="columns_padding_5">
                     <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
                         <?php
-                        $fotos = explode(",", $modelo['fotos_platy']);
-                        foreach ($fotos as $foto) { ?>
+                        for($i = 1; $i < count($fotos); $i++) { ?>
+                        
                         <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 tests">
                             <div class="vertical-item gallery-item content-absolute text-center cs">
                                 <div class="item-media">
-                                    <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$foto?>Thumb.jpg">
+                                    <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>Thumb.jpg">
                                     <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$foto?>.jpg"></a>
+                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>.jpg"></a>
                                     </div>
                                 </div>
                             </div>
@@ -48,11 +71,6 @@
                     </div>
                     <!-- eof .isotope_container.row -->
                 </div>
-
-                <pre>
-                    <?php print_r($modelo); ?>
-                </pre>
-
             </div>
 
         </div>
