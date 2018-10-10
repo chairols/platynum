@@ -6,9 +6,9 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach(explode(',', $modelo['fotos_platy']) as $foto) { ?>
+        <?php foreach($videos as $video) { ?>
         <tr>
-            <td><?=$modelo['nombre_formateado'].$foto?></td>
+            <td>Video ID: <?=$video['idvideo']?></td>
             <td></td>
         </tr>
         <?php } ?>

@@ -384,6 +384,62 @@ class Modelos extends CI_Controller {
         echo "</pre>";
     }
     
+    public function agregar_videos_ajax() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
+
+        if ($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $where = array(
+                'modelos.ID' => $this->input->post('idmodelo')
+            );
+            $modelo = $this->modelos_model->get_where($where);
+            
+            $filesCount = count($_FILES['files']['name']);
+            for ($i = 0; $i < $filesCount; $i++) {
+                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+                
+                $f = explode('.', $_FILES['file']['name']);
+                
+                $config['upload_path'] = './upload/videos/';
+                $config['allowed_types'] = '*';
+                $config['encrypt_name'] = TRUE;
+                
+                if(!is_dir('upload')) {
+                    mkdir('./upload', 0777, TRUE);
+                }
+                if(!is_dir('upload/videos')) {
+                    mkdir('./upload/videos', 0777, TRUE);
+                }
+                
+                
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('file')) {
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+                    
+                    $datos = array(
+                        'idmodelo' => $this->input->post('idmodelo'),
+                        'video' => $data['upload_data']['raw_name'].$data['upload_data']['file_ext']
+                    );
+                    $this->modelos_model->set_video($datos);
+                    
+                    print_r($data);
+                }
+            }
+
+        }
+    }
+    
     public function gets_archivos() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -394,6 +450,19 @@ class Modelos extends CI_Controller {
         $data['modelo'] = $this->modelos_model->get_where($where);
 
         $this->load->view('modelos/gets_archivos', $data);
+    }
+    
+    public function gets_videos() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $where = array(
+            'videos.idmodelo' => $this->input->post('idmodelo'),
+            'videos.estado' => 'A'
+        );
+        $data['videos'] = $this->modelos_model->gets_videos_where($where);
+        
+        $this->load->view('modelos/gets_videos', $data);
     }
 
     private function formatear_fecha($fecha) {

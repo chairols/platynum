@@ -37,9 +37,11 @@
                             <tbody>
                                 <?php foreach ($modelos as $modelo) { ?>
                                     <tr>
-                                        <td>x</td>
+                                        <td>
+                                            <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?>01.jpg" width="40%" height="40%">
+                                        </td>
                                         <td><?= $modelo['nombre_formateado'] ?></td>
-                                        <td>x</td>
+                                        <td><?=$modelo['perfil']?></td>
                                         <td><?= $modelo['telefono1'] ?></td>
                                         <td>
                                             <?php
@@ -63,6 +65,11 @@
                                             <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar" href="#">
                                                 <button class="btn btn-sm bg-yellow btn-flat">
                                                     <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar Fotos y Videos" href="/modelos/agregar_fotos/<?=$modelo['ID']?>/">
+                                                <button class="btn btn-sm btn-dropbox btn-flat">
+                                                    <i class="fa fa-video-camera"></i>
                                                 </button>
                                             </a>
                                             <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Deshabilitar" href="#">

@@ -7,11 +7,12 @@
 
 $(document).ready(function () {
     gets_archivos();
+    gets_videos();
     
     $('#dz1').dropzone({
         url: '/modelos/agregar_fotos_ajax/',
         margin: 20,
-        allowedFileTypes: 'image.*, pdf',
+        allowedFileTypes: 'image.*',
         params:{
             'action': 'save',
             'idmodelo': $("#idmodelo").val()
@@ -23,7 +24,50 @@ $(document).ready(function () {
             gets_archivos();
         }
     });
+    
+    $('#dz2').dropzone({
+        url: '/modelos/agregar_videos_ajax/',
+        margin: 20,
+        allowedFileTypes: 'video.*',
+        params:{
+            'action': 'save',
+            'idmodelo': $("#idmodelo").val()
+        },
+        uploadOnDrop: true,
+        uploadOnPreview: false,
+        success: function(res, index){
+            console.log(res, index);
+            gets_videos();
+        }
+    });
 });
+
+function gets_videos() {
+    datos = {
+        'idmodelo': $("#idmodelo").val()
+    };
+    $.ajax({
+        type: 'POST',
+        url: '/modelos/gets_videos/',
+        data: datos,
+        beforeSend: function () {
+            $("#videos").html('<h1 class="text-center"><i class="fa fa-refresh fa-spin"></i></h1>');
+        },
+        success: function (data) {
+            $("#videos").html(data);
+        },
+        error: function (xhr) { // if error occured
+            $("#videos").html(xhr.responseText);
+            console.log(xhr);
+            
+            $.notify('<strong>Ha ocurrido el siguiente error:</strong><br>' + xhr.statusText,
+                    {
+                        type: 'danger',
+                        allow_dismiss: false
+                    });
+        }
+    });
+}
 
 function gets_archivos() {
     datos = {

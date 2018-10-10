@@ -61,6 +61,21 @@ class Modelos_model extends CI_Model {
     public function update($datos, $where) {
         $this->db->update('modelos', $datos, $where);
     }
+    
+    public function set_video($datos) {
+        $this->db->insert('videos', $datos);
+        return $this->db->insert_id();
+    }
+    
+    public function gets_videos_where($where) {
+        $this->db->select('videos.*');
+        $this->db->from('videos');
+        $this->db->join('modelos', 'videos.idmodelo = modelos.ID');
+        $this->db->where($where);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
 
 ?>

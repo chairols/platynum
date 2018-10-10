@@ -80,8 +80,8 @@
                                         <li<?=($perfil=='Fantasias')?" class='active'":""?>>
                                             <a href="/web/pagina/Fantasias/">Fantasias</a>
                                         </li>
-                                        <li<?=($perfil=='AlgoDistinto')?" class='active'":""?>>
-                                            <a href="/web/pagina/AlgoDistinto/">Videos</a>
+                                        <li<?=($perfil=='Videos')?" class='active'":""?>>
+                                            <a href="/videos/listar/">Videos</a>
                                         </li>
                                        
                                         <!-- eof pages -->
