@@ -76,6 +76,11 @@ class Modelos_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function update_video($datos, $where) {
+        $this->db->update('videos', $datos, $where);
+        return $this->db->affected_rows();
+    }
 }
 
 ?>

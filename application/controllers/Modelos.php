@@ -308,19 +308,19 @@ class Modelos extends CI_Controller {
                 'modelos.ID' => $this->input->post('idmodelo')
             );
             $modelo = $this->modelos_model->get_where($where);
-            
+
             $archivos = explode(',', $modelo['fotos_platy']);
             $nombre_archivo = null;
             $numero_foto = null;
             $flag = true;
-            for($i = 1; $flag; $i++) {
-                if(array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
+            for ($i = 1; $flag; $i++) {
+                if (array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
                     $flag = false;
                     $numero_foto = str_pad($i, 2, '0', STR_PAD_LEFT);
-                    $nombre_archivo = $modelo['nombre'].$numero_foto;
+                    $nombre_archivo = $modelo['nombre'] . $numero_foto;
                 }
             }
-            
+
             $filesCount = count($_FILES['files']['name']);
             for ($i = 0; $i < $filesCount; $i++) {
                 $_FILES['file']['name'] = $_FILES['files']['name'][$i];
@@ -328,23 +328,23 @@ class Modelos extends CI_Controller {
                 $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
                 $_FILES['file']['error'] = $_FILES['files']['error'][$i];
                 $_FILES['file']['size'] = $_FILES['files']['size'][$i];
-                
+
                 $f = explode('.', $_FILES['file']['name']);
-                
+
                 $config['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
                 $config['allowed_types'] = '*';
-                $config['file_name'] = $nombre_archivo.'.'.$f[1];
-                
-                if(!is_dir('Fotodisk')) {
+                $config['file_name'] = $nombre_archivo . '.' . $f[1];
+
+                if (!is_dir('Fotodisk')) {
                     mkdir('./Fotodisk', 0777, TRUE);
                 }
-                if(!is_dir('Fotodisk/'.$modelo['perfil'])) {
-                    mkdir('./Fotodisk/'.$modelo['perfil'], 0777, TRUE);
+                if (!is_dir('Fotodisk/' . $modelo['perfil'])) {
+                    mkdir('./Fotodisk/' . $modelo['perfil'], 0777, TRUE);
                 }
-                if(!is_dir('Fotodisk/'.$modelo['perfil'].'/'.$modelo['carpeta'])) {
-                    mkdir('./Fotodisk/'.$modelo['perfil'].'/'.$modelo['carpeta'], 0777, TRUE);
+                if (!is_dir('Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'])) {
+                    mkdir('./Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'], 0777, TRUE);
                 }
-                
+
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('file')) {
                     $error = array('error' => $this->upload->display_errors());
@@ -360,7 +360,7 @@ class Modelos extends CI_Controller {
                         'ID' => $this->input->post('idmodelo')
                     );
                     $this->modelos_model->update($datos, $where);
-                    
+
                     print_r($data);
                 }
             }
@@ -383,7 +383,7 @@ class Modelos extends CI_Controller {
 
         echo "</pre>";
     }
-    
+
     public function agregar_videos_ajax() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -397,7 +397,7 @@ class Modelos extends CI_Controller {
                 'modelos.ID' => $this->input->post('idmodelo')
             );
             $modelo = $this->modelos_model->get_where($where);
-            
+
             $filesCount = count($_FILES['files']['name']);
             for ($i = 0; $i < $filesCount; $i++) {
                 $_FILES['file']['name'] = $_FILES['files']['name'][$i];
@@ -405,45 +405,44 @@ class Modelos extends CI_Controller {
                 $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
                 $_FILES['file']['error'] = $_FILES['files']['error'][$i];
                 $_FILES['file']['size'] = $_FILES['files']['size'][$i];
-                
+
                 $f = explode('.', $_FILES['file']['name']);
-                
+
                 $config['upload_path'] = './upload/videos/';
                 $config['allowed_types'] = '*';
                 $config['encrypt_name'] = TRUE;
-                
-                if(!is_dir('upload')) {
+
+                if (!is_dir('upload')) {
                     mkdir('./upload', 0777, TRUE);
                 }
-                if(!is_dir('upload/videos')) {
+                if (!is_dir('upload/videos')) {
                     mkdir('./upload/videos', 0777, TRUE);
                 }
-                
-                
+
+
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('file')) {
                     $error = array('error' => $this->upload->display_errors());
                     print_r($error);
                 } else {
                     $data = array('upload_data' => $this->upload->data());
-                    
+
                     $datos = array(
                         'idmodelo' => $this->input->post('idmodelo'),
-                        'video' => $data['upload_data']['raw_name'].$data['upload_data']['file_ext']
+                        'video' => $data['upload_data']['raw_name'] . $data['upload_data']['file_ext']
                     );
                     $this->modelos_model->set_video($datos);
-                    
+
                     print_r($data);
                 }
             }
-
         }
     }
-    
+
     public function gets_archivos() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
+
         $where = array(
             'modelos.ID' => $this->input->post('idmodelo')
         );
@@ -451,18 +450,54 @@ class Modelos extends CI_Controller {
 
         $this->load->view('modelos/gets_archivos', $data);
     }
-    
+
     public function gets_videos() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
+
         $where = array(
             'videos.idmodelo' => $this->input->post('idmodelo'),
             'videos.estado' => 'A'
         );
         $data['videos'] = $this->modelos_model->gets_videos_where($where);
-        
+
         $this->load->view('modelos/gets_videos', $data);
+    }
+
+    public function borrar_video() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $this->form_validation->set_rules('idvideo', 'ID Video', 'required|integer');
+
+        if ($this->form_validation->run() == FALSE) {
+            $json = array(
+                'status' => 'error',
+                'data' => validation_errors()
+            );
+            echo json_encode($json);
+        } else {
+            $datos = array(
+                'estado' => 'I'
+            );
+            $where = array(
+                'idvideo' => $this->input->post('idvideo')
+            );
+            $resultado = $this->modelos_model->update_video($datos, $where);
+            if ($resultado) {
+                $json = array(
+                    'status' => 'ok',
+                    'data' => 'Se eliminó el video correctamente'
+                );
+                echo json_encode($json);
+            } else {
+                $json = array(
+                    'status' => 'error',
+                    'data' => 'No se pudo eliminar el video'
+                );
+                echo json_encode($json);
+            }
+        }
     }
 
     private function formatear_fecha($fecha) {
