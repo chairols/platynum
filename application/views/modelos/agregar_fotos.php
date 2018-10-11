@@ -35,6 +35,14 @@
                     <div class="col-12 col-sm-12 col-md-6">
                         <div class="dropzone" id="dz2"></div>
                     </div>
+                    
+                    <div class="col-12 col-sm-12 col-md-12 text-center">
+                        <a href="/modelos/listar">
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

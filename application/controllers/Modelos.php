@@ -499,6 +499,58 @@ class Modelos extends CI_Controller {
             }
         }
     }
+    
+    public function borrar_foto() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $this->form_validation->set_rules('idfoto', 'ID Foto', 'required|integer');
+        $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
+        
+        if ($this->form_validation->run() == FALSE) {
+            $json = array(
+                'status' => 'error',
+                'data' => validation_errors()
+            );
+            echo json_encode($json);
+        } else {
+            $where = array(
+                'modelos.ID' => $this->input->post('idmodelo')
+            );
+            
+            $modelo = $this->modelos_model->get_where($where);
+            
+            $fotos = explode(",", $modelo['fotos_platy']);
+            
+            foreach($fotos as $key => $value) {
+                if($value == $this->input->post('idfoto')) {
+                    unset($fotos[$key]);
+                }
+            }
+            
+            $datos = array(
+                'fotos_platy' => implode(",", $fotos)
+            );
+            $where = array(
+                'ID' => $this->input->post('idmodelo')
+            );
+            $resultado = $this->modelos_model->update($datos, $where);
+            
+            if($resultado) {
+                $json = array(
+                    'status' => 'ok',
+                    'data' => 'Se eliminó la foto correctamente'
+                );
+                echo json_encode($json);
+            } else {
+                $json = array(
+                    'status' => 'error',
+                    'data' => 'No se pudo eliminar la foto'
+                );
+                echo json_encode($json);
+            }
+        }
+    }
 
     private function formatear_fecha($fecha) {
         $aux = '';
