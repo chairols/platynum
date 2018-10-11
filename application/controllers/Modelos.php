@@ -317,7 +317,7 @@ class Modelos extends CI_Controller {
                 if (array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
                     $flag = false;
                     $numero_foto = str_pad($i, 2, '0', STR_PAD_LEFT);
-                    $nombre_archivo = $modelo['nombre'] . $numero_foto;
+                    $nombre_archivo = $modelo['carpeta'] . $numero_foto;
                 }
             }
 
