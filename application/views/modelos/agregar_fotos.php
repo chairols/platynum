@@ -42,6 +42,11 @@
                                 <i class="fa fa-save"></i> Guardar
                             </button>
                         </a>
+                        <a href="/modelos/ver/<?=$modelo['ID']?>" target="_blank">
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-user"></i> Ver Perfil
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
