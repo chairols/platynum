@@ -313,14 +313,24 @@ class Modelos extends CI_Controller {
             $nombre_archivo = null;
             $numero_foto = null;
             $flag = true;
-            for ($i = 1; $flag; $i++) {
+            
+            print_r($archivos);
+            
+            for($i = 1; $flag; $i++) {
+                var_dump(array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos));
+                var_dump($i);
+                
                 if (array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
-                    $flag = false;
                     $numero_foto = str_pad($i, 2, '0', STR_PAD_LEFT);
                     $nombre_archivo = $modelo['carpeta'] . $numero_foto;
+                    var_dump('en el if');
+                    var_dump($nombre_archivo);
+                    
+                    $flag = false;
                 }
             }
-
+           
+            
             $filesCount = count($_FILES['files']['name']);
             for ($i = 0; $i < $filesCount; $i++) {
                 $_FILES['file']['name'] = $_FILES['files']['name'][$i];
@@ -334,6 +344,7 @@ class Modelos extends CI_Controller {
                 $config['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
                 $config['allowed_types'] = '*';
                 $config['file_name'] = $nombre_archivo . '.' . $f[1];
+                $config['owerwrite'] = TRUE;
 
                 if (!is_dir('Fotodisk')) {
                     mkdir('./Fotodisk', 0777, TRUE);
@@ -377,9 +388,8 @@ class Modelos extends CI_Controller {
                 $data = array('upload_data' => $this->upload->data());
                 print_r($data);
             }
+            
         }
-        print_r($this->input->post());
-        print_r($_FILES);
 
         echo "</pre>";
     }
