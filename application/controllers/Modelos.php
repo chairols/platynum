@@ -767,6 +767,28 @@ class Modelos extends CI_Controller {
         }
     }
     
+    public function modificar_estado_modelo($idmodelo = null, $estado = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        if($idmodelo == null || $estado == null) {
+            redirect('/modelos/listar/', 'refresh');
+        } else {
+            $datos = array(
+                'estado' => $estado
+            );
+            $where = array(
+                'ID' => $idmodelo
+            );
+            
+            $this->modelos_model->update($datos, $where);
+            
+            redirect('/modelos/listar/', 'refresh');
+        }
+        
+        
+    }
+    
     private function formatear_fecha($fecha) {
         $aux = '';
         $aux .= substr($fecha, 6, 4);

@@ -72,12 +72,12 @@
                                                     <i class="fa fa-video-camera"></i>
                                                 </button>
                                             </a>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Deshabilitar" href="#">
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Deshabilitar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/deshabilitado/">
                                                 <button class="btn btn-sm btn-info btn-flat">
                                                     <i class="fa fa-times"></i>
                                                 </button>
                                             </a>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" href="#">
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/borrado/">
                                                 <button class="btn btn-sm btn-danger btn-flat">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
