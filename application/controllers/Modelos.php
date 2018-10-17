@@ -693,8 +693,7 @@ class Modelos extends CI_Controller {
                 'lugares2' => $this->input->post('lugares2'),
                 'fecha_ingreso' => date("Y-m-d H:i:s"),
                 'fecha_actualizacion' => date("Y-m-d H:i:s"),
-                'estado' => 'habilitado',
-                'fotos_platy' => ''
+                'estado' => 'habilitado'
             );
 
             if ($this->input->post('mensaje1') == 'on') {
