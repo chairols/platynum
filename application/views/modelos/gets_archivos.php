@@ -7,6 +7,7 @@
     </thead>
     <tbody>
         <?php foreach(explode(',', $modelo['fotos_platy']) as $foto) { ?>
+        <?php if(strlen($foto)) { ?>
         <tr>
             <td><?=$modelo['nombre_formateado'].$foto?></td>
             <td>
@@ -15,6 +16,7 @@
                 </button>
             </td>
         </tr>
+        <?php } ?>
         <?php } ?>
     </tbody>
 </table>

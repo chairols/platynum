@@ -12,7 +12,7 @@ $(document).ready(function () {
     $('#dz1').dropzone({
         url: '/modelos/agregar_fotos_ajax/',
         margin: 20,
-        allowedFileTypes: 'image.*',
+        allowedFileTypes: 'jpg',
         params:{
             'action': 'save',
             'idmodelo': $("#idmodelo").val()

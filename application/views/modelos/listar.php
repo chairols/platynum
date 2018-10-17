@@ -62,7 +62,7 @@
                                             ?>
                                         </td>
                                         <td>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar" href="#">
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar" href="/modelos/modificar/<?=$modelo['ID']?>/">
                                                 <button class="btn btn-sm bg-yellow btn-flat">
                                                     <i class="fa fa-edit"></i>
                                                 </button>

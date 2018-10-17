@@ -46,7 +46,7 @@
             <div class="col-md-6 col-md-pull-6">
                 <div class="vertical-item with_background models_square">
                     <div class="item-media">
-                        <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[0]?>.jpg" alt="">
+                        <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[1]?>.jpg" alt="">
                     </div>
 
                 </div><br>
@@ -55,7 +55,7 @@
                 <div class="columns_padding_5">
                     <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
                         <?php
-                        for($i = 1; $i < count($fotos); $i++) { ?>
+                        for($i = 2; $i < count($fotos); $i++) { ?>
                         
                         <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 tests">
                             <div class="vertical-item gallery-item content-absolute text-center cs">
