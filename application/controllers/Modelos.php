@@ -547,6 +547,8 @@ class Modelos extends CI_Controller {
             $resultado = $this->modelos_model->update($datos, $where);
             
             if($resultado) {
+                unlink("./Fotodisk/".$modelo['perfil']."/".$modelo['carpeta']."/".$modelo['carpeta'].$this->input->post('idfoto').".jpg");
+                
                 $json = array(
                     'status' => 'ok',
                     'data' => 'Se eliminó la foto correctamente'
