@@ -44,12 +44,15 @@
             </div>
             <?php $fotos = explode(",", $modelo['fotos_platy']); ?>
             <div class="col-md-6 col-md-pull-6">
+                <?php if(isset($fotos[1])) { ?>
                 <div class="vertical-item with_background models_square">
                     <div class="item-media">
                         <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[1]?>.jpg" alt="">
                     </div>
 
-                </div><br>
+                </div>
+                <?php } ?>
+                <br>
 
 
                 <div class="columns_padding_5">
