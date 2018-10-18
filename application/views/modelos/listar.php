@@ -30,6 +30,7 @@
                                     <th>Nombre</th>
                                     <th>Sección</th>
                                     <th>Teléfono</th>
+                                    <th>Documento</th>
                                     <th>Estado</th>
                                     <th>Acción</th>
                                 </tr>
@@ -43,6 +44,7 @@
                                         <td><?= $modelo['nombre_formateado'] ?></td>
                                         <td><?=$modelo['perfil']?></td>
                                         <td><?= $modelo['telefono1'] ?></td>
+                                        <td><?=$modelo['documento']?></td>
                                         <td>
                                             <?php
                                             switch ($modelo['estado']) {
