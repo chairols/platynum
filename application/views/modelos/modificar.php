@@ -743,6 +743,11 @@
         <button id="modificar_loading" class="btn btn-primary" style="display: none;">
             <i class="fa fa-refresh fa-spin"></i>
         </button>
+        <a href="/modelos/ver/<?= $modelo['ID'] ?>" target="_blank">
+            <button type="button" class="btn btn-primary">
+                <i class="fa fa-user"></i> Ver Perfil
+            </button>
+        </a>
     </div>
     <br>
 </div>
