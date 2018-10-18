@@ -6,6 +6,12 @@
                     <h3>Ordenar Modelos</h3>
                 </div>
                 <div class="box-body">
+                    <select id="select" class="form-control select2">
+                        <option value="A-MujeresModelos"<?= ($perfil == 'A-MujeresModelos') ? " selected" : "" ?>>Modelos</option>
+                        <option value="B-Mujeres-Masajistas"<?= ($perfil == 'B-Mujeres-Masajistas') ? " selected" : "" ?>>Masajistas</option>
+                        <option value="D-Mujeres-Fantasias"<?= ($perfil == 'D-Mujeres-Fantasias') ? " selected" : "" ?>>Fantasías</option>
+                    </select>
+
                     <div class="cf nestable-lists">
                         <div class="dd" id="nestable">
                             <ol class="dd-list">
@@ -24,7 +30,6 @@
             </div>
         </div>
     </div>
-    <?php var_dump($modelos[0]) ?>
 
 </div>
 <textarea style="display: none;" id="nestable-output"></textarea>

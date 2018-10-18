@@ -33,7 +33,7 @@ function actualizar_orden() {
     };
     $.ajax({
         type: 'POST',
-        url: '/perfiles/actualizar_orden/',
+        url: '/modelos/actualizar_orden/',
         data: datos,
         beforeSend: function () {
             
@@ -41,12 +41,18 @@ function actualizar_orden() {
         success: function (data) {
             resultado = $.parseJSON(data);
             if (resultado['status'] == 'error') {
-                notifyError('<strong>ERROR</strong>' + resultado['data'], 5000);
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.error(resultado['data']);
                 
             } else if (resultado['status'] == 'ok') {
-                notifySuccess("OK", 1000);
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.success(resultado['data']);
                 
             }
         }
     });
 }
+
+$("#select").change(function() {
+    window.location.replace("/modelos/ordenar/"+$("#select").val()+"/");
+});
