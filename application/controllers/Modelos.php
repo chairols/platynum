@@ -789,6 +789,32 @@ class Modelos extends CI_Controller {
         
     }
     
+    public function ordenar($perfil = 'A-MujeresModelos') {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $data['session'] = $this->session->all_userdata();
+        $data['css'] = array(
+            '/assets/modulos/modelos/css/ordenar.css'
+        );
+        $data['javascript'] = array(
+            '/assets/vendors/Nestable-master/jquery.nestable.js',
+            '/assets/modulos/modelos/js/ordenar.js'
+        );
+        $data['menu'] = 8;
+        
+        $where = array(
+            'perfil' => $perfil,
+            'estado' => 'habilitado'
+        );
+        $data['modelos'] = $this->modelos_model->gets_where($where);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('modelos/ordenar');
+        $this->load->view('layout/footer');
+    }
+    
     private function formatear_fecha($fecha) {
         $aux = '';
         $aux .= substr($fecha, 6, 4);
