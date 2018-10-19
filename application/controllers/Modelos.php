@@ -838,6 +838,55 @@ class Modelos extends CI_Controller {
         echo json_encode($datos);
     }
 
+    public function thumb($idmodelo = null, $idfoto = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $data['session'] = $this->session->all_userdata();
+        $data['css'] = array(
+            '/assets/vendors/cropper-master/dist/cropper.css'
+        );
+        $data['javascript'] = array(
+            '/assets/vendors/cropper-master/dist/cropper.js',
+            '/assets/modulos/modelos/js/thumb.js'
+        );
+        $data['menu'] = null;
+
+        $where = array(
+            'modelos.ID' => $idmodelo
+        );
+        $data['modelo'] = $this->modelos_model->get_where($where);
+        $data['idfoto'] = $idfoto;
+
+        if ($idmodelo == null || $idfoto == null) {
+            redirect('/modelos/listar/', 'refresh');
+        } else {
+            $this->load->view('layout/header', $data);
+            $this->load->view('layout/menu');
+            $this->load->view('modelos/thumb');
+            $this->load->view('layout/footer');
+        }
+    }
+
+    public function crear_thumb() {
+        var_dump($this->input->post());
+        var_dump($_FILES);
+        
+        $where = array(
+            'modelos.ID' => $this->input->post('idmodelo')
+        );
+        $modelo = $this->modelos_model->get_where($where);
+
+        $nombre_archivo = $modelo['carpeta'] . $this->input->post('idfoto');
+        
+        $config['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
+        $config['file_name'] = $nombre_archivo . 'Thumb.jpg';
+        
+        move_uploaded_file($_FILES['croppedImage']['tmp_name'], $config['upload_path'].$config['file_name']);
+        
+        
+    }
+
     private function formatear_fecha($fecha) {
         $aux = '';
         $aux .= substr($fecha, 6, 4);
