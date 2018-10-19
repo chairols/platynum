@@ -63,7 +63,7 @@
                         <div class="isotope-item bottommargin_10 col-md-3 col-sm-4 col-xs-6 tests">
                             <div class="vertical-item gallery-item content-absolute text-center cs">
                                 <div class="item-media">
-                                    <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>.jpg">
+                                    <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>Thumb.jpg">
                                     <div class="media-links">
                                         <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>.jpg"></a>
                                     </div>
