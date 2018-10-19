@@ -46,11 +46,10 @@
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="checkbox icheck">
-                                <label>
-                                    <input type="checkbox">
-                                    Recordarme</label>
+                                
+                                    
                             </div>
                         </div>
                         <!-- /.col -->
