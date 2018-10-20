@@ -1,12 +1,25 @@
 $(document).ready(function () {
+    /*
+     $("#image").cropper({
+     //dragMode: 'move'
+     cropBoxResizable: false,
+     data: {
+     width: 185,
+     height: 255
+     
+     }
+     });*/
     $("#image").cropper({
-        //dragMode: 'move'
+        aspectRatio: 80 / 110,
+        strict: true,
+        autoCrop: true,
+        movable: false,
+        scalable: false,
+        cropBoxMovable: true,
         cropBoxResizable: false,
-        data: {
-            width: 185,
-            height: 255
-            
-        }
+        minCropBoxWidth: 80,
+        minCropBoxHeight: 110
+        
     });
 });
 
@@ -17,7 +30,7 @@ function crop() {
         formData.append('idmodelo', $("#idmodelo").val());
         formData.append('idfoto', $("#idfoto").val());
         formData.append('croppedImage', blob);
-        
+
 
         $.ajax('/modelos/crear_thumb/', {
             method: 'POST',

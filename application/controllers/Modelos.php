@@ -871,19 +871,28 @@ class Modelos extends CI_Controller {
     public function crear_thumb() {
         var_dump($this->input->post());
         var_dump($_FILES);
-        
+
         $where = array(
             'modelos.ID' => $this->input->post('idmodelo')
         );
         $modelo = $this->modelos_model->get_where($where);
 
         $nombre_archivo = $modelo['carpeta'] . $this->input->post('idfoto');
-        
+
         $config['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
         $config['file_name'] = $nombre_archivo . 'Thumb.jpg';
+
+        move_uploaded_file($_FILES['croppedImage']['tmp_name'], $config['upload_path'] . $config['file_name']);
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $config['upload_path'].$config['file_name'];
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width'] = 80;
+        $config['height'] = 110;
         
-        move_uploaded_file($_FILES['croppedImage']['tmp_name'], $config['upload_path'].$config['file_name']);
-        
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
         
     }
 
