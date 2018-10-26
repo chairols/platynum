@@ -695,7 +695,10 @@ class Modelos extends CI_Controller {
                 'nogusta2' => $this->input->post('nogusta2'),
                 'personalidad2' => $this->input->post('personalidad2'),
                 'lugares2' => $this->input->post('lugares2'),
-                'fecha_actualizacion' => date("Y-m-d H:i:s")
+                'fecha_actualizacion' => date("Y-m-d H:i:s"),
+                'cant_fotos_ebcom' => $this->input->post('cant_fotos_ebcom'),
+                'cant_bigpics' => $this->input->post('cant_bigpics'),
+                'girl' => $this->input->post('girl')
             );
 
             if ($this->input->post('mensaje1') == 'on') {
