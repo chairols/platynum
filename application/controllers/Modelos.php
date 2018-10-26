@@ -875,6 +875,9 @@ class Modelos extends CI_Controller {
     }
 
     public function crear_thumb() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
         var_dump($this->input->post());
         var_dump($_FILES);
 
@@ -900,6 +903,42 @@ class Modelos extends CI_Controller {
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
         
+    }
+    
+    public function duplicar($idmodelo) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $where = array(
+            'modelos.ID' => $idmodelo
+        );
+        $modelo = $this->modelos_model->get_where($where);
+        
+        unset($modelo['ID']);
+        $modelo['estado'] = 'habilitado';
+        
+        $modelo['nombre'] = $modelo['nombre_formateado'];
+        unset($modelo['nombre_formateado']);
+        
+        $modelo['idiomas'] = $modelo['idiomas_formateado'];
+        unset($modelo['idiomas_formateado']);
+        
+        $modelo['viaja_donde'] = $modelo['viaja_donde_formateado'];
+        unset($modelo['viaja_donde_formateado']);
+        
+        $modelo['observaciones'] = $modelo['observaciones_formateado'];
+        unset($modelo['observaciones_formateado']);
+        
+        $modelo['carpeta'] = $this->generateRandomString(20);
+        
+        unset($modelo['barrio_nombre']);
+        unset($modelo['ciudad_nombre']);
+        unset($modelo['pais_nombre']);
+        
+        
+        $id = $this->modelos_model->set($modelo);
+        
+        redirect('/modelos/modificar/'.$id.'/', 'refresh');
     }
 
     private function formatear_fecha($fecha) {

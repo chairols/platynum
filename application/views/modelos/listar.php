@@ -98,6 +98,11 @@
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             </a>
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Duplicar" href="/modelos/duplicar/<?=$modelo['ID']?>">
+                                                <button class="btn btn-sm btn-success btn-flat">
+                                                    <i class="fa fa-copy"></i>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
 <?php } ?>
