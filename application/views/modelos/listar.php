@@ -74,11 +74,25 @@
                                                     <i class="fa fa-video-camera"></i>
                                                 </button>
                                             </a>
+                                            <?php switch ($estado) {
+                                            case 'deshabilitado': ?>
+                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Habilitar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/habilitado/">
+                                                <button class="btn btn-sm btn-info btn-flat">
+                                                    <i class="fa fa-undo"></i>
+                                                </button>
+                                            </a>
+                                            <?php
+                                            break;
+                                            case 'habilitado': ?>
                                             <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Deshabilitar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/deshabilitado/">
                                                 <button class="btn btn-sm btn-info btn-flat">
                                                     <i class="fa fa-times"></i>
                                                 </button>
                                             </a>
+                                            <?php
+                                            break;
+                                            }
+                                            ?>
                                             <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/borrado/">
                                                 <button class="btn btn-sm btn-danger btn-flat">
                                                     <i class="fa fa-trash-o"></i>

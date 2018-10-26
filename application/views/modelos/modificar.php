@@ -731,6 +731,32 @@
 
 
                 <!-- /.col -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Cantidad de Fotos</label>
+                        <select class="form-control select2" id="cant_fotos_ebcom">
+                            <?php for($i = 4; $i <= 50; $i++) { ?>
+                            <option value="<?=$i?>"><?=$i?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Cantida de Bigpics</label>
+                        <select class="form-control select2" id="cant_bigpics">
+                            <?php for($i = 0; $i <= 10; $i++) { ?>
+                            <option value="<?=$i?>"><?=$i?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Girl Número</label>
+                        <select class="form-control select2" id="girl">
+                            <?php for($i = 1; $i <= 100; $i++) { ?>
+                            <option value="<?=$i?>"><?=$i?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div>

@@ -170,7 +170,10 @@ class Modelos extends CI_Controller {
                 'fecha_ingreso' => date("Y-m-d H:i:s"),
                 'fecha_actualizacion' => date("Y-m-d H:i:s"),
                 'estado' => 'habilitado',
-                'fotos_platy' => ''
+                'fotos_platy' => '',
+                'cant_fotos_ebcom' => $this->input->post('cant_fotos_ebcom'),
+                'cant_bigpics' => $this->input->post('cant_bigpics'),
+                'girl' => $this->input->post('girl')
             );
 
             if ($this->input->post('mensaje1') == 'on') {
