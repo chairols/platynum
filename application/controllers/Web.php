@@ -25,7 +25,7 @@ class Web extends CI_Controller {
         $where = array(
             'estado' => 'habilitado'
         );
-        $per_page = 30;
+        $per_page = 48;
         
         $idbanner = ($pagina / $per_page) + 1;
         $w = array(

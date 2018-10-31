@@ -37,6 +37,11 @@
                     </div>
                     
                     <div class="col-12 col-sm-12 col-md-12 text-center">
+                        <a href="/modelos/modificar/<?=$modelo['ID']?>">
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-backward"></i> Volver
+                            </button>
+                        </a>
                         <a href="/modelos/listar">
                             <button type="button" class="btn btn-primary">
                                 <i class="fa fa-save"></i> Guardar

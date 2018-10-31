@@ -170,7 +170,10 @@ class Modelos extends CI_Controller {
                 'fecha_ingreso' => date("Y-m-d H:i:s"),
                 'fecha_actualizacion' => date("Y-m-d H:i:s"),
                 'estado' => 'habilitado',
-                'fotos_platy' => ''
+                'fotos_platy' => '',
+                'cant_fotos_ebcom' => $this->input->post('cant_fotos_ebcom'),
+                'cant_bigpics' => $this->input->post('cant_bigpics'),
+                'girl' => $this->input->post('girl')
             );
 
             if ($this->input->post('mensaje1') == 'on') {
@@ -313,24 +316,24 @@ class Modelos extends CI_Controller {
             $nombre_archivo = null;
             $numero_foto = null;
             $flag = true;
-            
+
             print_r($archivos);
-            
-            for($i = 1; $flag; $i++) {
+
+            for ($i = 1; $flag; $i++) {
                 var_dump(array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos));
                 var_dump($i);
-                
+
                 if (array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
                     $numero_foto = str_pad($i, 2, '0', STR_PAD_LEFT);
                     $nombre_archivo = $modelo['carpeta'] . $numero_foto;
                     var_dump('en el if');
                     var_dump($nombre_archivo);
-                    
+
                     $flag = false;
                 }
             }
-           
-            
+
+
             $filesCount = count($_FILES['files']['name']);
             for ($i = 0; $i < $filesCount; $i++) {
                 $_FILES['file']['name'] = $_FILES['files']['name'][$i];
@@ -388,7 +391,6 @@ class Modelos extends CI_Controller {
                 $data = array('upload_data' => $this->upload->data());
                 print_r($data);
             }
-            
         }
 
         echo "</pre>";
@@ -509,14 +511,14 @@ class Modelos extends CI_Controller {
             }
         }
     }
-    
+
     public function borrar_foto() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
 
         $this->form_validation->set_rules('idfoto', 'ID Foto', 'required|integer');
         $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
-        
+
         if ($this->form_validation->run() == FALSE) {
             $json = array(
                 'status' => 'error',
@@ -527,17 +529,17 @@ class Modelos extends CI_Controller {
             $where = array(
                 'modelos.ID' => $this->input->post('idmodelo')
             );
-            
+
             $modelo = $this->modelos_model->get_where($where);
-            
+
             $fotos = explode(",", $modelo['fotos_platy']);
-            
-            foreach($fotos as $key => $value) {
-                if($value == $this->input->post('idfoto')) {
+
+            foreach ($fotos as $key => $value) {
+                if ($value == $this->input->post('idfoto')) {
                     unset($fotos[$key]);
                 }
             }
-            
+
             $datos = array(
                 'fotos_platy' => implode(",", $fotos)
             );
@@ -545,10 +547,10 @@ class Modelos extends CI_Controller {
                 'ID' => $this->input->post('idmodelo')
             );
             $resultado = $this->modelos_model->update($datos, $where);
-            
-            if($resultado) {
-                unlink("./Fotodisk/".$modelo['perfil']."/".$modelo['carpeta']."/".$modelo['carpeta'].$this->input->post('idfoto').".jpg");
-                
+
+            if ($resultado) {
+                unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . ".jpg");
+
                 $json = array(
                     'status' => 'ok',
                     'data' => 'Se eliminó la foto correctamente'
@@ -568,7 +570,7 @@ class Modelos extends CI_Controller {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
 
-        if($idmodelo == null) {
+        if ($idmodelo == null) {
             redirect('/modelos/listar/', 'refresh');
         }
         $data['session'] = $this->session->all_userdata();
@@ -576,8 +578,8 @@ class Modelos extends CI_Controller {
             '/assets/modulos/modelos/js/modificar.js'
         );
         $data['menu'] = 3;
-        
-        
+
+
         $data['pelos'] = $this->pelos_model->gets();
         $data['ojos'] = $this->ojos_model->gets();
         $data['pieles'] = $this->pieles_model->gets();
@@ -586,19 +588,19 @@ class Modelos extends CI_Controller {
         $data['provincias'] = $this->provincias_model->gets();
         $data['ciudades'] = $this->ciudades_model->gets();
         $data['barrios'] = $this->barrios_model->gets();
-        
+
         $datos = array(
             'modelos.ID' => $idmodelo
         );
         $data['modelo'] = $this->modelos_model->get_where($datos);
         $data['modelo']['fecha_nacimiento_formateada'] = $this->formatear_fecha_para_mostrar($data['modelo']['fecha_nacimiento']);
-        
+
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('modelos/modificar');
         $this->load->view('layout/footer');
     }
-    
+
     public function modificar_ajax() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -693,7 +695,10 @@ class Modelos extends CI_Controller {
                 'nogusta2' => $this->input->post('nogusta2'),
                 'personalidad2' => $this->input->post('personalidad2'),
                 'lugares2' => $this->input->post('lugares2'),
-                'fecha_actualizacion' => date("Y-m-d H:i:s")
+                'fecha_actualizacion' => date("Y-m-d H:i:s"),
+                'cant_fotos_ebcom' => $this->input->post('cant_fotos_ebcom'),
+                'cant_bigpics' => $this->input->post('cant_bigpics'),
+                'girl' => $this->input->post('girl')
             );
 
             if ($this->input->post('mensaje1') == 'on') {
@@ -747,7 +752,7 @@ class Modelos extends CI_Controller {
             $where = array(
                 'ID' => $this->input->post('idmodelo')
             );
-            
+
             $resultado = $this->modelos_model->update($datos, $where);
             //$resultado = null;
             if ($resultado) {
@@ -766,12 +771,12 @@ class Modelos extends CI_Controller {
             }
         }
     }
-    
+
     public function modificar_estado_modelo($idmodelo = null, $estado = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
-        if($idmodelo == null || $estado == null) {
+
+        if ($idmodelo == null || $estado == null) {
             redirect('/modelos/listar/', 'refresh');
         } else {
             $datos = array(
@@ -780,15 +785,162 @@ class Modelos extends CI_Controller {
             $where = array(
                 'ID' => $idmodelo
             );
-            
+
             $this->modelos_model->update($datos, $where);
-            
+
             redirect('/modelos/listar/', 'refresh');
         }
+    }
+
+    public function ordenar($perfil = 'A-MujeresModelos') {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $data['session'] = $this->session->all_userdata();
+        $data['css'] = array(
+            '/assets/modulos/modelos/css/ordenar.css'
+        );
+        $data['javascript'] = array(
+            '/assets/vendors/Nestable-master/jquery.nestable.js',
+            '/assets/modulos/modelos/js/ordenar.js'
+        );
+        $data['menu'] = 8;
+
+        $where = array(
+            'perfil' => $perfil,
+            'estado' => 'habilitado'
+        );
+        $data['modelos'] = $this->modelos_model->gets_where($where);
+        $data['perfil'] = $perfil;
+
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('modelos/ordenar');
+        $this->load->view('layout/footer');
+    }
+
+    public function actualizar_orden() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $orden = json_decode($this->input->post('orden'));
+        $i = 1;
+        foreach ($orden as $o) {
+            $datos = array(
+                'orden' => $i
+            );
+            $where = array(
+                'ID' => $o->id
+            );
+
+            $this->modelos_model->update($datos, $where);
+
+            $i++;
+        }
+        $datos = array(
+            'status' => 'ok',
+            'data' => 'Se actualizó correctamente'
+        );
+        echo json_encode($datos);
+    }
+
+    public function thumb($idmodelo = null, $idfoto = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $data['session'] = $this->session->all_userdata();
+        $data['css'] = array(
+            '/assets/vendors/cropper-master/dist/cropper.css'
+        );
+        $data['javascript'] = array(
+            '/assets/vendors/cropper-master/dist/cropper.js',
+            '/assets/modulos/modelos/js/thumb.js'
+        );
+        $data['menu'] = null;
+
+        $where = array(
+            'modelos.ID' => $idmodelo
+        );
+        $data['modelo'] = $this->modelos_model->get_where($where);
+        $data['idfoto'] = $idfoto;
+
+        if ($idmodelo == null || $idfoto == null) {
+            redirect('/modelos/listar/', 'refresh');
+        } else {
+            $this->load->view('layout/header', $data);
+            $this->load->view('layout/menu');
+            $this->load->view('modelos/thumb');
+            $this->load->view('layout/footer');
+        }
+    }
+
+    public function crear_thumb() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
         
+        var_dump($this->input->post());
+        var_dump($_FILES);
+
+        $where = array(
+            'modelos.ID' => $this->input->post('idmodelo')
+        );
+        $modelo = $this->modelos_model->get_where($where);
+
+        $nombre_archivo = $modelo['carpeta'] . $this->input->post('idfoto');
+
+        $config['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
+        $config['file_name'] = $nombre_archivo . 'Thumb.jpg';
+
+        move_uploaded_file($_FILES['croppedImage']['tmp_name'], $config['upload_path'] . $config['file_name']);
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $config['upload_path'].$config['file_name'];
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width'] = 80;
+        $config['height'] = 110;
+        
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
         
     }
     
+    public function duplicar($idmodelo) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $where = array(
+            'modelos.ID' => $idmodelo
+        );
+        $modelo = $this->modelos_model->get_where($where);
+        
+        unset($modelo['ID']);
+        $modelo['estado'] = 'habilitado';
+        
+        $modelo['nombre'] = $modelo['nombre_formateado'];
+        unset($modelo['nombre_formateado']);
+        
+        $modelo['idiomas'] = $modelo['idiomas_formateado'];
+        unset($modelo['idiomas_formateado']);
+        
+        $modelo['viaja_donde'] = $modelo['viaja_donde_formateado'];
+        unset($modelo['viaja_donde_formateado']);
+        
+        $modelo['observaciones'] = $modelo['observaciones_formateado'];
+        unset($modelo['observaciones_formateado']);
+        
+        $modelo['carpeta'] = $this->generateRandomString(20);
+        
+        unset($modelo['barrio_nombre']);
+        unset($modelo['ciudad_nombre']);
+        unset($modelo['pais_nombre']);
+        
+        
+        $id = $this->modelos_model->set($modelo);
+        
+        redirect('/modelos/modificar/'.$id.'/', 'refresh');
+    }
+
     private function formatear_fecha($fecha) {
         $aux = '';
         $aux .= substr($fecha, 6, 4);

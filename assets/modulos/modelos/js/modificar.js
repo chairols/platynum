@@ -116,7 +116,11 @@ $("#modificar").click(function () {
         'nogusta2': $("#nogusta2").val(),
         'personalidad2': $("#personalidad2").val(),
         //'duermo2': $("#duermo2").val(),   No está en base de datos
-        'lugares2': $("#lugares2").val()
+        'lugares2': $("#lugares2").val(),
+        
+        'cant_fotos_ebcom': $("#cant_fotos_ebcom").val(),
+        'cant_bigpics': $("#cant_bigpics").val(),
+        'girl': $("#girl").val()
 
     };
     

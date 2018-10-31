@@ -28,7 +28,7 @@
                 $j = 0;
             ?>
             <?php foreach ($modelos as $modelo) { ?>
-                <div class="isotope-item col-lg-2 col-md-2 col-sm-2 fashion">
+                <div class="isotope-item col-lg-2 col-md-2 col-sm-2 col-xs-4 fashion">
                     <div class="vertical-item content-absolute">
                         <div class="item-media">
                             <a href="/modelos/ver/<?= $modelo['ID'] ?>/<?= $modelo['nombre_formateado'] ?>-<?= $modelo['telefono1'] ?>/">

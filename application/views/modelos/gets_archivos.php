@@ -11,6 +11,9 @@
         <tr>
             <td><?=$modelo['nombre_formateado'].$foto?></td>
             <td>
+                <button class="btn btn-github btn-xs thumb" idfoto="<?=$foto?>">
+                    <i class="fa fa-image"></i>
+                </button>
                 <button class="btn btn-danger btn-xs borrar_foto" valor="<?=$foto?>">
                     <i class="fa fa-trash-o"></i>
                 </button>
@@ -22,6 +25,10 @@
 </table>
 
 <script type="text/javascript">
+
+$(".thumb").click(function() {
+    window.location.href = '/modelos/thumb/'+$("#idmodelo").val()+"/"+this.attributes.idfoto.value+"/";
+});
 
 $(".borrar_foto").click(function() {
     datos = {

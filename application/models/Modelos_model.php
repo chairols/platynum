@@ -15,6 +15,7 @@ class Modelos_model extends CI_Model {
         $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado, CONVERT(CAST(CONVERT(idiomas using latin1) as BINARY) USING utf8) as idiomas_formateado');
         $this->db->from('modelos');
         $this->db->where($where);
+        $this->db->order_by('modelos.orden');
 
         $query = $this->db->get();
         return $query->result_array();
@@ -25,6 +26,7 @@ class Modelos_model extends CI_Model {
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
         $this->db->where($where);
+        $this->db->order_by('modelos.orden');
         $this->db->limit($per_page, $pagina);
         
         $query = $this->db->get();

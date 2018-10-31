@@ -731,6 +731,32 @@
 
 
                 <!-- /.col -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Cantidad de Fotos</label>
+                        <select class="form-control select2" id="cant_fotos_ebcom">
+                            <?php for($i = 4; $i <= 50; $i++) { ?>
+                            <option value="<?=$i?>"<?=($modelo['cant_fotos_ebcom']==$i)?" selected":""?>><?=$i?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Cantida de Bigpics</label>
+                        <select class="form-control select2" id="cant_bigpics">
+                            <?php for($i = 0; $i <= 10; $i++) { ?>
+                            <option value="<?=$i?>"<?=($modelo['cant_bigpics']==$i)?" selected":""?>><?=$i?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Girl Número</label>
+                        <select class="form-control select2" id="girl">
+                            <?php for($i = 1; $i <= 100; $i++) { ?>
+                            <option value="<?=$i?>"<?=($modelo['girl']==$i)?" selected":""?>><?=$i?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div>
@@ -743,6 +769,11 @@
         <button id="modificar_loading" class="btn btn-primary" style="display: none;">
             <i class="fa fa-refresh fa-spin"></i>
         </button>
+        <a href="/modelos/ver/<?= $modelo['ID'] ?>" target="_blank">
+            <button type="button" class="btn btn-primary">
+                <i class="fa fa-user"></i> Ver Perfil
+            </button>
+        </a>
     </div>
     <br>
 </div>
