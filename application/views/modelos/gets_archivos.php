@@ -1,6 +1,7 @@
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
+            <th>Imagen</th>
             <th>Archivo</th>
             <th>Acción</th>
         </tr>
@@ -9,6 +10,7 @@
         <?php foreach(explode(',', $modelo['fotos_platy']) as $foto) { ?>
         <?php if(strlen($foto)) { ?>
         <tr>
+            <td><img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$foto?>Thumb.jpg"></td>
             <td><?=$modelo['nombre_formateado'].$foto?></td>
             <td>
                 <button class="btn btn-github btn-xs thumb" idfoto="<?=$foto?>">
