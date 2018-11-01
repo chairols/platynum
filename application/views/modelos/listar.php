@@ -21,6 +21,7 @@
                             <option value="deshabilitado"<?=($estado=='deshabilitado')?" selected":""?>>Deshabilitados</option>
                             <option value="redireccionado"<?=($estado=='redireccionado')?" selected":""?>>Redireccionados</option>
                             <option value="borrado"<?=($estado=='borrado')?" selected":""?>>Borrados</option>
+                            <option value="todas"<?=($estado=='todas')?" selected":""?>>Todas</option>
                         </select>
                         <br><br>
                         <table id="example1" class="table table-bordered table-striped">

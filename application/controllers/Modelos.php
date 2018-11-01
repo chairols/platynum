@@ -40,6 +40,11 @@ class Modelos extends CI_Controller {
             $where['estado'] = $estado;
         }
         $data['estado'] = $where['estado'];
+        
+        if($this->input->get('estado') == 'todas') {
+            $where = array();
+        }
+        
         $data['modelos'] = $this->modelos_model->gets_where($where);
 
 
