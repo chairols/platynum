@@ -41,6 +41,11 @@ class Dashboard extends CI_Controller {
         );
         $data['borrados'] = $this->modelos_model->get_count_where($where);
         
+        $where = array(
+            'estado != "borrado" AND estado !=' => 'redireccionado'
+        );
+        $data['todas'] = $this->modelos_model->get_count_where($where);
+        
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('dashboard/index');

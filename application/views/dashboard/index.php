@@ -32,6 +32,17 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
+                        <h3><?=$todas['cantidad']?></h3>
+                        <p>Todas las Modelos</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
                         <h3><?=$redireccionados['cantidad']?></h3>
                         <p>Modelos redireccionados</p>
                     </div>
@@ -50,7 +61,7 @@
                         <i class="fa fa-user"></i>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </section>
 </div>

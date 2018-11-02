@@ -19,8 +19,8 @@
                         <select id="select" class="form-control select2">
                             <option value="habilitado"<?=($estado=='habilitado')?" selected":""?>>Habilitados</option>
                             <option value="deshabilitado"<?=($estado=='deshabilitado')?" selected":""?>>Deshabilitados</option>
-                            <option value="redireccionado"<?=($estado=='redireccionado')?" selected":""?>>Redireccionados</option>
-                            <option value="borrado"<?=($estado=='borrado')?" selected":""?>>Borrados</option>
+                            <!--<option value="redireccionado"<?=($estado=='redireccionado')?" selected":""?>>Redireccionados</option>-->
+                            <!--<option value="borrado"<?=($estado=='borrado')?" selected":""?>>Borrados</option>-->
                             <option value="todas"<?=($estado=='todas')?" selected":""?>>Todas</option>
                         </select>
                         <br><br>

@@ -42,7 +42,9 @@ class Modelos extends CI_Controller {
         $data['estado'] = $where['estado'];
         
         if($this->input->get('estado') == 'todas') {
-            $where = array();
+            $where = array(
+                'estado != "borrado" AND estado !=' => 'redireccionado'
+            );
         }
         
         $data['modelos'] = $this->modelos_model->gets_where($where);
