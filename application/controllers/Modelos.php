@@ -40,13 +40,13 @@ class Modelos extends CI_Controller {
             $where['estado'] = $estado;
         }
         $data['estado'] = $where['estado'];
-        
-        if($this->input->get('estado') == 'todas') {
+
+        if ($this->input->get('estado') == 'todas') {
             $where = array(
                 'estado != "borrado" AND estado !=' => 'redireccionado'
             );
         }
-        
+
         $data['modelos'] = $this->modelos_model->gets_where($where);
 
 
@@ -633,148 +633,182 @@ class Modelos extends CI_Controller {
             );
             echo json_encode($json);
         } else {
-            $datos = array(
-                'nombre_real' => $this->input->post('nombre_real'),
-                'documento' => $this->input->post('documento'),
-                'apellido' => $this->input->post('apellido'),
-                'fecha_nacimiento' => $this->formatear_fecha($this->input->post('fecha_nacimiento')),
-                'nombre' => $this->input->post('nombre'),
-                'perfil' => $this->input->post('perfil'),
-                'membresia' => $this->input->post('membresia'),
-                'ranking' => $this->input->post('ranking'),
-                'altura' => $this->input->post('altura'),
-                'alturapareja' => $this->input->post('alturapareja'),
-                'medidas1' => $this->input->post('medidas1'),
-                'medidas2' => $this->input->post('medidas2'),
-                'medidas3' => $this->input->post('medidas3'),
-                'medidaspareja' => $this->input->post('medidaspareja'),
-                'peso' => $this->input->post('peso'),
-                'colordeojos' => $this->input->post('colordeojos'),
-                'colordepelo' => $this->input->post('colordepelo'),
-                'colordepiel' => $this->input->post('colordepiel'),
-                'idiomas' => $this->input->post('idioma1') . ',' . $this->input->post('idioma2') . ',' . $this->input->post('idioma3') . ',' . $this->input->post('idioma4'),
-                'descripcion_platy' => $this->input->post('descripcion'),
-                'prefijo1' => $this->input->post('prefijo1'),
-                'telefono1' => $this->input->post('telefono1'),
-                'prefijo2' => $this->input->post('prefijo2'),
-                'telefono2' => $this->input->post('telefono2'),
-                'prefijo3' => $this->input->post('prefijo3'),
-                'telefono3' => $this->input->post('telefono3'),
-                'email' => $this->input->post('email'),
-                'sitioweb' => $this->input->post('sitioweb'),
-                'email_privado' => $this->input->post('email_privado'),
-                'pais' => $this->input->post('pais'),
-                'provincia' => $this->input->post('provincia'),
-                'ciudad' => $this->input->post('ciudad'),
-                'barrio' => $this->input->post('barrio'),
-                'proximidad' => $this->input->post('proximidad'),
-                'fulltime' => $this->input->post('fulltime'),
-                'ciudad_exterior' => $this->input->post('ciudad_exterior'),
-                'disponible' => $this->input->post('disponible'),
-                'publica_masajes' => $this->input->post('publica_masajes'),
-                'publica_fantasias' => $this->input->post('publica_fantasias'),
-                'publica_maduras' => $this->input->post('publica_maduras'),
-                'observaciones' => $this->input->post('observaciones'),
-                'con_lugar' => $this->input->post('con_lugar'),
-                'a_domicilio' => $this->input->post('a_domicilio'),
-                'a_hotel' => $this->input->post('a_hotel'),
-                'fuma' => $this->input->post('fuma'),
-                'baila' => $this->input->post('baila'),
-                'ho' => $this->input->post('ho'),
-                'mu' => $this->input->post('mu'),
-                'ho_mu' => $this->input->post('ho_mu'),
-                'viaja' => $this->input->post('viaja'),
-                'visa_usa' => $this->input->post('visa_usa'),
-                'descripcion_ebcom' => $this->input->post('descripcion_ebcom'),
-                'comidas' => $this->input->post('comidas'),
-                'hobbies' => $this->input->post('hobbies'),
-                'musica' => $this->input->post('musica'),
-                'deportes' => $this->input->post('deportes'),
-                'nogusta' => $this->input->post('nogusta'),
-                'personalidad' => $this->input->post('personalidad'),
-                'duermo' => $this->input->post('duermo'),
-                'lugares' => $this->input->post('lugares'),
-                'descripcion_ebcomar' => $this->input->post('descripcion_ebcomar'),
-                'comidas2' => $this->input->post('comidas2'),
-                'hobbies2' => $this->input->post('hobbies2'),
-                'musica2' => $this->input->post('musica2'),
-                'deportes2' => $this->input->post('deportes2'),
-                'nogusta2' => $this->input->post('nogusta2'),
-                'personalidad2' => $this->input->post('personalidad2'),
-                'lugares2' => $this->input->post('lugares2'),
-                'fecha_actualizacion' => date("Y-m-d H:i:s"),
-                'cant_fotos_ebcom' => $this->input->post('cant_fotos_ebcom'),
-                'cant_bigpics' => $this->input->post('cant_bigpics'),
-                'girl' => $this->input->post('girl')
-            );
-
-            if ($this->input->post('mensaje1') == 'on') {
-                $datos['mensaje1'] = 'S';
-            } else {
-                $datos['mensaje1'] = 'N';
-            }
-            if ($this->input->post('whatsapp1') == 'on') {
-                $datos['whatsapp1'] = 'S';
-            } else {
-                $datos['whatsapp1'] = 'N';
-            }
-            if ($this->input->post('llamadaprivada1') == 'on') {
-                $datos['llamadaprivada1'] = 'S';
-            } else {
-                $datos['llamadaprivada1'] = 'N';
-            }
-
-            if ($this->input->post('mensaje2') == 'on') {
-                $datos['mensaje2'] = 'S';
-            } else {
-                $datos['mensaje2'] = 'N';
-            }
-            if ($this->input->post('whatsapp2') == 'on') {
-                $datos['whatsapp2'] = 'S';
-            } else {
-                $datos['whatsapp2'] = 'N';
-            }
-            if ($this->input->post('llamadaprivada2') == 'on') {
-                $datos['llamadaprivada2'] = 'S';
-            } else {
-                $datos['llamadaprivada2'] = 'N';
-            }
-
-            if ($this->input->post('mensaje3') == 'on') {
-                $datos['mensaje3'] = 'S';
-            } else {
-                $datos['mensaje3'] = 'N';
-            }
-            if ($this->input->post('whatsapp3') == 'on') {
-                $datos['whatsapp3'] = 'S';
-            } else {
-                $datos['whatsapp3'] = 'N';
-            }
-            if ($this->input->post('llamadaprivada3') == 'on') {
-                $datos['llamadaprivada3'] = 'S';
-            } else {
-                $datos['llamadaprivada3'] = 'N';
-            }
+            $flag = true;
 
             $where = array(
-                'ID' => $this->input->post('idmodelo')
+                'modelos.nombre' => $this->input->post('nombre'),
+                'modelos.ID <>' => $this->input->post('idmodelo')
             );
-
-            $resultado = $this->modelos_model->update($datos, $where);
-            //$resultado = null;
+            $resultado = $this->modelos_model->get_where($where);
             if ($resultado) {
-                $datos = array(
-                    'status' => 'ok',
-                    'data' => 'Se modificó correctamente la modelo',
-                    'id' => $resultado
-                );
-                echo json_encode($datos);
-            } else {
-                $datos = array(
+                $flag = false;
+                $json = array(
                     'status' => 'error',
-                    'data' => 'No se pudo modificar la modelo'
+                    'data' => 'El nombre ' . $this->input->post('nombre') . ' ya existe en la base de datos.'
                 );
-                echo json_encode($datos);
+                echo json_encode($json);
+                return 0;
+            }
+            
+            $where = array(
+                'modelos.documento' => $this->input->post('documento'),
+                'modelos.ID <>' => $this->input->post('idmodelo')
+            );
+            $resultado = $this->modelos_model->get_where($where);
+            if ($resultado) {
+                $flag = false;
+                $json = array(
+                    'status' => 'error',
+                    'data' => 'El documento ' . $this->input->post('documento') . ' ya existe en la base de datos.'
+                );
+                echo json_encode($json);
+                return 0;
+            }
+
+            if ($flag) {
+                $datos = array(
+                    'nombre_real' => $this->input->post('nombre_real'),
+                    'documento' => $this->input->post('documento'),
+                    'apellido' => $this->input->post('apellido'),
+                    'fecha_nacimiento' => $this->formatear_fecha($this->input->post('fecha_nacimiento')),
+                    'nombre' => $this->input->post('nombre'),
+                    'perfil' => $this->input->post('perfil'),
+                    'membresia' => $this->input->post('membresia'),
+                    'ranking' => $this->input->post('ranking'),
+                    'altura' => $this->input->post('altura'),
+                    'alturapareja' => $this->input->post('alturapareja'),
+                    'medidas1' => $this->input->post('medidas1'),
+                    'medidas2' => $this->input->post('medidas2'),
+                    'medidas3' => $this->input->post('medidas3'),
+                    'medidaspareja' => $this->input->post('medidaspareja'),
+                    'peso' => $this->input->post('peso'),
+                    'colordeojos' => $this->input->post('colordeojos'),
+                    'colordepelo' => $this->input->post('colordepelo'),
+                    'colordepiel' => $this->input->post('colordepiel'),
+                    'idiomas' => $this->input->post('idioma1') . ',' . $this->input->post('idioma2') . ',' . $this->input->post('idioma3') . ',' . $this->input->post('idioma4'),
+                    'descripcion_platy' => $this->input->post('descripcion'),
+                    'prefijo1' => $this->input->post('prefijo1'),
+                    'telefono1' => $this->input->post('telefono1'),
+                    'prefijo2' => $this->input->post('prefijo2'),
+                    'telefono2' => $this->input->post('telefono2'),
+                    'prefijo3' => $this->input->post('prefijo3'),
+                    'telefono3' => $this->input->post('telefono3'),
+                    'email' => $this->input->post('email'),
+                    'sitioweb' => $this->input->post('sitioweb'),
+                    'email_privado' => $this->input->post('email_privado'),
+                    'pais' => $this->input->post('pais'),
+                    'provincia' => $this->input->post('provincia'),
+                    'ciudad' => $this->input->post('ciudad'),
+                    'barrio' => $this->input->post('barrio'),
+                    'proximidad' => $this->input->post('proximidad'),
+                    'fulltime' => $this->input->post('fulltime'),
+                    'ciudad_exterior' => $this->input->post('ciudad_exterior'),
+                    'disponible' => $this->input->post('disponible'),
+                    'publica_masajes' => $this->input->post('publica_masajes'),
+                    'publica_fantasias' => $this->input->post('publica_fantasias'),
+                    'publica_maduras' => $this->input->post('publica_maduras'),
+                    'observaciones' => $this->input->post('observaciones'),
+                    'con_lugar' => $this->input->post('con_lugar'),
+                    'a_domicilio' => $this->input->post('a_domicilio'),
+                    'a_hotel' => $this->input->post('a_hotel'),
+                    'fuma' => $this->input->post('fuma'),
+                    'baila' => $this->input->post('baila'),
+                    'ho' => $this->input->post('ho'),
+                    'mu' => $this->input->post('mu'),
+                    'ho_mu' => $this->input->post('ho_mu'),
+                    'viaja' => $this->input->post('viaja'),
+                    'visa_usa' => $this->input->post('visa_usa'),
+                    'descripcion_ebcom' => $this->input->post('descripcion_ebcom'),
+                    'comidas' => $this->input->post('comidas'),
+                    'hobbies' => $this->input->post('hobbies'),
+                    'musica' => $this->input->post('musica'),
+                    'deportes' => $this->input->post('deportes'),
+                    'nogusta' => $this->input->post('nogusta'),
+                    'personalidad' => $this->input->post('personalidad'),
+                    'duermo' => $this->input->post('duermo'),
+                    'lugares' => $this->input->post('lugares'),
+                    'descripcion_ebcomar' => $this->input->post('descripcion_ebcomar'),
+                    'comidas2' => $this->input->post('comidas2'),
+                    'hobbies2' => $this->input->post('hobbies2'),
+                    'musica2' => $this->input->post('musica2'),
+                    'deportes2' => $this->input->post('deportes2'),
+                    'nogusta2' => $this->input->post('nogusta2'),
+                    'personalidad2' => $this->input->post('personalidad2'),
+                    'lugares2' => $this->input->post('lugares2'),
+                    'fecha_actualizacion' => date("Y-m-d H:i:s"),
+                    'cant_fotos_ebcom' => $this->input->post('cant_fotos_ebcom'),
+                    'cant_bigpics' => $this->input->post('cant_bigpics'),
+                    'girl' => $this->input->post('girl')
+                );
+
+                if ($this->input->post('mensaje1') == 'on') {
+                    $datos['mensaje1'] = 'S';
+                } else {
+                    $datos['mensaje1'] = 'N';
+                }
+                if ($this->input->post('whatsapp1') == 'on') {
+                    $datos['whatsapp1'] = 'S';
+                } else {
+                    $datos['whatsapp1'] = 'N';
+                }
+                if ($this->input->post('llamadaprivada1') == 'on') {
+                    $datos['llamadaprivada1'] = 'S';
+                } else {
+                    $datos['llamadaprivada1'] = 'N';
+                }
+
+                if ($this->input->post('mensaje2') == 'on') {
+                    $datos['mensaje2'] = 'S';
+                } else {
+                    $datos['mensaje2'] = 'N';
+                }
+                if ($this->input->post('whatsapp2') == 'on') {
+                    $datos['whatsapp2'] = 'S';
+                } else {
+                    $datos['whatsapp2'] = 'N';
+                }
+                if ($this->input->post('llamadaprivada2') == 'on') {
+                    $datos['llamadaprivada2'] = 'S';
+                } else {
+                    $datos['llamadaprivada2'] = 'N';
+                }
+
+                if ($this->input->post('mensaje3') == 'on') {
+                    $datos['mensaje3'] = 'S';
+                } else {
+                    $datos['mensaje3'] = 'N';
+                }
+                if ($this->input->post('whatsapp3') == 'on') {
+                    $datos['whatsapp3'] = 'S';
+                } else {
+                    $datos['whatsapp3'] = 'N';
+                }
+                if ($this->input->post('llamadaprivada3') == 'on') {
+                    $datos['llamadaprivada3'] = 'S';
+                } else {
+                    $datos['llamadaprivada3'] = 'N';
+                }
+
+                $where = array(
+                    'ID' => $this->input->post('idmodelo')
+                );
+
+                $resultado = $this->modelos_model->update($datos, $where);
+                //$resultado = null;
+                if ($resultado) {
+                    $datos = array(
+                        'status' => 'ok',
+                        'data' => 'Se modificó correctamente la modelo',
+                        'id' => $resultado
+                    );
+                    echo json_encode($datos);
+                } else {
+                    $datos = array(
+                        'status' => 'error',
+                        'data' => 'No se pudo modificar la modelo'
+                    );
+                    echo json_encode($datos);
+                }
             }
         }
     }
@@ -884,7 +918,7 @@ class Modelos extends CI_Controller {
     public function crear_thumb() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
+
         var_dump($this->input->post());
         var_dump($_FILES);
 
@@ -901,51 +935,56 @@ class Modelos extends CI_Controller {
         move_uploaded_file($_FILES['croppedImage']['tmp_name'], $config['upload_path'] . $config['file_name']);
 
         $config['image_library'] = 'gd2';
-        $config['source_image'] = $config['upload_path'].$config['file_name'];
+        $config['source_image'] = $config['upload_path'] . $config['file_name'];
         $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = TRUE;
         $config['width'] = 80;
         $config['height'] = 110;
-        
+
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
-        
     }
-    
+
     public function duplicar($idmodelo) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
+
         $where = array(
             'modelos.ID' => $idmodelo
         );
         $modelo = $this->modelos_model->get_where($where);
-        
+
         unset($modelo['ID']);
         $modelo['estado'] = 'habilitado';
-        
-        $modelo['nombre'] = $modelo['nombre_formateado'];
+
+        //$modelo['nombre'] = $modelo['nombre_formateado'];
         unset($modelo['nombre_formateado']);
-        
+
         $modelo['idiomas'] = $modelo['idiomas_formateado'];
         unset($modelo['idiomas_formateado']);
-        
+
         $modelo['viaja_donde'] = $modelo['viaja_donde_formateado'];
         unset($modelo['viaja_donde_formateado']);
-        
+
         $modelo['observaciones'] = $modelo['observaciones_formateado'];
         unset($modelo['observaciones_formateado']);
-        
+
         $modelo['carpeta'] = $this->generateRandomString(20);
-        
+
         unset($modelo['barrio_nombre']);
         unset($modelo['ciudad_nombre']);
         unset($modelo['pais_nombre']);
-        
-        
+
+        /*
+         * Borro los campos a completar obligatorios
+         */
+        $modelo['nombre'] = "";
+        $modelo['documento'] = "";
+
+
         $id = $this->modelos_model->set($modelo);
-        
-        redirect('/modelos/modificar/'.$id.'/', 'refresh');
+
+        redirect('/modelos/modificar/' . $id . '/', 'refresh');
     }
 
     private function formatear_fecha($fecha) {
