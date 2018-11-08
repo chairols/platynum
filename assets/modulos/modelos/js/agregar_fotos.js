@@ -20,8 +20,11 @@ $(document).ready(function () {
         uploadOnDrop: true,
         uploadOnPreview: false,
         success: function(res, index){
-            console.log(res, index);
-            gets_archivos();
+            //console.log(res, index);
+            $("#idfoto").val(res.response);
+            console.log(res);
+            crear_thumb();
+            //gets_archivos();
         }
     });
     
@@ -94,4 +97,33 @@ function gets_archivos() {
                     });
         }
     });
+}
+
+function crear_thumb() {
+    datos = {
+        'idmodelo': $("#idmodelo").val(),
+        'idfoto': $("#idfoto").val()
+    };
+    $.ajax({
+        type: 'POST',
+        url: '/modelos/crear_thumb_desde_imagen/',
+        data: datos,
+        beforeSend: function () {
+            
+        },
+        success: function (data) {
+            
+        },
+        error: function (xhr) { // if error occured
+            console.log(xhr);
+            
+            $.notify('<strong>Ha ocurrido el siguiente error:</strong><br>' + xhr.statusText,
+                    {
+                        type: 'danger',
+                        allow_dismiss: false
+                    });
+        }
+    });
+    console.log(datos);
+    gets_archivos();
 }

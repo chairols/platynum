@@ -310,7 +310,7 @@ class Modelos extends CI_Controller {
 
         $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
 
-        echo "<pre>";
+        //echo "<pre>";
         if ($this->form_validation->run() == FALSE) {
             
         } else {
@@ -324,17 +324,17 @@ class Modelos extends CI_Controller {
             $numero_foto = null;
             $flag = true;
 
-            print_r($archivos);
+            //print_r($archivos);
 
             for ($i = 1; $flag; $i++) {
-                var_dump(array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos));
-                var_dump($i);
+                //var_dump(array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos));
+                //var_dump($i);
 
                 if (array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
                     $numero_foto = str_pad($i, 2, '0', STR_PAD_LEFT);
                     $nombre_archivo = $modelo['carpeta'] . $numero_foto;
-                    var_dump('en el if');
-                    var_dump($nombre_archivo);
+                    //var_dump('en el if');
+                    //var_dump($nombre_archivo);
 
                     $flag = false;
                 }
@@ -369,7 +369,7 @@ class Modelos extends CI_Controller {
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('file')) {
                     $error = array('error' => $this->upload->display_errors());
-                    print_r($error);
+                    //print_r($error);
                 } else {
                     $data = array('upload_data' => $this->upload->data());
                     $archivos = explode(',', $modelo['fotos_platy']);
@@ -382,14 +382,15 @@ class Modelos extends CI_Controller {
                     );
                     $this->modelos_model->update($datos, $where);
 
-                    print_r($data);
+                    echo $numero_foto;
+                    //print_r($data);
                 }
             }
 
 
 
 
-
+            /*
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload()) {
                 $error = array('error' => $this->upload->display_errors());
@@ -397,10 +398,10 @@ class Modelos extends CI_Controller {
             } else {
                 $data = array('upload_data' => $this->upload->data());
                 print_r($data);
-            }
+            }*/
         }
 
-        echo "</pre>";
+        //echo "</pre>";
     }
 
     public function agregar_videos_ajax() {
@@ -557,7 +558,8 @@ class Modelos extends CI_Controller {
 
             if ($resultado) {
                 unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . ".jpg");
-
+                unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . "Thumb.jpg");
+                
                 $json = array(
                     'status' => 'ok',
                     'data' => 'Se eliminó la foto correctamente'
@@ -945,6 +947,43 @@ class Modelos extends CI_Controller {
         $this->image_lib->resize();
     }
 
+    
+    public function crear_thumb_desde_imagen() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        var_dump($this->input->post());
+        //var_dump($_FILES);
+
+        $where = array(
+            'modelos.ID' => $this->input->post('idmodelo')
+        );
+        $modelo = $this->modelos_model->get_where($where);
+
+        $nombre_archivo = $modelo['carpeta'] . $this->input->post('idfoto');
+
+        $c['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
+        $c['file_name'] = $nombre_archivo . 'Thumb.jpg';
+
+        
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $c['upload_path'] . str_replace("Thumb", "", $c['file_name']);
+        $config['new_image'] = $c['upload_path'] . $c['file_name'];
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = FALSE;
+        $config['width'] = 80;
+        $config['height'] = 110;
+
+        var_dump($config);
+        
+        $this->load->library('image_lib', $config);
+            
+        if(! $this->image_lib->resize()) {
+            echo $this->image_lib->display_errors();
+        }
+    }
+    
+    
     public function duplicar($idmodelo) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);

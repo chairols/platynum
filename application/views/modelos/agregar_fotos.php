@@ -59,3 +59,5 @@
     </section>
 
 </div>
+
+<input type="hidden" id="idfoto" value="">
