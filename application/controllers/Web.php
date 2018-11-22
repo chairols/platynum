@@ -25,6 +25,9 @@ class Web extends CI_Controller {
         $where = array(
             'estado' => 'habilitado'
         );
+        $or_where = array(
+            'estado' => 'deshabilitado'
+        );
         $per_page = 48;
         
         $idbanner = ($pagina / $per_page) + 1;
@@ -71,7 +74,7 @@ class Web extends CI_Controller {
         /*
          * inicio paginador
          */
-        $total_rows = $this->modelos_model->get_count_where($where);
+        $total_rows = $this->modelos_model->get_count_where($where, $or_where);
         $config['reuse_query_string'] = TRUE;
         $config['base_url'] = '/web/pagina/'.$perfil.'/';
         $config['total_rows'] = $total_rows['cantidad'];
@@ -97,7 +100,7 @@ class Web extends CI_Controller {
          * fin paginador
          */
         
-        $data['modelos'] = $this->modelos_model->gets_where_limit($where, $per_page, $pagina);
+        $data['modelos'] = $this->modelos_model->gets_where_limit($where, $or_where, $per_page, $pagina);
         
         $where = array(
             'perfil' => 'A-MujeresModelos',

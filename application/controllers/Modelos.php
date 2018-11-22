@@ -853,7 +853,11 @@ class Modelos extends CI_Controller {
             'perfil' => $perfil,
             'estado' => 'habilitado'
         );
-        $data['modelos'] = $this->modelos_model->gets_where($where);
+        $or_where = array(
+            'estado' => 'deshabilitado'
+        );
+        
+        $data['modelos'] = $this->modelos_model->gets_where_or_where($where, $or_where);
         $data['perfil'] = $perfil;
 
         $this->load->view('layout/header', $data);

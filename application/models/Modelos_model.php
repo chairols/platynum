@@ -21,11 +21,23 @@ class Modelos_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function gets_where_limit($where, $per_page, $pagina) {
+    public function gets_where_or_where($where, $or_where) {
+        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado, CONVERT(CAST(CONVERT(idiomas using latin1) as BINARY) USING utf8) as idiomas_formateado');
+        $this->db->from('modelos');
+        $this->db->where($where);
+        $this->db->or_where($or_where);
+        $this->db->order_by('modelos.orden');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function gets_where_limit($where, $or_where, $per_page, $pagina) {
         $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado');
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
         $this->db->where($where);
+        $this->db->or_where($or_where);
         $this->db->order_by('modelos.orden');
         $this->db->limit($per_page, $pagina);
         
@@ -33,11 +45,12 @@ class Modelos_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function get_count_where($where) {
+    public function get_count_where($where, $or_where) {
         $this->db->select('count(*) as cantidad');
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
         $this->db->where($where);
+        $this->db->or_where($or_where);
         
         $query = $this->db->get();
         return $query->row_array();

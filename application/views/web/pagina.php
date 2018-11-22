@@ -41,7 +41,7 @@
                     <div class="item-title text-center">
                         <h4>
                             <a href="/modelos/ver/<?= $modelo['ID'] ?>/<?= $modelo['nombre_formateado'] ?>-<?= $modelo['telefono1'] ?>/"><?= $modelo['nombre_formateado'] ?></a><br>
-                            <?= $modelo['telefono1'] ?><br>
+                            <?=($modelo['estado']=='habilitado')? $modelo['telefono1']:"" ?><br>
                             <?= $modelo['value'] ?>
                         </h4>
                     </div>

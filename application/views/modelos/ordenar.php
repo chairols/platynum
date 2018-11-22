@@ -37,7 +37,7 @@
                                             <li class="dd-item dd3-item" data-id="<?= $modelo['ID'] ?>">
                                                 <div class="dd-handle dd3-handle"></div>
                                                 <div class="dd3-content">
-                                                    <?= $modelo['nombre_formateado'] ?>
+                                                    <?= $modelo['nombre_formateado'] ?> | <div class="badge <?=($modelo['estado']=='habilitado')?'bg-green-active':'bg-red-active'?>"><?=$modelo['estado']?></div>
                                                 </div>
                                             </li>
                                         <?php } ?>
