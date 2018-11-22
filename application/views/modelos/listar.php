@@ -65,28 +65,28 @@
                                             ?>
                                         </td>
                                         <td>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar" href="/modelos/modificar/<?=$modelo['ID']?>/">
-                                                <button class="btn btn-sm bg-yellow btn-flat">
+                                            <a href="/modelos/modificar/<?=$modelo['ID']?>/" class="hint--top hint--bounce hint--warning" aria-label="Editar">
+                                                <button class="btn btn-xs bg-yellow btn-flat">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </a>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar Fotos y Videos" href="/modelos/agregar_fotos/<?=$modelo['ID']?>/">
-                                                <button class="btn btn-sm btn-dropbox btn-flat">
+                                            <a href="/modelos/agregar_fotos/<?=$modelo['ID']?>/" class="hint--top hint--bounce hint--info" aria-label="Editar Fotos y Videos">
+                                                <button class="btn btn-xs btn-dropbox btn-flat">
                                                     <i class="fa fa-video-camera"></i>
                                                 </button>
                                             </a>
                                             <?php switch ($estado) {
                                             case 'deshabilitado': ?>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Habilitar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/habilitado/">
-                                                <button class="btn btn-sm btn-info btn-flat">
+                                            <a href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/habilitado/" class="hint--bounce hint--top hint--info" aria-label="Habilitar">
+                                                <button class="btn btn-xs btn-info btn-flat">
                                                     <i class="fa fa-undo"></i>
                                                 </button>
                                             </a>
                                             <?php
                                             break;
                                             case 'habilitado': ?>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Deshabilitar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/deshabilitado/">
-                                                <button class="btn btn-sm btn-info btn-flat">
+                                            <a href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/deshabilitado/" class="hint--bounce hint--top hint--info" aria-label="Deshabilitar">
+                                                <button class="btn btn-xs btn-info btn-flat">
                                                     <i class="fa fa-times"></i>
                                                 </button>
                                             </a>
@@ -94,13 +94,13 @@
                                             break;
                                             }
                                             ?>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/borrado/">
-                                                <button class="btn btn-sm btn-danger btn-flat">
+                                            <a href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/borrado/" class="hint--top hint--bounce hint--error" aria-label="Borrar / Archivar">
+                                                <button class="btn btn-xs btn-danger btn-flat">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             </a>
-                                            <a class="tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Duplicar" href="/modelos/duplicar/<?=$modelo['ID']?>">
-                                                <button class="btn btn-sm btn-success btn-flat">
+                                            <a href="/modelos/duplicar/<?=$modelo['ID']?>" class="hint--top hint--bounce hint--success" aria-label="Duplicar">
+                                                <button class="btn btn-xs btn-success btn-flat">
                                                     <i class="fa fa-copy"></i>
                                                 </button>
                                             </a>

@@ -30,6 +30,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/assets/template/dist/css/skins/_all-skins.min.css">
+   <!-- Hint (Tooltips) -->
+   <link rel="stylesheet" href="/assets/vendors/hint.css-2.5.1/hint.css">
 <?php
 if (isset($css) && count($css) > 0) { ?>
 <!-- Carga de Css de la vista -->

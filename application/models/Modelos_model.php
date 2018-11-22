@@ -45,12 +45,22 @@ class Modelos_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function get_count_where($where, $or_where) {
+    public function get_count_where_or_where($where, $or_where) {
         $this->db->select('count(*) as cantidad');
         $this->db->from('modelos');
         $this->db->join('barrios', 'modelos.barrio = barrios.id');
         $this->db->where($where);
         $this->db->or_where($or_where);
+        
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    public function get_count_where($where) {
+        $this->db->select('count(*) as cantidad');
+        $this->db->from('modelos');
+        $this->db->join('barrios', 'modelos.barrio = barrios.id');
+        $this->db->where($where);
         
         $query = $this->db->get();
         return $query->row_array();

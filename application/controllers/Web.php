@@ -74,7 +74,7 @@ class Web extends CI_Controller {
         /*
          * inicio paginador
          */
-        $total_rows = $this->modelos_model->get_count_where($where, $or_where);
+        $total_rows = $this->modelos_model->get_count_where_or_where($where, $or_where);
         $config['reuse_query_string'] = TRUE;
         $config['base_url'] = '/web/pagina/'.$perfil.'/';
         $config['total_rows'] = $total_rows['cantidad'];
