@@ -391,14 +391,14 @@ class Modelos extends CI_Controller {
 
 
             /*
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload()) {
-                $error = array('error' => $this->upload->display_errors());
-                print_r($error);
-            } else {
-                $data = array('upload_data' => $this->upload->data());
-                print_r($data);
-            }*/
+              $this->load->library('upload', $config);
+              if (!$this->upload->do_upload()) {
+              $error = array('error' => $this->upload->display_errors());
+              print_r($error);
+              } else {
+              $data = array('upload_data' => $this->upload->data());
+              print_r($data);
+              } */
         }
 
         //echo "</pre>";
@@ -559,7 +559,7 @@ class Modelos extends CI_Controller {
             if ($resultado) {
                 unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . ".jpg");
                 unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . "Thumb.jpg");
-                
+
                 $json = array(
                     'status' => 'ok',
                     'data' => 'Se eliminó la foto correctamente'
@@ -651,7 +651,7 @@ class Modelos extends CI_Controller {
                 echo json_encode($json);
                 return 0;
             }
-            
+
             $where = array(
                 'modelos.documento' => $this->input->post('documento'),
                 'modelos.ID <>' => $this->input->post('idmodelo')
@@ -947,7 +947,6 @@ class Modelos extends CI_Controller {
         $this->image_lib->resize();
     }
 
-    
     public function crear_thumb_desde_imagen() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -965,7 +964,7 @@ class Modelos extends CI_Controller {
         $c['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
         $c['file_name'] = $nombre_archivo . 'Thumb.jpg';
 
-        
+
         $config['image_library'] = 'gd2';
         $config['source_image'] = $c['upload_path'] . str_replace("Thumb", "", $c['file_name']);
         $config['new_image'] = $c['upload_path'] . $c['file_name'];
@@ -975,15 +974,16 @@ class Modelos extends CI_Controller {
         $config['height'] = 110;
 
         var_dump($config);
-        
+
         $this->load->library('image_lib', $config);
-            
-        if(! $this->image_lib->resize()) {
+
+        if (!$this->image_lib->resize()) {
             echo $this->image_lib->display_errors();
+        } else {
+            $this->marca_de_agua($config['source_image']);
         }
     }
-    
-    
+
     public function duplicar($idmodelo) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -1056,6 +1056,16 @@ class Modelos extends CI_Controller {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    private function marca_de_agua($url) {
+        $config['source_image'] = $url;
+        $config['wm_type'] = 'overlay';
+        $config['wm_vrt_alignment'] = 'bottom';
+        $config['wm_hor_alignment'] = 'center';
+        $config['wm_text'] = '/assets/web/images/logo.png';
+        $this->image_lib->initialize($config);
+        $this->image_lib->watermark();
     }
 
 }
