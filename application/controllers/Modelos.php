@@ -1062,7 +1062,7 @@ class Modelos extends CI_Controller {
         $fila = 2;
         foreach($data['modelos'] as $modelo) {
             $this->excel->getActiveSheet()->setCellValue('A'.$fila, $modelo['orden']);
-            $this->excel->getActiveSheet()->setCellValue('B'.$fila, $modelo['nombre']);
+            $this->excel->getActiveSheet()->setCellValue('B'.$fila, $modelo['nombre_formateado']);
             $fila++;
         }
         

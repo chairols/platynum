@@ -29,6 +29,7 @@
             ?>
             <?php foreach ($modelos as $modelo) { ?>
                 <div class="isotope-item col-lg-2 col-md-2 col-sm-2 col-xs-4 fashion">
+                    <?php if($modelo['visible'] == '1') { ?>
                     <div class="vertical-item content-absolute">
                         <div class="item-media">
                             <a href="/modelos/ver/<?= $modelo['ID'] ?>/<?= $modelo['nombre_formateado'] ?>-<?= $modelo['telefono1'] ?>/">
@@ -45,6 +46,7 @@
                             <?= $modelo['value'] ?>
                         </h4>
                     </div>
+                    <?php } ?>
                 </div>
                 <?php $i++; ?>
                 <?php if(($i % 6) == 0) { ?>
