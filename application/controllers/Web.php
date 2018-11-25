@@ -28,7 +28,7 @@ class Web extends CI_Controller {
         $or_where = array(
             'estado' => 'deshabilitado'
         );
-        $per_page = 48;
+        $per_page = 54;
         
         $idbanner = ($pagina / $per_page) + 1;
         $w = array(
