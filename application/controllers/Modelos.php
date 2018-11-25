@@ -1024,8 +1024,8 @@ class Modelos extends CI_Controller {
          */
         $modelo['nombre'] = "";
         $modelo['documento'] = "";
-
-
+        
+        imagecop
         $id = $this->modelos_model->set($modelo);
 
         redirect('/modelos/modificar/' . $id . '/', 'refresh');
@@ -1066,10 +1066,7 @@ class Modelos extends CI_Controller {
             $this->excel->getActiveSheet()->setCellValue('B'.$fila, $modelo['nombre']);
             $fila++;
         }
-        //$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(20);
         
-        //$this->excel->getActiveSheet()->mergeCells('A1:D1');
- 
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="nombredelfichero.xls"');
         header('Cache-Control: max-age=0'); //no cache
@@ -1077,11 +1074,6 @@ class Modelos extends CI_Controller {
         // Forzamos a la descarga
         $objWriter->save('php://output');
         
-        
-        /*$this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
-        $this->load->view('modelos/exportar');
-        $this->load->view('layout/footer');*/
     }
 
     private function formatear_fecha($fecha) {
