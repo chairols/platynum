@@ -9,7 +9,8 @@ class Modelos extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation'
+            'form_validation',
+            'excel'
         ));
         $this->load->model(array(
             'modelos_model',
@@ -1028,6 +1029,59 @@ class Modelos extends CI_Controller {
         $id = $this->modelos_model->set($modelo);
 
         redirect('/modelos/modificar/' . $id . '/', 'refresh');
+    }
+    public function exportar() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        
+        $data['session'] = $this->session->all_userdata();
+        $data['menu'] = 9;
+        $data['javascript'] = array(
+            '/assets/modulos/modelos/js/exportar.js'
+        );
+        
+        
+        $where = array(
+            'perfil' => 'A-MujeresModelos',
+            'estado' => 'habilitado'
+        );
+        $or_where = array(
+            'estado' => 'deshabilitado'
+        );
+        
+        $data['modelos'] = $this->modelos_model->gets_where_or_where($where, $or_where);
+        
+        $this->excel->setActiveSheetIndex(0);
+        $this->excel->getActiveSheet()->setTitle('test worksheet');
+        
+        $this->excel->getActiveSheet()->setCellValue('A1', 'ORDEN');
+        $this->excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+        $this->excel->getActiveSheet()->setCellValue('B1', 'NOMBRE');
+        $this->excel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
+        
+        $fila = 2;
+        foreach($data['modelos'] as $modelo) {
+            $this->excel->getActiveSheet()->setCellValue('A'.$fila, $modelo['orden']);
+            $this->excel->getActiveSheet()->setCellValue('B'.$fila, $modelo['nombre']);
+            $fila++;
+        }
+        //$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(20);
+        
+        //$this->excel->getActiveSheet()->mergeCells('A1:D1');
+ 
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="nombredelfichero.xls"');
+        header('Cache-Control: max-age=0'); //no cache
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+        // Forzamos a la descarga
+        $objWriter->save('php://output');
+        
+        
+        /*$this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('modelos/exportar');
+        $this->load->view('layout/footer');*/
     }
 
     private function formatear_fecha($fecha) {
