@@ -1025,7 +1025,6 @@ class Modelos extends CI_Controller {
         $modelo['nombre'] = "";
         $modelo['documento'] = "";
         
-        imagecop
         $id = $this->modelos_model->set($modelo);
 
         redirect('/modelos/modificar/' . $id . '/', 'refresh');
