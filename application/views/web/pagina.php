@@ -32,16 +32,45 @@
                     <?php if($modelo['visible'] == '1') { ?>
                     <div class="vertical-item content-absolute">
                         <div class="item-media">
+                            <?php 
+                            /*
+                             *  Si la modelo está deshabilitada, no muestro link 
+                             */
+                            if($modelo['estado'] == 'habilitado') {
+                            ?>
                             <a href="/modelos/ver/<?= $modelo['ID'] ?>/<?= $modelo['nombre_formateado'] ?>-<?= $modelo['telefono1'] ?>/">
+                            <?php } ?>
                                 <?php $fotos = explode(",", $modelo['fotos_platy']); ?>
                                 <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[0]?>.jpg">
                                 <!--<img src="/assets/web/images/models_portrait/01.jpg">-->
+                            <?php 
+                            /*
+                             *  Si la modelo está deshabilitada, no muestro link  ( cierro el link )
+                             */
+                            if($modelo['estado'] == 'habilitado') { ?>
                             </a>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="item-title text-center">
                         <h4>
-                            <a href="/modelos/ver/<?= $modelo['ID'] ?>/<?= $modelo['nombre_formateado'] ?>-<?= $modelo['telefono1'] ?>/"><?= $modelo['nombre_formateado'] ?></a><br>
+                            <?php 
+                            /*
+                             *  Si la modelo está deshabilitada, no muestro link 
+                             */
+                            if($modelo['estado'] == 'habilitado') {
+                            ?>
+                            <a href="/modelos/ver/<?= $modelo['ID'] ?>/<?= $modelo['nombre_formateado'] ?>-<?= $modelo['telefono1'] ?>/">
+                            <?php } ?>
+                                    <?= $modelo['nombre_formateado'] ?>
+                            <?php 
+                            /*
+                             *  Si la modelo está deshabilitada, no muestro link  ( cierro el link )
+                             */
+                            if($modelo['estado'] == 'habilitado') { ?>
+                            </a>
+                            <?php } ?>
+                            <br>
                             <?=($modelo['estado']=='habilitado')? $modelo['telefono1']:"" ?><br>
                             <?= $modelo['value'] ?>
                         </h4>
