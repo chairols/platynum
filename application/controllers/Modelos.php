@@ -10,7 +10,8 @@ class Modelos extends CI_Controller {
             'session',
             'r_session',
             'form_validation',
-            'excel'
+            'excel',
+            'image_lib'
         ));
         $this->load->model(array(
             'modelos_model',
@@ -384,6 +385,7 @@ class Modelos extends CI_Controller {
                     $this->modelos_model->update($datos, $where);
 
                     echo $numero_foto;
+                    $this->marca_de_agua('./Fotodisk/'.$modelo['perfil'].'/'.$modelo['carpeta'].'/'.$nombre_archivo.'.'.$f[1]);
                     //print_r($data);
                 }
             }
@@ -560,6 +562,7 @@ class Modelos extends CI_Controller {
             if ($resultado) {
                 unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . ".jpg");
                 unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . "Thumb.jpg");
+                unlink("./Fotodisk/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . ".jpgwm.jpg");
 
                 $json = array(
                     'status' => 'ok',
@@ -857,7 +860,7 @@ class Modelos extends CI_Controller {
         $or_where = array(
             'estado' => 'deshabilitado'
         );
-        
+
         $data['modelos'] = $this->modelos_model->gets_where_or_where($where, $or_where);
         $data['perfil'] = $perfil;
 
@@ -982,10 +985,11 @@ class Modelos extends CI_Controller {
 
         $this->load->library('image_lib', $config);
 
-        if (!$this->image_lib->resize()) {
+        if (!$this->image_lib->crop()) {
             echo $this->image_lib->display_errors();
         } else {
-            $this->marca_de_agua($config['source_image']);
+            //$this->marca_de_agua($config['source_image']);
+            echo "Se hizo en teoria";
         }
     }
 
@@ -1024,23 +1028,24 @@ class Modelos extends CI_Controller {
          */
         $modelo['nombre'] = "";
         $modelo['documento'] = "";
-        
+
         $id = $this->modelos_model->set($modelo);
 
         redirect('/modelos/modificar/' . $id . '/', 'refresh');
     }
+
     public function exportar() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
-        
+
+
         $data['session'] = $this->session->all_userdata();
         $data['menu'] = 9;
         $data['javascript'] = array(
             '/assets/modulos/modelos/js/exportar.js'
         );
-        
-        
+
+
         $where = array(
             'perfil' => 'A-MujeresModelos',
             'estado' => 'habilitado'
@@ -1048,31 +1053,30 @@ class Modelos extends CI_Controller {
         $or_where = array(
             'estado' => 'deshabilitado'
         );
-        
+
         $data['modelos'] = $this->modelos_model->gets_where_or_where($where, $or_where);
-        
+
         $this->excel->setActiveSheetIndex(0);
         $this->excel->getActiveSheet()->setTitle('test worksheet');
-        
+
         $this->excel->getActiveSheet()->setCellValue('A1', 'ORDEN');
         $this->excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
         $this->excel->getActiveSheet()->setCellValue('B1', 'NOMBRE');
         $this->excel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
-        
+
         $fila = 2;
-        foreach($data['modelos'] as $modelo) {
-            $this->excel->getActiveSheet()->setCellValue('A'.$fila, $modelo['orden']);
-            $this->excel->getActiveSheet()->setCellValue('B'.$fila, $modelo['nombre_formateado']);
+        foreach ($data['modelos'] as $modelo) {
+            $this->excel->getActiveSheet()->setCellValue('A' . $fila, $modelo['orden']);
+            $this->excel->getActiveSheet()->setCellValue('B' . $fila, $modelo['nombre_formateado']);
             $fila++;
         }
-        
+
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="nombredelfichero.xls"');
         header('Cache-Control: max-age=0'); //no cache
         $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
         // Forzamos a la descarga
         $objWriter->save('php://output');
-        
     }
 
     private function formatear_fecha($fecha) {
@@ -1109,10 +1113,21 @@ class Modelos extends CI_Controller {
 
     private function marca_de_agua($url) {
         $config['source_image'] = $url;
-        $config['wm_type'] = 'overlay';
-        $config['wm_vrt_alignment'] = 'bottom';
+        $config['new_image'] = $url.'wm.jpg';
+        $this->image_lib->initialize($config);
+        $this->image_lib->resize();
+        
+        $config = array();
+        $config['source_image'] = $url.'wm.jpg';
+
+        $config['wm_text'] = 'Platynum';
+        $config['wm_type'] = 'text';
+        $config['wm_font_path'] = './system/fonts/texb.ttf';
+        $config['wm_font_size'] = '16';
+        $config['wm_font_color'] = 'ffffff';
+        $config['wm_vrt_alignment'] = 'center';
         $config['wm_hor_alignment'] = 'center';
-        $config['wm_text'] = '/assets/web/images/logo.png';
+        $config['wm_padding'] = '20';
         $this->image_lib->initialize($config);
         $this->image_lib->watermark();
     }

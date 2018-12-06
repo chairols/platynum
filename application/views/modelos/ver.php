@@ -9,8 +9,8 @@
             $idiomas = explode(",", $modelo['idiomas']);
             
             ?>
-            <div class="col-md-6 col-md-push-7">
-                <h2 class="topmargin_0 bottommargin_30"><?= $modelo['nombre_formateado'] ?> / <?= ($modelo['prefijo1'] == 'mov') ? "15-" : "" ?><?= $modelo['telefono1'] ?> </h2>
+            <div class="col-md-6 col-md-push-7 ">
+                <div class="topmargin_0 bottommargin_30 Titulo"><?= $modelo['nombre_formateado'] ?> / <?= ($modelo['prefijo1'] == 'mov') ? "15-" : "" ?><?= $modelo['telefono1'] ?> </div>
                 <p>
                     <strong>Altura: </strong><?=$modelo['altura']?> cm
                 </p>

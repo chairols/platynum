@@ -75,7 +75,7 @@
                                             <a href="/web/pagina/Modelos/">Modelos</a>
                                         </li>
                                         <li<?=($perfil=='Masajistas')?" class='active'":""?>>
-                                            <a href="/web/pagina/Masajistas/">Masajitas</a>
+                                            <a href="/web/pagina/Masajistas/">Masajistas</a>
                                         </li>
                                         <li<?=($perfil=='Fantasias')?" class='active'":""?>>
                                             <a href="/web/pagina/Fantasias/">Fantasias</a>
@@ -83,17 +83,17 @@
                                         <li<?=($perfil=='Videos')?" class='active'":""?>>
                                             <a href="/videos/listar/">Videos</a>
                                         </li>
-                                       
-                                        <!-- eof pages -->
-
                                         <li>
+                                            <a href="/videos/listar/">Novedades</a>
+                                        </li>
+                                        <li<?=($perfil=='Buscador')?" class='active'":""?>>
                                             <a href="#">Buscador</a>
                                         </li>
 
                                         <li>
                                             <a href="#">Contacto</a>
                                         </li>
-
+                                        <!-- eof pages -->
                                     </ul>
                                 </nav>
                                 <!-- eof main nav -->

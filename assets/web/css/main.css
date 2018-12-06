@@ -2257,7 +2257,7 @@ body.boxed {
 /**dark section - .ds*/
 .ds {
 	background-color: #FCEDFF;
-	color: #a0a0a0;
+	color: #000000;
 }
 
 /**darkgrey section - .ds.ms*/
@@ -2285,6 +2285,13 @@ body.boxed {
 .ds h5,
 .ds h6 {
 	color: #ffffff;
+
+}
+
+.Titulo {
+	color: #BA4E68;
+	font-weight: bold;
+	font-size: 25px;
 }
 
 .ds h1 a,
@@ -2421,7 +2428,7 @@ body.boxed {
 .ds .muted_background,
 .ds .with_background,
 .ds .well {
-	background-color: #0d0d0d;
+	background-color: #FCEDFF;
 }
 
 .ds .with_background .muted_background {
@@ -10878,3 +10885,6 @@ isotope portfolio and gallery pos
 	box-shadow: none;
 }
 
+.espacio{
+	margin-left: 5px;
+}
