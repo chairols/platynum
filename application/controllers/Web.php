@@ -119,5 +119,22 @@ class Web extends CI_Controller {
         $this->load->view('web/pagina');
         $this->load->view('layout_web/footer');
     }
+    
+    
+    public function buscar() {
+        $data['perfil'] = 'Buscador';
+        
+        $this->load->view('layout_web/header', $data);
+        $this->load->view('web/buscar');
+        $this->load->view('layout_web/footer');
+    }
+    
+    public function novedades() {
+        $data['perfil'] = 'Novedades';
+        
+        $this->load->view('layout_web/header', $data);
+        $this->load->view('web/novedades');
+        $this->load->view('layout_web/footer');
+    }
 }
 ?>

@@ -84,10 +84,10 @@
                                             <a href="/videos/listar/">Videos</a>
                                         </li>
                                         <li>
-                                            <a href="/videos/listar/">Novedades</a>
+                                            <a href="/web/novedades/">Novedades</a>
                                         </li>
                                         <li<?=($perfil=='Buscador')?" class='active'":""?>>
-                                            <a href="#">Buscador</a>
+                                            <a href="/web/buscar/">Buscador</a>
                                         </li>
 
                                         <li>

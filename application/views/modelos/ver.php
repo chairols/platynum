@@ -38,7 +38,8 @@
                 <p>
                     <strong>Teléfono: </strong>
                             <?php if($modelo['estado'] == 'habilitado') { ?>
-                            <?=($modelo['prefijo1']=="mov")?"15-":""?><?=$modelo['telefono1']?> <?=($modelo['prefijo2']=="mov")?"15-":""?><?=$modelo['telefono2']?> <?=($modelo['prefijo3']=="mov")?"15-":""?><?=$modelo['telefono3']?>
+                                <?=($modelo['whatsapp1']=='S')?"<i class='rt-icon2-whatsapp'></i>":""?>
+                                <?=($modelo['prefijo1']=="mov")?"15-":""?><?=$modelo['telefono1']?> <?=($modelo['prefijo2']=="mov")?"15-":""?><?=$modelo['telefono2']?> <?=($modelo['prefijo3']=="mov")?"15-":""?><?=$modelo['telefono3']?>
                             <?php } ?>
                 </p>
                 <p>
