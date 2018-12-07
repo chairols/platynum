@@ -82,7 +82,7 @@
                 <?php if(($i % 6) == 0) { ?>
         </div>
         <div class="isotope_container isotope row masonry-layout banner-aling" data-filters=".isotope_filters">
-            <div class="isotope-item col-lg-12 col-md-12 col-sm-12  fashion style="position: absolute">
+            <div class="isotope-item col-lg-12 col-md-12 col-sm-12  fashion" style="position: absolute">
                     <?=$banners[$j]['contenido'];?>
                 </div>
         </div>
