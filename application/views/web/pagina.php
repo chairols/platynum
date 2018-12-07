@@ -71,6 +71,7 @@
                             </a>
                             <?php } ?>
                             <br>
+                            <?=($modelo['whatsapp1']=='S' && $modelo['estado']=='habilitado')?"<i class='rt-icon2-whatsapp'></i>":""?>
                             <?=($modelo['estado']=='habilitado')? $modelo['telefono1']:"" ?><br>
                             <?= $modelo['value'] ?>
                         </h4>
