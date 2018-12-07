@@ -10,7 +10,10 @@ class Web extends CI_Controller {
         ));
         $this->load->model(array(
             'modelos_model',
-            'banners_model'
+            'banners_model',
+            'pelos_model',
+            'barrios_model',
+            'ciudades_model'
         ));
     }
     
@@ -124,6 +127,10 @@ class Web extends CI_Controller {
     public function buscar() {
         $data['perfil'] = 'Buscador';
         
+        $data['pelos'] = $this->pelos_model->gets();
+        $data['barrios'] = $this->barrios_model->gets();
+        $data['ciudades'] = $this->ciudades_model->gets();
+        
         $this->load->view('layout_web/header', $data);
         $this->load->view('web/buscar');
         $this->load->view('layout_web/footer');
@@ -131,6 +138,9 @@ class Web extends CI_Controller {
     
     public function novedades() {
         $data['perfil'] = 'Novedades';
+        
+        
+        
         
         $this->load->view('layout_web/header', $data);
         $this->load->view('web/novedades');
