@@ -22,7 +22,8 @@ class Modelos extends CI_Controller {
             'paises_model',
             'provincias_model',
             'ciudades_model',
-            'barrios_model'
+            'barrios_model',
+            'destacados_model'
         ));
     }
 
@@ -1077,6 +1078,86 @@ class Modelos extends CI_Controller {
         $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
         // Forzamos a la descarga
         $objWriter->save('php://output');
+    }
+    
+    public function destacadas() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $data['session'] = $this->session->all_userdata();
+        $data['css'] = array(
+            '/assets/modulos/modelos/css/destacadas.css'
+        );
+        $data['javascript'] = array(
+            '/assets/vendors/Nestable-master/jquery.nestable.js',
+            '/assets/modulos/modelos/js/destacadas.js'
+        );
+        $data['menu'] = 10;
+        
+        
+        $where = array(
+            'perfil' => 'A-MujeresModelos',
+            'estado' => 'habilitado'
+        );
+        $or_where = array(
+            'estado' => 'deshabilitado'
+        );
+
+        $data['modelos'] = $this->modelos_model->gets_where_or_where($where, $or_where);
+        foreach($data['modelos'] as $key => $value) {
+            $where = array(
+                'id_modelo' => $value['ID']
+            );
+            $resultado = $this->destacados_model->get_where($where);
+            if($resultado) {
+                unset($data['modelos'][$key]);
+            }
+        }
+        
+        $data['destacadas'] = $this->destacados_model->gets();
+        foreach($data['destacadas'] as $key => $value) {
+            $where = array(
+                'modelos.ID' => $value['id_modelo']
+            );
+            $data['destacadas'][$key]['modelo'] = $this->modelos_model->get_where($where);
+        }
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('modelos/destacadas');
+        $this->load->view('layout/footer');
+    }
+    
+    public function destacadas_ajax() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $orden = json_decode($this->input->post('orden'));
+        
+        $this->destacados_model->truncate();
+        
+        $i = 1;
+        foreach($orden as $o) {
+            $where = array(
+                'modelos.ID' => $o->id
+            );
+            $modelo = $this->modelos_model->get_where($where);
+            
+            $datos = array(
+                'posicion' => $i,
+                'id_modelo' => $o->id,
+                'carpeta' => $modelo['carpeta']
+            );
+            $this->destacados_model->set($datos);
+            
+            $i++;
+                    
+        }
+        $json = array(
+            'status' => 'ok',
+            'data' => 'Se destacaron correctamente'
+        );
+        echo json_encode($json);
     }
 
     private function formatear_fecha($fecha) {

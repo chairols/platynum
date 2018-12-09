@@ -251,7 +251,7 @@
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="treeview<?= ($menu == 2 || $menu == 3 || $menu == 8 || $menu == 9) ? " active menu-open" : "" ?>">
+                    <li class="treeview<?= ($menu == 2 || $menu == 3 || $menu == 8 || $menu == 9 || $menu == 10) ? " active menu-open" : "" ?>">
                         <a href="#">
                             <i class="fa fa-users"></i> <span>Modelos</span>
                             <span class="pull-right-container">
@@ -263,6 +263,7 @@
                             <li<?= ($menu == 3) ? " class='active'" : "" ?>><a href="/modelos/agregar/"><i class="fa fa-user-plus"></i> Agregar Modelo</a></li>
                             <li<?= ($menu == 8) ? " class='active'" : "" ?>><a href="/modelos/ordenar/"><i class="fa fa-sort-amount-asc"></i> Ordenar Modelos</a></li>
                             <li<?= ($menu == 9) ? " class='active'" : "" ?>><a href="/modelos/exportar/"><i class="fa fa-file-excel-o"></i> Exportar Modelos</a></li>
+                            <li<?= ($menu == 10) ? " class='active'" : "" ?>><a href="/modelos/destacadas/"><i class="fa fa-check-circle-o"></i> Modelos Destacadas</a></li>
                         </ul>
                     </li>
                     <li class="treeview<?= ($menu == 4 || $menu == 5 || $menu == 6 || $menu == 7) ? " active menu-open" : "" ?>">
