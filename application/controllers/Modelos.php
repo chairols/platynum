@@ -1159,6 +1159,31 @@ class Modelos extends CI_Controller {
         );
         echo json_encode($json);
     }
+    
+    public function agregar_fotos_eb($idmodelo = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        if ($idmodelo == null) {
+            redirect('/modelos/listar/', 'refresh');
+        }
+
+        $data['session'] = $this->session->all_userdata();
+        /*$data['javascript'] = array(
+            '/assets/modulos/modelos/js/agregar_fotos.js'
+        );*/
+        $data['menu'] = 3;
+
+        $where = array(
+            'modelos.ID' => $idmodelo
+        );
+        $data['modelo'] = $this->modelos_model->get_where($where);
+
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('modelos/agregar_fotos_eb');
+        $this->load->view('layout/footer');
+    }
 
     private function formatear_fecha($fecha) {
         $aux = '';

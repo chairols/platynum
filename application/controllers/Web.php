@@ -126,6 +126,9 @@ class Web extends CI_Controller {
     
     public function buscar() {
         $data['perfil'] = 'Buscador';
+        $data['javascript'] = array(
+            '/assets/modulos/web/js/buscar.js'
+        );
         
         $data['pelos'] = $this->pelos_model->gets();
         $data['barrios'] = $this->barrios_model->gets();
@@ -134,6 +137,14 @@ class Web extends CI_Controller {
         $this->load->view('layout_web/header', $data);
         $this->load->view('web/buscar');
         $this->load->view('layout_web/footer');
+    }
+    
+    public function buscador() {
+        var_dump($this->input->post());
+        
+        $data['modelos'] = $this->modelos_model->gets_where($this->input->post());
+        
+        $this->load->view('web/buscador', $data);
     }
     
     public function novedades() {
