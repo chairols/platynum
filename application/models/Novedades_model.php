@@ -15,13 +15,11 @@ class Novedades_model extends CI_Model {
 
     public function gets_para_web() {
         $query = $this->db->query("SELECT 
-                                        *, YEAR(fecha) as anio, MONTH(fecha) as mes
+                                        *
                                     FROM
                                         novedades
-                                    GROUP BY
-                                        YEAR(fecha), MONTH(fecha)
                                     ORDER BY
-                                        YEAR(fecha) DESC, MONTH(fecha) DESC");
+                                        fecha DESC");
         
         return $query->result_array();
     }
