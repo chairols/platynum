@@ -19,7 +19,7 @@ class Novedades_model extends CI_Model {
                                     FROM
                                         novedades
                                     ORDER BY
-                                        fecha DESC");
+                                        fecha DESC, idnovedad DESC");
         
         return $query->result_array();
     }
