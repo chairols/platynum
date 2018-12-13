@@ -14,7 +14,8 @@ class Web extends CI_Controller {
             'pelos_model',
             'barrios_model',
             'ciudades_model',
-            'idiomas_model'
+            'idiomas_model',
+            'novedades_model'
         ));
     }
     
@@ -286,8 +287,13 @@ class Web extends CI_Controller {
     public function novedades() {
         $data['perfil'] = 'Novedades';
         
-        
-        
+        $data['novedades'] = $this->novedades_model->gets_para_web();
+        foreach($data['novedades'] as $key => $value) {
+            $where = array(
+                'modelos.ID' => $value['idmodelo']
+            );
+            $data['novedades'][$key]['modelo'] = $this->modelos_model->get_where($where);
+        }
         
         $this->load->view('layout_web/header', $data);
         $this->load->view('web/novedades');

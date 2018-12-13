@@ -23,7 +23,8 @@ class Modelos extends CI_Controller {
             'provincias_model',
             'ciudades_model',
             'barrios_model',
-            'destacados_model'
+            'destacados_model',
+            'novedades_model'
         ));
     }
 
@@ -836,6 +837,25 @@ class Modelos extends CI_Controller {
 
             $this->modelos_model->update($datos, $where);
 
+            /*
+             * Agregar a novedades
+             */
+            if($estado == 'habilitado') {
+                $where = array(
+                    'modelos.ID' => $idmodelo
+                );
+                
+                $modelo = $this->modelos_model->get_where($where);
+                
+                $set = array(
+                    'idmodelo' => $idmodelo,
+                    'novedad' => 'Se habilitó la modelo '.$modelo['nombre_formateado'],
+                    'fecha' => date("Y-m-d")
+                );
+                
+                $this->novedades_model->set($set);
+                        
+            }
             redirect('/modelos/listar/', 'refresh');
         }
     }
