@@ -21,6 +21,17 @@ class Modelos_model extends CI_Model {
         return $query->result_array();
     }
     
+    public function gets_where_like($where, $like) {
+        $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado, CONVERT(CAST(CONVERT(idiomas using latin1) as BINARY) USING utf8) as idiomas_formateado');
+        $this->db->from('modelos');
+        $this->db->where($where);
+        $this->db->like($like);
+        $this->db->order_by('modelos.orden');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
     public function gets_where_or_where($where, $or_where) {
         $this->db->select('*, CONVERT(CAST(CONVERT(nombre using latin1) as BINARY) USING utf8) as nombre_formateado, CONVERT(CAST(CONVERT(idiomas using latin1) as BINARY) USING utf8) as idiomas_formateado');
         $this->db->from('modelos');

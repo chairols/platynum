@@ -67,8 +67,83 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Publica Masajes</label>
-                                <input type="checkbox" class="form-control" id=""
+                                <label>Publica en Masajes</label>
+                                <select name="publica_masajes" id="publica_masajes">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Publica en Fantasías</label>
+                                <select name="publica_fantasias" id="publica_fantasias">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Publica en Algo Distinto</label>
+                                <select name="publica_algodistinto" id="publica_algodistinto">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Va a Domicilio</label>
+                                <select name="a_domicilio" id="a_domicilio">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Va a Hotel</label>
+                                <select name="a_hotel" id="a_hotel">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Con Departamento Propio</label>
+                                <select name="con_lugar" id="con_lugar">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Con Email</label>
+                                <select name="con_email" id="con_email">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Con Video</label>
+                                <select name="con_video" id="con_video">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Viaja por Argentina</label>
+                                <select name="viaja_argentina" id="viaja_argentina">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Con VISA para USA</label>
+                                <select name="visa_usa" id="visa_usa">
+                                    <option value="si">SI</option>
+                                    <option value="no" selected>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Idioma</label>
+                                <select name="idiomas" id="idiomas">
+                                    <option value="">Indistinto / Any</option>
+                                    <?php foreach($idiomas as $idioma) { ?>
+                                    <option value="<?=$idioma['value_es']?>"><?=$idioma['value_es']?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                             <button class="theme_button input_button" type="button" id="buscar">Buscar</button>
                         </form>
