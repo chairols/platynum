@@ -1080,6 +1080,36 @@ class Modelos extends CI_Controller {
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
     }
+    
+    public function crear_thumb_eb() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        var_dump($this->input->post());
+        var_dump($_FILES);
+
+        $where = array(
+            'modelos.ID' => $this->input->post('idmodelo')
+        );
+        $modelo = $this->modelos_model->get_where($where);
+
+        $nombre_archivo = $modelo['carpeta'] . $this->input->post('idfoto');
+
+        $config['upload_path'] = './Fotodisk_eb/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
+        $config['file_name'] = $nombre_archivo . 'Thumb.jpg';
+
+        move_uploaded_file($_FILES['croppedImage']['tmp_name'], $config['upload_path'] . $config['file_name']);
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $config['upload_path'] . $config['file_name'];
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width'] = 80;
+        $config['height'] = 110;
+
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+    }
 
     public function crear_thumb_desde_imagen() {
         $session = $this->session->all_userdata();

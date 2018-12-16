@@ -32,7 +32,7 @@ function crop() {
         formData.append('croppedImage', blob);
 
 
-        $.ajax('/modelos/crear_thumb/', {
+        $.ajax('/modelos/crear_thumb_eb/', {
             method: 'POST',
             data: formData,
             processData: false,
