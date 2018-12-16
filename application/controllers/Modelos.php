@@ -965,6 +965,36 @@ class Modelos extends CI_Controller {
         }
     }
 
+    public function thumb_eb($idmodelo = null, $idfoto = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $data['session'] = $this->session->all_userdata();
+        $data['css'] = array(
+            '/assets/vendors/cropper-master/dist/cropper.css'
+        );
+        $data['javascript'] = array(
+            '/assets/vendors/cropper-master/dist/cropper.js',
+            '/assets/modulos/modelos/js/thumb_eb.js'
+        );
+        $data['menu'] = null;
+
+        $where = array(
+            'modelos.ID' => $idmodelo
+        );
+        $data['modelo'] = $this->modelos_model->get_where($where);
+        $data['idfoto'] = $idfoto;
+
+        if ($idmodelo == null || $idfoto == null) {
+            redirect('/modelos/listar/', 'refresh');
+        } else {
+            $this->load->view('layout/header', $data);
+            $this->load->view('layout/menu');
+            $this->load->view('modelos/thumb_eb');
+            $this->load->view('layout/footer');
+        }
+    }
+    
     public function crear_thumb() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -1221,6 +1251,108 @@ class Modelos extends CI_Controller {
         $this->load->view('layout/menu');
         $this->load->view('modelos/agregar_fotos_eb');
         $this->load->view('layout/footer');
+    }
+    
+    public function agregar_fotos_eb_ajax() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
+
+        //echo "<pre>";
+        if ($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $where = array(
+                'modelos.ID' => $this->input->post('idmodelo')
+            );
+            $modelo = $this->modelos_model->get_where($where);
+
+            $archivos = explode(',', $modelo['fotos_ebcom']);
+            $nombre_archivo = null;
+            $numero_foto = null;
+            $flag = true;
+
+            //print_r($archivos);
+
+            for ($i = 1; $flag; $i++) {
+                //var_dump(array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos));
+                //var_dump($i);
+
+                if (array_search(str_pad($i, 2, '0', STR_PAD_LEFT), $archivos) == FALSE) {
+                    $numero_foto = str_pad($i, 2, '0', STR_PAD_LEFT);
+                    $nombre_archivo = $modelo['carpeta'] . $numero_foto;
+                    //var_dump('en el if');
+                    //var_dump($nombre_archivo);
+
+                    $flag = false;
+                }
+            }
+
+
+            $filesCount = count($_FILES['files']['name']);
+            for ($i = 0; $i < $filesCount; $i++) {
+                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+
+                $f = explode('.', $_FILES['file']['name']);
+
+                $config['upload_path'] = './Fotodisk_eb/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
+                $config['allowed_types'] = 'jpg';
+                $config['file_name'] = $nombre_archivo . '.' . $f[1];
+                $config['owerwrite'] = TRUE;
+
+                if (!is_dir('Fotodisk_eb')) {
+                    mkdir('./Fotodisk_eb', 0777, TRUE);
+                }
+                if (!is_dir('Fotodisk_eb/' . $modelo['perfil'])) {
+                    mkdir('./Fotodisk_eb/' . $modelo['perfil'], 0777, TRUE);
+                }
+                if (!is_dir('Fotodisk_eb/' . $modelo['perfil'] . '/' . $modelo['carpeta'])) {
+                    mkdir('./Fotodisk_eb/' . $modelo['perfil'] . '/' . $modelo['carpeta'], 0777, TRUE);
+                }
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('file')) {
+                    $error = array('error' => $this->upload->display_errors());
+                    //print_r($error);
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+                    $archivos = explode(',', $modelo['fotos_ebcom']);
+                    $archivos[] = $numero_foto;
+                    $datos = array(
+                        'fotos_ebcom' => implode(',', $archivos)
+                    );
+                    $where = array(
+                        'ID' => $this->input->post('idmodelo')
+                    );
+                    $this->modelos_model->update($datos, $where);
+
+                    echo $numero_foto;
+                    $this->marca_de_agua('./Fotodisk_eb/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/' . $nombre_archivo . '.' . $f[1]);
+                    //print_r($data);
+
+                }
+            }
+
+
+
+
+            /*
+              $this->load->library('upload', $config);
+              if (!$this->upload->do_upload()) {
+              $error = array('error' => $this->upload->display_errors());
+              print_r($error);
+              } else {
+              $data = array('upload_data' => $this->upload->data());
+              print_r($data);
+              } */
+        }
+
+        //echo "</pre>";
     }
 
     private function formatear_fecha($fecha) {

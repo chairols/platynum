@@ -10,7 +10,7 @@ $(document).ready(function () {
     gets_videos();
     
     $('#dz1').dropzone({
-        url: '/modelos/agregar_fotos_ajax/',
+        url: '/modelos/agregar_fotos_eb_ajax/',
         margin: 20,
         allowedFileTypes: 'jpg',
         params:{
@@ -29,7 +29,7 @@ $(document).ready(function () {
     });
     
     $('#dz2').dropzone({
-        url: '/modelos/agregar_videos_ajax/',
+        url: '/modelos/agregar_videos_eb_ajax/',
         margin: 20,
         allowedFileTypes: 'video.*',
         params:{
