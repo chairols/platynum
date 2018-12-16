@@ -392,7 +392,7 @@ class Modelos extends CI_Controller {
 
                     $set = array(
                         'idmodelo' => $this->input->post('idmodelo'),
-                        'novedad' => 'Agregó Fotos', 
+                        'novedad' => 'Agregó Fotos',
                         'fecha' => date("Y-m-d")
                     );
 
@@ -484,6 +484,18 @@ class Modelos extends CI_Controller {
         $this->load->view('modelos/gets_archivos', $data);
     }
 
+    public function gets_archivos_eb() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $where = array(
+            'modelos.ID' => $this->input->post('idmodelo')
+        );
+        $data['modelo'] = $this->modelos_model->get_where($where);
+
+        $this->load->view('modelos/gets_archivos_eb', $data);
+    }
+    
     public function gets_videos() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -1195,9 +1207,9 @@ class Modelos extends CI_Controller {
         }
 
         $data['session'] = $this->session->all_userdata();
-        /* $data['javascript'] = array(
-          '/assets/modulos/modelos/js/agregar_fotos.js'
-          ); */
+        $data['javascript'] = array(
+          '/assets/modulos/modelos/js/agregar_fotos_eb.js'
+          );
         $data['menu'] = 3;
 
         $where = array(
