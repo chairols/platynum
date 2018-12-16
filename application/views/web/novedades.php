@@ -9,7 +9,9 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="item-media">
-                                        <img src="....">
+                                        <?php $fotos = explode(",", $novedad['modelo']['fotos_platy']); ?>
+                                        <?php var_dump($fotos); ?>
+                                        <img src="/Fotodisk/<?=$novedad['modelo']['perfil']?>/<?=$novedad['modelo']['carpeta']?>/<?=$novedad['modelo']['carpeta']?><?=$fotos[1]?>.jpg">
                                     </div>
                                 </div>
                                 <div class="col-md-8">

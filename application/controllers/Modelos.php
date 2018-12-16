@@ -387,8 +387,16 @@ class Modelos extends CI_Controller {
                     $this->modelos_model->update($datos, $where);
 
                     echo $numero_foto;
-                    $this->marca_de_agua('./Fotodisk/'.$modelo['perfil'].'/'.$modelo['carpeta'].'/'.$nombre_archivo.'.'.$f[1]);
+                    $this->marca_de_agua('./Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/' . $nombre_archivo . '.' . $f[1]);
                     //print_r($data);
+
+                    $set = array(
+                        'idmodelo' => $this->input->post('idmodelo'),
+                        'novedad' => 'Agregó Fotos', 
+                        'fecha' => date("Y-m-d")
+                    );
+
+                    $this->novedades_model->set($set);
                 }
             }
 
@@ -840,21 +848,20 @@ class Modelos extends CI_Controller {
             /*
              * Agregar a novedades
              */
-            if($estado == 'habilitado') {
+            if ($estado == 'habilitado') {
                 $where = array(
                     'modelos.ID' => $idmodelo
                 );
-                
+
                 $modelo = $this->modelos_model->get_where($where);
-                
+
                 $set = array(
                     'idmodelo' => $idmodelo,
                     'novedad' => 'Regresó a nuestro sitio',
                     'fecha' => date("Y-m-d")
                 );
-                
+
                 $this->novedades_model->set($set);
-                        
             }
             redirect('/modelos/listar/', 'refresh');
         }
@@ -1099,7 +1106,7 @@ class Modelos extends CI_Controller {
         // Forzamos a la descarga
         $objWriter->save('php://output');
     }
-    
+
     public function destacadas() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -1113,8 +1120,8 @@ class Modelos extends CI_Controller {
             '/assets/modulos/modelos/js/destacadas.js'
         );
         $data['menu'] = 10;
-        
-        
+
+
         $where = array(
             'perfil' => 'A-MujeresModelos',
             'estado' => 'habilitado'
@@ -1124,54 +1131,53 @@ class Modelos extends CI_Controller {
         );
 
         $data['modelos'] = $this->modelos_model->gets_where_or_where($where, $or_where);
-        foreach($data['modelos'] as $key => $value) {
+        foreach ($data['modelos'] as $key => $value) {
             $where = array(
                 'id_modelo' => $value['ID']
             );
             $resultado = $this->destacados_model->get_where($where);
-            if($resultado) {
+            if ($resultado) {
                 unset($data['modelos'][$key]);
             }
         }
-        
+
         $data['destacadas'] = $this->destacados_model->gets();
-        foreach($data['destacadas'] as $key => $value) {
+        foreach ($data['destacadas'] as $key => $value) {
             $where = array(
                 'modelos.ID' => $value['id_modelo']
             );
             $data['destacadas'][$key]['modelo'] = $this->modelos_model->get_where($where);
         }
-        
+
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('modelos/destacadas');
         $this->load->view('layout/footer');
     }
-    
+
     public function destacadas_ajax() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
+
         $orden = json_decode($this->input->post('orden'));
-        
+
         $this->destacados_model->truncate();
-        
+
         $i = 1;
-        foreach($orden as $o) {
+        foreach ($orden as $o) {
             $where = array(
                 'modelos.ID' => $o->id
             );
             $modelo = $this->modelos_model->get_where($where);
-            
+
             $datos = array(
                 'posicion' => $i,
                 'id_modelo' => $o->id,
                 'carpeta' => $modelo['carpeta']
             );
             $this->destacados_model->set($datos);
-            
+
             $i++;
-                    
         }
         $json = array(
             'status' => 'ok',
@@ -1179,7 +1185,7 @@ class Modelos extends CI_Controller {
         );
         echo json_encode($json);
     }
-    
+
     public function agregar_fotos_eb($idmodelo = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
@@ -1189,9 +1195,9 @@ class Modelos extends CI_Controller {
         }
 
         $data['session'] = $this->session->all_userdata();
-        /*$data['javascript'] = array(
-            '/assets/modulos/modelos/js/agregar_fotos.js'
-        );*/
+        /* $data['javascript'] = array(
+          '/assets/modulos/modelos/js/agregar_fotos.js'
+          ); */
         $data['menu'] = 3;
 
         $where = array(
@@ -1239,12 +1245,12 @@ class Modelos extends CI_Controller {
 
     private function marca_de_agua($url) {
         $config['source_image'] = $url;
-        $config['new_image'] = $url.'wm.jpg';
+        $config['new_image'] = $url . 'wm.jpg';
         $this->image_lib->initialize($config);
         $this->image_lib->resize();
-        
+
         $config = array();
-        $config['source_image'] = $url.'wm.jpg';
+        $config['source_image'] = $url . 'wm.jpg';
 
         $config['wm_text'] = 'Platynum';
         $config['wm_type'] = 'text';
