@@ -6,7 +6,7 @@
     <section class="content">
         <div class="box box-primary">
             <div class="box-body">
-                <h3>Fotos</h3>
+                <h3>Fotos Escort Baires</h3>
             </div>
             <div class="box-body">
                 <input type="hidden" id="idmodelo" value="<?=$modelo['ID']?>">

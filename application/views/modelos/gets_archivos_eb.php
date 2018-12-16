@@ -39,7 +39,7 @@ $(".borrar_foto").click(function() {
     };
     $.ajax({
         type: 'POST',
-        url: '/modelos/borrar_foto/',
+        url: '/modelos/borrar_foto_eb/',
         data: datos,
         beforeSend: function () {
             $("#archivos").html('<h1 class="text-center"><i class="fa fa-refresh fa-spin"></i></h1>');

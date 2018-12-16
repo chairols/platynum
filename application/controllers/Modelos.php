@@ -600,6 +600,62 @@ class Modelos extends CI_Controller {
             }
         }
     }
+    
+    public function borrar_foto_eb() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+
+        $this->form_validation->set_rules('idfoto', 'ID Foto', 'required|integer');
+        $this->form_validation->set_rules('idmodelo', 'ID Modelo', 'required|integer');
+
+        if ($this->form_validation->run() == FALSE) {
+            $json = array(
+                'status' => 'error',
+                'data' => validation_errors()
+            );
+            echo json_encode($json);
+        } else {
+            $where = array(
+                'modelos.ID' => $this->input->post('idmodelo')
+            );
+
+            $modelo = $this->modelos_model->get_where($where);
+
+            $fotos = explode(",", $modelo['fotos_ebcom']);
+
+            foreach ($fotos as $key => $value) {
+                if ($value == $this->input->post('idfoto')) {
+                    unset($fotos[$key]);
+                }
+            }
+
+            $datos = array(
+                'fotos_ebcom' => implode(",", $fotos)
+            );
+            $where = array(
+                'ID' => $this->input->post('idmodelo')
+            );
+            $resultado = $this->modelos_model->update($datos, $where);
+
+            if ($resultado) {
+                unlink("./Fotodisk_eb/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . ".jpg");
+                unlink("./Fotodisk_eb/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . "Thumb.jpg");
+                unlink("./Fotodisk_eb/" . $modelo['perfil'] . "/" . $modelo['carpeta'] . "/" . $modelo['carpeta'] . $this->input->post('idfoto') . ".jpgwm.jpg");
+
+                $json = array(
+                    'status' => 'ok',
+                    'data' => 'Se eliminó la foto correctamente'
+                );
+                echo json_encode($json);
+            } else {
+                $json = array(
+                    'status' => 'error',
+                    'data' => 'No se pudo eliminar la foto'
+                );
+                echo json_encode($json);
+            }
+        }
+    }
 
     public function modificar($idmodelo = null) {
         $session = $this->session->all_userdata();
@@ -1337,9 +1393,6 @@ class Modelos extends CI_Controller {
 
                 }
             }
-
-
-
 
             /*
               $this->load->library('upload', $config);
