@@ -849,7 +849,7 @@ class Modelos extends CI_Controller {
                 
                 $set = array(
                     'idmodelo' => $idmodelo,
-                    'novedad' => 'Se habilitó la modelo '.$modelo['nombre_formateado'],
+                    'novedad' => 'Regresó a nuestro sitio',
                     'fecha' => date("Y-m-d")
                 );
                 
