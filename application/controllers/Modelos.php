@@ -880,6 +880,14 @@ class Modelos extends CI_Controller {
                 $resultado = $this->modelos_model->update($datos, $where);
                 //$resultado = null;
                 if ($resultado) {
+                    $set = array(
+                        'idmodelo' => $this->input->post('idmodelo'),
+                        'novedad' => 'Actualizó Datos',
+                        'fecha' => date("Y-m-d")
+                    );
+
+                    $this->novedades_model->set($set);
+                    
                     $datos = array(
                         'status' => 'ok',
                         'data' => 'Se modificó correctamente la modelo',
