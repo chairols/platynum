@@ -49,7 +49,7 @@
                             </a>
                             <?php } ?>
                             <br>
-                            <?=$novedad['fecha']?><br>
+                            <?=$novedad['fecha_formateada']?><br>
                             <?=$novedad['novedad']?>
                         </h4>
                     </div>

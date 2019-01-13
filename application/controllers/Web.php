@@ -293,11 +293,24 @@ class Web extends CI_Controller {
                 'modelos.ID' => $value['idmodelo']
             );
             $data['novedades'][$key]['modelo'] = $this->modelos_model->get_where($where);
+            
+            $data['novedades'][$key]['fecha_formateada'] = $this->formatear_fecha_para_mostrar($value['fecha']);
         }
         
         $this->load->view('layout_web/header', $data);
         $this->load->view('web/novedades');
         $this->load->view('layout_web/footer');
+    }
+    
+    private function formatear_fecha_para_mostrar($fecha) {
+        $aux = '';
+        $aux .= substr($fecha, 8, 2);
+        $aux .= '/';
+        $aux .= substr($fecha, 5, 2);
+        $aux .= '/';
+        $aux .= substr($fecha, 0, 4);
+
+        return $aux;
     }
 }
 ?>
