@@ -1121,7 +1121,7 @@ class Modelos extends CI_Controller {
 
     public function crear_thumb_desde_imagen() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
+        //$this->r_session->check($session);
 
         var_dump($this->input->post());
         //var_dump($_FILES);
@@ -1133,23 +1133,23 @@ class Modelos extends CI_Controller {
 
         $nombre_archivo = $modelo['carpeta'] . $this->input->post('idfoto');
 
-        $c['upload_path'] = './Fotodisk/' . $modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
+        $c['upload_path'] = './Fotodisk/'.$modelo['perfil'] . '/' . $modelo['carpeta'] . '/';
         $c['file_name'] = $nombre_archivo . 'Thumb.jpg';
 
-
+        
         $config['image_library'] = 'gd2';
         $config['source_image'] = $c['upload_path'] . str_replace("Thumb", "", $c['file_name']);
         $config['new_image'] = $c['upload_path'] . $c['file_name'];
-        $config['create_thumb'] = FALSE;
-        $config['maintain_ratio'] = FALSE;
         $config['width'] = 80;
         $config['height'] = 110;
 
         var_dump($config);
 
-        $this->load->library('image_lib', $config);
+        $this->load->library('image_lib');
 
-        if (!$this->image_lib->crop()) {
+        $this->image_lib->initialize($config);
+        
+        if (!$this->image_lib->resize()) {
             echo $this->image_lib->display_errors();
         } else {
             //$this->marca_de_agua($config['source_image']);
