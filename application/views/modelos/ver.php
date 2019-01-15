@@ -51,7 +51,7 @@
                 <?php if(isset($fotos[1])) { ?>
                 <div class="vertical-item with_background models_square">
                     <div class="item-media">
-                        <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[1]?>.jpg" alt="">
+                        <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[1]?>.jpgwm.jpg" alt="">
                     </div>
 
                 </div>
@@ -69,7 +69,7 @@
                                 <div class="item-media">
                                     <img src="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>Thumb.jpg">
                                     <div class="media-links">
-                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>.jpg"></a>
+                                        <a class="prettyPhoto abs-link" title="" data-gal="prettyPhoto[gal]" href="/Fotodisk/<?=$modelo['perfil']?>/<?=$modelo['carpeta']?>/<?=$modelo['carpeta']?><?=$fotos[$i]?>.jpgwm.jpg"></a>
                                     </div>
                                 </div>
                             </div>
