@@ -75,11 +75,6 @@
                                                     <i class="fa fa-video-camera"></i>
                                                 </button>
                                             </a>
-                                            <a href="/modelos/agregar_fotos_eb/<?=$modelo['ID']?>/" class="hint--top hint--bounce hint--info" aria-label="Editar Fotos Escort Baires">
-                                                <button class="btn btn-xs btn-dropbox btn-flat">
-                                                    <i class="fa fa-file-image-o"></i>
-                                                </button>
-                                            </a> 
                                             <?php switch ($estado) {
                                             case 'deshabilitado': ?>
                                             <a href="/modelos/modificar_estado_modelo/<?=$modelo['ID']?>/habilitado/" class="hint--bounce hint--top hint--info" aria-label="Habilitar">
